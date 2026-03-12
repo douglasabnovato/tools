@@ -1,0 +1,39 @@
+.site-header {
+    width: 100%;
+    background: var(--bg-cards);
+    padding: 16px 32px;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+}
+
+.logo img {
+    width: 32px;
+}
+
+.menu {
+    display: flex;
+    gap: 24px;
+}
+
+.menu a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.menu a:hover {
+    opacity: .8;
+}

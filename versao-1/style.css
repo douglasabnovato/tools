@@ -11,42 +11,6 @@ body {
     color: var(--text-color);
 }
 
-/* Menu */
-
-.site-header{
-  background: var(--bg-cards);
-  padding:16px 32px;
-}
-
-.header-container{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  max-width:1200px;
-  margin:auto;
-}
-
-.logo{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  font-weight:bold;
-}
-
-.menu{
-  display:flex;
-  gap:24px;
-}
-
-.menu a{
-  text-decoration:none;
-  color:var(--text-color);
-  font-weight:500;
-}
-
-/* Fim - Menu */
-
-
 main .home-section {
     font-family: 'Merriweather Sans', sans-serif;
     color: var(--text-color);
@@ -514,31 +478,18 @@ main .home-section {
     margin-inline-end: 0.6vw;
 }
 
-/* footer */
-
-.site-footer{
-  margin-top:40px;
-  background:var(--bg-cards);
-  padding:40px;
+.footer {
+    position: relative;
+    text-align: center;
+    height: auto;
+    width: auto;
 }
 
-.footer-top{
-  display:flex;
-  justify-content:space-between;
-  flex-wrap:wrap;
+.footer span {
+    position: absolute;
+    top: 35%;
 }
 
-.footer-social{
-  display:flex;
-  gap:20px;
-}
-
-.footer-bottom{
-  margin-top:20px;
-  border-top:1px solid #444;
-  padding-top:20px;
-  text-align:center;
-}
 
 @media only screen and (max-width: 420px) {
 

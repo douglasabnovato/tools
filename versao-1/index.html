@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-br" dir="ltr">
   <head>
     <meta charset="UTF-8" />
@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" type="image/x-icon" href="./public/favicon.ico" />
     <link rel="manifest" href="./public/manifest.json" />
+    <link rel="stylesheet" type="text/css" href="./style.css" media="screen" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -17,26 +18,8 @@
       rel="stylesheet"
     />
     <title>Portfolio</title>
-    <link rel="stylesheet" href="./css/layout.css" />
-    <link rel="stylesheet" href="./css/header.css" />
-    <link rel="stylesheet" href="./css/cards.css" />
-    <link rel="stylesheet" href="./css/footer.css" />
   </head>
   <body>
-    <header class="site-header">
-      <div class="header-container">
-        <div class="logo">
-          <img src="./public/logo.png" alt="Logo" />
-          <span>DevTools</span>
-        </div>
-
-        <nav class="header-menu">
-          <a href="#">Ferramentas</a>
-          <a href="#">Hospedagem</a>
-        </nav>
-      </div>
-    </header>
-
     <main class="home-section">
       <section class="container">
         <section class="left">
@@ -47,10 +30,7 @@
               alt="profile card"
             >
               <div class="avatar">
-                <img
-                  src="https://avatars.githubusercontent.com/u/14242834?v=4"
-                  alt="Avatar"
-                />
+                <img src="https://avatars.githubusercontent.com/u/14242834?v=4" alt="Avatar" />
               </div>
               <div class="texts">
                 <div class="name">Douglas A. B. Novato</div>
@@ -124,7 +104,11 @@
                 </a>
               </div>
               <div class="social-media">
-                <a href="mailto:douglasabnovato@gmail.com" alt="e-mail card">
+                <a
+                  href="https://douglasabnovato@gmail.com"
+                  target="_blank"
+                  alt="e-mail card"
+                >
                   <span class="icons-mail icons"></span>
                   <span>Meu E-mail</span>
                 </a>
@@ -313,48 +297,49 @@
               <div>do github</div>
             </div>
           </header>
-
-          <section class="box-projects" id="box-projects">
-            <!-- CARD TEMPLATE -->
-            <div class="card">
-              <a class="destino" target="_blank">
-                <div class="image">
-                  <img src="" alt="tool" />
-                </div>
-
-                <div class="content">
-                  <p class="title">Título</p>
-
-                  <div class="info">
-                    <p class="text--medium">tempo</p>
-                    <p class="price">categoria</p>
+          <section class="box-posts">
+            <a
+              href="https://github.com/douglasabnovato/cracha-virtual"
+              target="_blank"
+              alt="github card"
+            >
+              <div class="post cards-posts">
+                <div class="box-post-left">
+                  <div class="post-avatar">
+                    <img src="https://avatars.githubusercontent.com/u/14242834?v=4" alt="Avatar" />
                   </div>
                 </div>
-              </a>
-            </div>
+                <div class="box-post-right">
+                  <div class="post-title">
+                    <div>douglasabnovato/cracha-virtual</div>
+                    <div>2 dias atrás</div>
+                  </div>
+                  <div class="post-details">
+                    <div>
+                      Estilização com responsividade de um crachá digital para
+                      eventos.
+                    </div>
+                    <div>
+                      <span>#html</span>
+                      <span>#css</span>
+                      <span>#javascript</span>
+                      <span>#git</span>
+                      <span>#kanban</span>
+                      <span>#reactjs</span>
+                      <span>#nextjs</span>
+                      <span>#redux</span>
+                      <span>#sqlite</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
           </section>
         </section>
       </section>
     </main>
-
-    <footer class="site-footer">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <img src="./public/logo.png" alt="logo" />
-          <h3>DevTools</h3>
-          <p>Ferramentas que utilizo no meu dia a dia como desenvolvedor.</p>
-        </div>
-
-        <div class="footer-socials">
-          <a href="#">Github</a>
-          <a href="#">LinkedIn</a>
-          <a href="#">Twitter</a>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <span>© 2026 DevTools — All rights reserved</span>
-      </div>
+    <footer class="footer">
+      <span>Feito com 💜 por @douglasabnovato</span>
     </footer>
     <script src="./main.js"></script>
   </body>
