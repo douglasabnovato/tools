@@ -178,5 +178,11 @@ body {
   .box-projects {
     margin-top: 1rem;
     margin-bottom: 1rem;
+    gap: 1rem; /* Cards com espaçamento mais confortável em mobile */
+    padding: 0 1rem; /* Espaço lateral para evitar corte de conteúdo */
+  }
+
+  .box-projects .card {
+    max-width: 100%; /* Garantir que os cards ocupem todo o espaço disponível */
   }
 }
