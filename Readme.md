@@ -1,14 +1,6 @@
 <h4 align="center"> 
 	🚧 Tools 🚀
-</h4>
-
-### 💻 Funcionalidades
-
-- [ ] Paginação
-- [ ] Botão Menu
-- [ ] Design do Ecossistema
-
-## Versão 1
+</h4> 
 
 <p align="center" style="display: flex; align-items: flex-start; justify-content: center;">
   <img alt="versão 1 do projeto" title="#Portfolio" src="./.github/tela-1.jpg">
