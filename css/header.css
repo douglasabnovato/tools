@@ -363,6 +363,9 @@
 
   .header-menu a {
     display: none;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
   }
 
   #theme-toggle {
@@ -383,11 +386,21 @@
     padding: 1rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 1000;
-    animation: slideIn 0.3s ease-out;
+    margin: 0.5rem 0;
+    opacity: 1;
+    transform: translateY(0);
   }
 
-  .header-menu.open a {
-    margin: 0.5rem 0;
-    animation: slideIn 0.3s ease-out;
+  .header-menu.open a:nth-child(1) {
+    transition-delay: 0.05s;
+  }
+
+  .header-menu.open a:nth-child(2) {
+    transition-delay: 0.1s;
+  }
+
+  .header-menu.open a:nth-child(3) {
+    transition-delay: 0.15s;
   }
 }
+
