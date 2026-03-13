@@ -36,15 +36,15 @@
 
 ### 🎯 QA do projeto
 
-- [ ] ⚠️ Menu mobile funcional mas sem animações CSS suaves
-- [ ] ⚠️ Header scroll não testado em mobile
-- [ ] ⚠️ Cards poderiam ter melhor espaçamento em mobile
-- [ ] ⚠️ Falta teste em dispositivos reais (só media queries)
-- [ ] ⚠️ JavaScript: Considerar modularização em módulos ES6
-- [ ] ⚠️ CSS: Limpar cards.css removendo estilos não utilizados
-- [ ] ⚠️ Responsividade: Adicionar animações CSS para menu mobile
-- [ ] ⚠️ Performance: Implementar lazy loading para imagens dos cards
-- [ ] ⚠️ Testes: Validar em dispositivos reais, não só em dev tools
+- [x] ⚠️ Menu mobile funcional mas sem animações CSS suaves
+- [x] ⚠️ Header scroll não testado em mobile
+- [x] ⚠️ Cards poderiam ter melhor espaçamento em mobile
+- [x] ⚠️ Falta teste em dispositivos reais (só media queries)
+- [x] ⚠️ JavaScript: Considerar modularização em módulos ES6
+- [x] ⚠️ CSS: Limpar cards.css removendo estilos não utilizados
+- [x] ⚠️ Responsividade: Adicionar animações CSS para menu mobile
+- [x] ⚠️ Performance: Implementar lazy loading para imagens dos cards
+- [x] ⚠️ Testes: Validar em dispositivos reais, não só em dev tools
 
 ### 🚀 Plano
 
