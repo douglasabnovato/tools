@@ -28,8 +28,9 @@
 - [x] Botão Menu
 - [x] Footer
 - [x] Header 
+- [ ] Header conforme a Seção: Ferramentas e Hospedagem
 - [x] Design do Ecossistema
-- [ ] Favicon do Ecossistema
+- [x] Favicon do Ecossistema
 
 ### 📂 Estrutura de pastas
 
