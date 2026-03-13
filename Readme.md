@@ -26,13 +26,14 @@
 
 - [x] Paginação
 - [x] Mensagem para busca com resultado vazio
-- [ ] Menu Header fixo e com efeito de transparencia
+- [x] Menu Header fixo e com animação
 - [x] Botão Menu
 - [x] Footer
 - [x] Header 
 - [x] Header conforme a Seção: Ferramentas e Hospedagem
 - [x] Design do Ecossistema
 - [x] Favicon do Ecossistema
+- [ ] QA para Responsividade
 
 ### 📂 Estrutura de pastas
 

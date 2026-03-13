@@ -48,6 +48,7 @@ body {
 
 .home-section {
   font-family: "Merriweather Sans", sans-serif;
+  padding-top: 100px;
 }
 
 /* Container principal que limita a largura do conteúdo */

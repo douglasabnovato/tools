@@ -2,6 +2,7 @@
 
 .site-header {
   width: 100%;
+  z-index: 1000;
   background: linear-gradient(
     135deg,
     var(--bg-cards) 0%,
@@ -9,10 +10,22 @@
   );
   padding: 24px 32px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
   opacity: 0;
   animation: fadeIn 0.5s ease-in-out forwards;
   overflow-x: hidden;
+  transition: all 0.3s ease-in-out;
+}
+  
+/* Estado quando o usuário rola a página */
+.site-header.header-scrolled {
+  background-color: rgba(var(--bg-rgb), 0.85); /* Cor com transparência */
+  backdrop-filter: blur(10px); /* Efeito de vidro fosco */
+  padding: 10px 0; /* Diminui a altura sutilmente */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid var(--accent);
 }
 
 @keyframes fadeIn {
