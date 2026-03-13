@@ -28,7 +28,7 @@
 - [x] Botão Menu
 - [x] Footer
 - [x] Header 
-- [ ] Header conforme a Seção: Ferramentas e Hospedagem
+- [x] Header conforme a Seção: Ferramentas e Hospedagem
 - [x] Design do Ecossistema
 - [x] Favicon do Ecossistema
 
