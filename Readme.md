@@ -57,8 +57,8 @@
 - [x] Passo 4: Testar e ajustar header scroll em mobile
 
 - ⚡ Fase 3: Otimizações Técnicas (Alto Risco)
-- [ ] Passo 5: Modularizar JavaScript em módulos ES6
-- [ ] Passo 6: Implementar lazy loading para imagens dos cards1
+- [x] Passo 5: Modularizar JavaScript em módulos ES6
+- [ ] Passo 6: Implementar lazy loading para imagens dos cards 
 
 - 🧪 Fase 4: Testes e Validação (Crítico)
 - [ ] Passo 7: Testes em dispositivos reais
