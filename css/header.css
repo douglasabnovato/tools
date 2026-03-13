@@ -220,8 +220,8 @@
 }
 
 @media (max-width: 768px) {
-    .search-container {
-        display: none; /* Ocultar busca em mobile para simplificar */
+    .site-header {
+        padding: 16px 16px;
     }
 
     .header-menu a {
