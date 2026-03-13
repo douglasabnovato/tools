@@ -25,9 +25,55 @@
 ### 💻 Funcionalidades
 
 - [ ] Paginação
-- [ ] Botão Menu
+- [x] Botão Menu
+- [x] Footer
 - [ ] Design do Ecossistema
 - [ ] Favicon do Ecossistema
+
+### 📂 Estrutura de pastas
+
+#### 📁 Root (Raiz)
+
+- index.html: O ponto de entrada da aplicação.
+- main.js: O "cérebro" do projeto, onde reside a lógica de renderização e eventos.
+- Readme.md: Documentação técnica do repositório.
+
+#### 📁 assets/ (Recursos Estáticos)
+
+É a pasta mais densa do projeto, dividida por categorias:
+
+- icons/: Contém todos os ícones funcionais em formato .svg (briefcase, github, globe, mail, map-pin, etc.).
+- logos/: Armazena a identidade visual (ex: logo-1.jpg).
+- thumb_host/: Imagens de pré-visualização para serviços de hospedagem (Firebase, Netlify, Vercel, etc.).
+- thumb_tools/: A maior coleção de imagens, com os thumbnails das ferramentas (Figma, Trello, Slack, Notion, etc.).
+- thumbs/: Outras imagens genéricas de suporte (ex: tool-1.jpg).
+- avatar.jpg: A imagem de perfil usada na sidebar lateral.
+
+#### 📁 css/ (Estilização Modular)
+
+Você optou por uma arquitetura CSS modular, o que é excelente para manutenção:
+
+- cards.css: Estilos dos componentes de card e perfil.
+- footer.css: Estilização do rodapé.
+- header.css: Lógica visual do cabeçalho e menu.
+- layout.css: Definições globais, variáveis (Dracula/Light) e estrutura de grid.
+
+#### 📁 data/ (Banco de Dados Local)
+
+Onde os dados são consumidos pelo main.js:
+
+- host.js: Array de objetos com as informações de hospedagem.
+- tools.js: Array de objetos com a lista de ferramentas.
+
+#### 📁 public/ & Outros
+
+- favicon.ico: Ícone do navegador.
+- manifest.json: Configurações para PWA ou metadados da aplicação.
+- .github/: Provavelmente contém fluxos de CI/CD (GitHub Actions) ou templates de issue.
+
+### 💻 Próximo Passo
+
+- [ ] imagens em thumb_tools e thumb_host são todas .jpg: converter essas thumbs para .webp
 
 ## Versão 1
 
