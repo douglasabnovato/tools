@@ -48,11 +48,11 @@
 
 ### 🎯 Resultado do QA 
 
-JavaScript - ⭐⭐⭐⭐⭐ - 95/100 - Código limpo e eficiente
-CSS - ⭐⭐⭐⭐ - 85/100 - Sistema sólido, alguns arquivos legacy
-Responsividade - ⭐⭐⭐⭐ - 88/100 - Boa cobertura, falta polimento mobile
-Performance - ⭐⭐⭐⭐⭐ - 92/100 - Debounce, template cloning
-Acessibilidade - ⭐⭐⭐⭐ - 87/100 - Boa base, poderia ter mais ARIA
+- JavaScript - ⭐⭐⭐⭐⭐ - 95/100 - Código limpo e eficiente
+- CSS - ⭐⭐⭐⭐ - 85/100 - Sistema sólido, alguns arquivos legacy
+- Responsividade - ⭐⭐⭐⭐ - 88/100 - Boa cobertura, falta polimento mobile
+- Performance - ⭐⭐⭐⭐⭐ - 92/100 - Debounce, template cloning
+- Acessibilidade - ⭐⭐⭐⭐ - 87/100 - Boa base, poderia ter mais ARIA
 
 ### 🎯 Workflow do projeto em branches
 
