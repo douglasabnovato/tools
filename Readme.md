@@ -46,6 +46,23 @@
 - [ ] ⚠️ Performance: Implementar lazy loading para imagens dos cards
 - [ ] ⚠️ Testes: Validar em dispositivos reais, não só em dev tools
 
+### 🚀 Plano
+
+- 📋 Fase 1: Limpeza e Organização (Baixo Risco)
+- [x] Passo 1: Limpar cards.css - Remover estilos não utilizados
+- [ ] Passo 2: Melhorar espaçamento dos cards em mobile
+
+- 🎨 Fase 2: Melhorias de UX e Responsividade (Médio Risco)
+- [ ] Passo 3: Adicionar animações CSS suaves para menu mobile
+- [ ] Passo 4: Testar e ajustar header scroll em mobile
+
+- ⚡ Fase 3: Otimizações Técnicas (Alto Risco)
+- [ ] Passo 5: Modularizar JavaScript em módulos ES6
+- [ ] Passo 6: Implementar lazy loading para imagens dos cards1
+
+- 🧪 Fase 4: Testes e Validação (Crítico)
+- [ ] Passo 7: Testes em dispositivos reais
+
 ### 🎯 Resultado do QA 
 
 - JavaScript - ⭐⭐⭐⭐⭐ - 95/100 - Código limpo e eficiente
