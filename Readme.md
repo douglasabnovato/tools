@@ -24,7 +24,9 @@
 
 ### 💻 Funcionalidades
 
-- [ ] Paginação
+- [x] Paginação
+- [x] Mensagem para busca com resultado vazio
+- [ ] Menu Header fixo e com efeito de transparencia
 - [x] Botão Menu
 - [x] Footer
 - [x] Header 

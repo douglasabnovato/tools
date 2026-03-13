@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Catálogo de ferramentas e hospedagens do ecossistema LearnTECH para desenvolvedores fullstack."
+    />
     <link
       rel="apple-touch-icon"
       sizes="180x180"
@@ -100,13 +104,18 @@
     <main class="home-section">
       <section class="container">
         <header class="section-header">
-          <h1 id="section-title">
-            Ferramentas <span class="highlight">LearnTECH</span>
-          </h1>
-          <p id="section-subtitle">
-            Explorando as melhores soluções para otimizar meu workflow de
-            desenvolvimento.
-          </p>
+          <div class="header-content-wrapper">
+            <h1 id="section-title">
+              Ferramentas <span class="highlight">LearnTECH</span>
+            </h1>
+            <p id="section-subtitle">
+              Explorando as melhores soluções para otimizar meu workflow de
+              desenvolvimento.
+            </p>
+          </div>
+          <div class="stats-bar">
+            <p id="items-counter" class="items-counter-text"></p>
+          </div>
         </header>
 
         <section class="box-projects" id="box-projects">
@@ -114,19 +123,25 @@
             <div class="image">
               <img src="" alt="tool" />
             </div>
-
             <div class="content">
               <p class="title">Título</p>
-
               <div class="info">
                 <p class="text--medium">tempo</p>
                 <span class="badge">categoria</span>
               </div>
-
               <button class="visit-btn">Visitar</button>
             </div>
           </div>
         </section>
+
+        <div class="pagination-footer">
+          <button id="load-more" class="visit-btn load-more-style">
+            Carregar Mais
+          </button>
+          <p id="all-loaded-message" class="end-message">
+            🚀 Isso é tudo pessoal!
+          </p>
+        </div>
       </section>
     </main>
 
@@ -199,7 +214,7 @@
 
         <div class="footer-bottom">
           <div class="copyright">
-            &copy; 2026 LearnTECH. All rights reserved.
+            &copy; <span id="year"></span> LearnTECH. All rights reserved.
           </div>
           <div class="tech-stack">
             DESENVOLVIDO<span class="stack-highlight">FERRAMENTAS</span>COM
