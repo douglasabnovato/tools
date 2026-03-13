@@ -1,165 +1,7 @@
 
 /* cards.css */
-.cards,
-.cards-title,
-.cards-posts {
-    background-color: var(--bg-cards);
-    border-radius: 1em;
-}
 
-/* PROFILE */
-
-.profile a {
-    color: var(--text-color);
-    text-decoration: none;
-}
-
-.profile .avatar {
-    margin-block-start: 2.5vh;
-}
-
-.profile .avatar img {
-    width: 100%;
-    max-width: 35%;
-    border-radius: 50%;
-    display: block;
-    margin: auto;
-}
-
-.profile .texts {
-    margin-block-end: 2vh;
-}
-
-.profile .texts .name {
-    margin-block-start: 2vh;
-    font-size: clamp(1.2rem, 3vw, 1.8rem);
-    font-weight: bold;
-    text-align: center;
-    line-height: 1.4;
-}
-
-.profile .texts .job {
-    margin-block-start: 0.8vh;
-    text-align: center;
-    font-size: clamp(0.9rem, 2vw, 1.1rem);
-    line-height: 1.6;
-    color: var(--text-secondary);
-}
-
-/* LINKS */
-
-.links .social-medias {
-    margin-inline-start: 2vw;
-    margin-block-start: 2.5vh;
-}
-
-.links .social-media {
-    margin-block-end: 1.5vh;
-    display: flex;
-}
-
-.links .icons {
-    margin-inline-end: 1vw;
-    margin-inline-start: 1vw;
-}
-
-.links .icons-local {
-    content: url(../assets/icons/map-pin.svg);
-}
-
-.links .icons-sa {
-    content: url(../assets/icons/briefcase.svg);
-}
-
-.links .icons-github {
-    content: url(../assets/icons/github.svg);
-}
-
-.links .icons-linkedin {
-    content: url(../assets/icons/linkedin.svg);
-}
-
-.links .icons-twitter {
-    content: url(../assets/icons/twitter.svg);
-}
-
-.links .icons-globe {
-    content: url(../assets/icons/globe.svg);
-}
-
-.links .icons-mail {
-    content: url(../assets/icons/mail.svg);
-}
-
-/* TECHNOLOGIES */
-
-.technologies h2 {
-    margin-inline-start: 2.5vw;
-    margin-block-start: 3.5vh;
-}
-
-.box-techs {
-    margin-inline: 2vw;
-    margin-block: 3vh;
-}
-
-.techs {
-    display: flex;
-    gap: .35rem;
-    margin-block-start: 1.9vh;
-}
-
-.tooltip {
-    background-color: var(--bg-techs);
-    color: var(--text-tooltip);
-    border-radius: 1em;
-    font-size: .7rem;
-    font-weight: bold;
-    text-align: center;
-    padding: .5rem;
-}
-
-/* EXPERIENCES */
-
-.experiences-list {
-    list-style: none;
-    margin-block: 2vh;
-}
-
-.experiences-list span {
-    font-weight: bold;
-}
-
-/* EDUCATION */
-
-.education-list {
-    list-style: none;
-}
-
-.education-list span {
-    font-weight: bold;
-}
-
-/* PROJECTS */
-
-.project a {
-    color: var(--text-color);
-    text-decoration: none;
-}
-
-.fragment {
-    margin: 2vh 2vw;
-}
-
-.project .title-project span:nth-child(2) {
-    font-weight: bold;
-    font-size: 1.3rem;
-}
-
-.icons-folder {
-    content: url(../assets/icons/folder.svg);
-    margin-inline-end: .9vw;
-}
+/* Estilos usados pelos cards dinâmicos da aplicação */
 
 /* Estilização específica para os cards dinâmicos */
 .card {
@@ -314,18 +156,24 @@
     grid-column: 1 / -1;
 }
 
-/* POSTS */
 
-.post-avatar img {
-    width: 8vw;
-    border-radius: 50%;
+.empty-search-container {
+  grid-column: 1 / -1; /* Ocupa toda a largura do grid */
+  text-align: center;
+  padding: 3rem 1rem;
+  background: rgba(255, 255, 255, 0.05); /* Um leve fundo translúcido */
+  border-radius: 12px;
+  border: 1px dashed var(--accent); /* Borda tracejada com sua cor principal */
 }
 
-.post-title div:nth-child(1) {
-    font-weight: bold;
-    font-size: 1.4rem;
+.empty-search-message {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
 }
 
-.post-details span {
-    margin-inline-end: .6vw;
+.empty-search-icon {
+  font-size: 2rem;
+  display: block;
 }
