@@ -27,7 +27,8 @@
 - [ ] Paginação
 - [x] Botão Menu
 - [x] Footer
-- [ ] Design do Ecossistema
+- [x] Header 
+- [x] Design do Ecossistema
 - [ ] Favicon do Ecossistema
 
 ### 📂 Estrutura de pastas
