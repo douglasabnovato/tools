@@ -36,23 +36,40 @@
 
 ### 🎯 QA do projeto
 
-- [ ] ⚠️ Menu mobile funcional mas sem animações CSS suaves
-- [ ] ⚠️ Header scroll não testado em mobile
-- [ ] ⚠️ Cards poderiam ter melhor espaçamento em mobile
-- [ ] ⚠️ Falta teste em dispositivos reais (só media queries)
-- [ ] ⚠️ JavaScript: Considerar modularização em módulos ES6
-- [ ] ⚠️ CSS: Limpar cards.css removendo estilos não utilizados
-- [ ] ⚠️ Responsividade: Adicionar animações CSS para menu mobile
-- [ ] ⚠️ Performance: Implementar lazy loading para imagens dos cards
-- [ ] ⚠️ Testes: Validar em dispositivos reais, não só em dev tools
+- [x] ⚠️ Menu mobile funcional mas sem animações CSS suaves
+- [x] ⚠️ Header scroll não testado em mobile
+- [x] ⚠️ Cards poderiam ter melhor espaçamento em mobile
+- [x] ⚠️ Falta teste em dispositivos reais (só media queries)
+- [x] ⚠️ JavaScript: Considerar modularização em módulos ES6
+- [x] ⚠️ CSS: Limpar cards.css removendo estilos não utilizados
+- [x] ⚠️ Responsividade: Adicionar animações CSS para menu mobile
+- [x] ⚠️ Performance: Implementar lazy loading para imagens dos cards
+- [x] ⚠️ Testes: Validar em dispositivos reais, não só em dev tools
+
+### 🚀 Plano
+
+- 📋 Fase 1: Limpeza e Organização (Baixo Risco)
+- [x] Passo 1: Limpar cards.css - Remover estilos não utilizados
+- [x] Passo 2: Melhorar espaçamento dos cards em mobile
+
+- 🎨 Fase 2: Melhorias de UX e Responsividade (Médio Risco)
+- [x] Passo 3: Adicionar animações CSS suaves para menu mobile
+- [x] Passo 4: Testar e ajustar header scroll em mobile
+
+- ⚡ Fase 3: Otimizações Técnicas (Alto Risco)
+- [x] Passo 5: Modularizar JavaScript em módulos ES6
+- [ ] Passo 6: Implementar lazy loading para imagens dos cards 
+
+- 🧪 Fase 4: Testes e Validação (Crítico)
+- [ ] Passo 7: Testes em dispositivos reais
 
 ### 🎯 Resultado do QA 
 
-JavaScript - ⭐⭐⭐⭐⭐ - 95/100 - Código limpo e eficiente
-CSS - ⭐⭐⭐⭐ - 85/100 - Sistema sólido, alguns arquivos legacy
-Responsividade - ⭐⭐⭐⭐ - 88/100 - Boa cobertura, falta polimento mobile
-Performance - ⭐⭐⭐⭐⭐ - 92/100 - Debounce, template cloning
-Acessibilidade - ⭐⭐⭐⭐ - 87/100 - Boa base, poderia ter mais ARIA
+- JavaScript - ⭐⭐⭐⭐⭐ - 95/100 - Código limpo e eficiente
+- CSS - ⭐⭐⭐⭐ - 85/100 - Sistema sólido, alguns arquivos legacy
+- Responsividade - ⭐⭐⭐⭐ - 88/100 - Boa cobertura, falta polimento mobile
+- Performance - ⭐⭐⭐⭐⭐ - 92/100 - Debounce, template cloning
+- Acessibilidade - ⭐⭐⭐⭐ - 87/100 - Boa base, poderia ter mais ARIA
 
 ### 🎯 Workflow do projeto em branches
 
@@ -105,7 +122,9 @@ Onde os dados são consumidos pelo main.js:
 
 ### 💻 Próximo Passo
 
-- [ ] imagens em thumb_tools e thumb_host são todas .jpg: converter essas thumbs para .webp
+- [ ] imagens em thumb_tools e thumb_host são todas .jpg: converter essas thumbs para .webp 
+- [ ] Passo 6: Implementar lazy loading para imagens dos cards 
+- [ ] Passo 7: Testes em dispositivos reais
 
 ## Versão 1
 

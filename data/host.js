@@ -1,4 +1,4 @@
-const hostsList = [
+export const hostsList = [
   {
     title: "netlify",
     duration: "10 dias",

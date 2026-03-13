@@ -21,11 +21,19 @@
   
 /* Estado quando o usuário rola a página */
 .site-header.header-scrolled {
-  background-color: rgba(var(--bg-rgb), 0.85); /* Cor com transparência */
-  backdrop-filter: blur(10px); /* Efeito de vidro fosco */
+  background-color: rgba(var(--bg-rgb), 0.92); /* Cor com transparência */
+  backdrop-filter: blur(12px); /* Efeito de vidro fosco */
   padding: 10px 0; /* Diminui a altura sutilmente */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  border-bottom: 1px solid var(--accent);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+  border-bottom: 1px solid rgba(var(--accent-rgb), 0.35);
+}
+
+/* Ajustes específicos para mobile (melhor legibilidade ao rolar) */
+@media (max-width: 768px) {
+  .site-header.header-scrolled {
+    padding: 8px 0;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.22);
+  }
 }
 
 @keyframes fadeIn {
@@ -363,6 +371,9 @@
 
   .header-menu a {
     display: none;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
   }
 
   #theme-toggle {
@@ -383,11 +394,21 @@
     padding: 1rem;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 1000;
-    animation: slideIn 0.3s ease-out;
+    margin: 0.5rem 0;
+    opacity: 1;
+    transform: translateY(0);
   }
 
-  .header-menu.open a {
-    margin: 0.5rem 0;
-    animation: slideIn 0.3s ease-out;
+  .header-menu.open a:nth-child(1) {
+    transition-delay: 0.05s;
+  }
+
+  .header-menu.open a:nth-child(2) {
+    transition-delay: 0.1s;
+  }
+
+  .header-menu.open a:nth-child(3) {
+    transition-delay: 0.15s;
   }
 }
+
