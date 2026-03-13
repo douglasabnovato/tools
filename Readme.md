@@ -54,7 +54,7 @@
 
 - 🎨 Fase 2: Melhorias de UX e Responsividade (Médio Risco)
 - [x] Passo 3: Adicionar animações CSS suaves para menu mobile
-- [ ] Passo 4: Testar e ajustar header scroll em mobile
+- [x] Passo 4: Testar e ajustar header scroll em mobile
 
 - ⚡ Fase 3: Otimizações Técnicas (Alto Risco)
 - [ ] Passo 5: Modularizar JavaScript em módulos ES6

@@ -21,6 +21,9 @@
   /* UI States */
   --text-primary-active: #ffffff; /* Texto sempre branco no botão azul */
   --border-radius: 0.75rem;
+
+  /* RGB base para efeitos de glassmorphism e transparências */
+  --bg-rgb: 2, 11, 20; /* neutro baseado no background principal */
 }
 
 [data-theme="light"] {
@@ -35,6 +38,8 @@
   --text-primary: #0f172a;
   --text-color: #475569;
   --text-secondary: #64748b;
+
+  --bg-rgb: 248, 250, 252;
 }
 
 body {

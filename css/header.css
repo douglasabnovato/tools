@@ -21,11 +21,19 @@
   
 /* Estado quando o usuário rola a página */
 .site-header.header-scrolled {
-  background-color: rgba(var(--bg-rgb), 0.85); /* Cor com transparência */
-  backdrop-filter: blur(10px); /* Efeito de vidro fosco */
+  background-color: rgba(var(--bg-rgb), 0.92); /* Cor com transparência */
+  backdrop-filter: blur(12px); /* Efeito de vidro fosco */
   padding: 10px 0; /* Diminui a altura sutilmente */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  border-bottom: 1px solid var(--accent);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+  border-bottom: 1px solid rgba(var(--accent-rgb), 0.35);
+}
+
+/* Ajustes específicos para mobile (melhor legibilidade ao rolar) */
+@media (max-width: 768px) {
+  .site-header.header-scrolled {
+    padding: 8px 0;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.22);
+  }
 }
 
 @keyframes fadeIn {
