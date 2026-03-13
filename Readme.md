@@ -4,9 +4,9 @@
 
 ### 💻 Funcionalidades
 
-- Paginação
-- Botão Menu
-- Design do Ecossistema
+- [] Paginação
+- [] Botão Menu
+- [] Design do Ecossistema
 
 ## Versão 1
 
