@@ -4,22 +4,46 @@
 
 ## Evolução da Plataforma
 
-- [x] Menu e Lista de Cards
+- [x] Ferramentas: Menu e Lista de Cards
 
 <p align="center" style="display: flex; align-items: flex-start; justify-content: center;">
   <img alt="versão 1 do projeto" title="#Portfolio" src="./.github/versao-2-tela-1.jpg">
 </p>
 
-- [x] Barra de Busca e Resultado de Card
+- [x] Ferramentas: Paginação e Botão de Exibir mais
 
 <p align="center" style="display: flex; align-items: flex-start; justify-content: center;">
   <img alt="versão 1 do projeto" title="#Portfolio" src="./.github/versao-2-tela-2.jpg">
 </p>
 
-- [x] Footer
+- [x] Ferramentas: Footer
 
 <p align="center" style="display: flex; align-items: flex-start; justify-content: center;">
   <img alt="versão 1 do projeto" title="#Portfolio" src="./.github/versao-2-tela-3.jpg">
+</p>
+
+- [x] Hospedagens: Listagem de Quantidade de Itens Exibidos e Ao Todos
+
+<p align="center" style="display: flex; align-items: flex-start; justify-content: center;">
+  <img alt="versão 1 do projeto" title="#Portfolio" src="./.github/versao-2-tela-4.jpg">
+</p>
+
+- [x] Hospedagens: Último elemento exibido e Mensagem de Fim de Lista
+
+<p align="center" style="display: flex; align-items: flex-start; justify-content: center;">
+  <img alt="versão 1 do projeto" title="#Portfolio" src="./.github/versao-2-tela-5.jpg">
+</p>
+
+- [x] Hospedagens: Barra de Busca e Resultado de Card
+
+<p align="center" style="display: flex; align-items: flex-start; justify-content: center;">
+  <img alt="versão 1 do projeto" title="#Portfolio" src="./.github/versao-2-tela-6.jpg">
+</p>
+
+- [x] Hospedagens: Modo Claro
+
+<p align="center" style="display: flex; align-items: flex-start; justify-content: center;">
+  <img alt="versão 1 do projeto" title="#Portfolio" src="./.github/versao-2-tela-7.jpg">
 </p>
 
 ### 💻 Funcionalidades
@@ -77,7 +101,7 @@
 - developer - para avaliação
 - feature/versao-1 - funcionalidades dessa sprint
 - feature/versao-2 - funcionalidades dessa sprint
-- feature/improvements - melhorias apontadas pelo QA
+- feature/improvements - melhorias apontadas pelo QA da versão 2
 
 ### 📂 Estrutura de pastas
 
