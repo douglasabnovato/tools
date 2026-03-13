@@ -2,6 +2,26 @@
 	🚧 Tools 🚀
 </h4>
 
+## Evolução da Plataforma
+
+- [x] Menu e Lista de Cards
+
+<p align="center" style="display: flex; align-items: flex-start; justify-content: center;">
+  <img alt="versão 1 do projeto" title="#Portfolio" src="./.github/versao-2-tela-1.jpg">
+</p>  
+
+- [x] Barra de Busca e Resultado de Card
+
+<p align="center" style="display: flex; align-items: flex-start; justify-content: center;">
+  <img alt="versão 1 do projeto" title="#Portfolio" src="./.github/versao-2-tela-2.jpg">
+</p>  
+
+- [x] Footer
+
+<p align="center" style="display: flex; align-items: flex-start; justify-content: center;">
+  <img alt="versão 1 do projeto" title="#Portfolio" src="./.github/versao-2-tela-3.jpg">
+</p>  
+
 ### 💻 Funcionalidades
 
 - [ ] Paginação
