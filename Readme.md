@@ -122,7 +122,9 @@ Onde os dados são consumidos pelo main.js:
 
 ### 💻 Próximo Passo
 
-- [ ] imagens em thumb_tools e thumb_host são todas .jpg: converter essas thumbs para .webp
+- [ ] imagens em thumb_tools e thumb_host são todas .jpg: converter essas thumbs para .webp 
+- [ ] Passo 6: Implementar lazy loading para imagens dos cards 
+- [ ] Passo 7: Testes em dispositivos reais
 
 ## Versão 1
 

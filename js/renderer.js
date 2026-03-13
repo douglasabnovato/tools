@@ -18,6 +18,27 @@ export function createApp({ toolsList, hostsList }) {
   let itemsToShow = INITIAL_ITEMS;
   let activeType = "tools";
 
+  const supportsIntersectionObserver = "IntersectionObserver" in window;
+  const imageObserver = supportsIntersectionObserver
+    ? new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+
+            const img = entry.target;
+            const src = img.dataset.src;
+            if (src) img.src = src;
+
+            imageObserver.unobserve(img);
+          });
+        },
+        {
+          rootMargin: "200px 0px",
+          threshold: 0.1,
+        },
+      )
+    : null;
+
   const sectionContent = {
     tools: {
       title: 'Ferramentas <span class="highlight">LearnTECH</span>',
@@ -51,6 +72,7 @@ export function createApp({ toolsList, hostsList }) {
     const dataToDisplay = filteredData.slice(0, itemsToShow);
     const currentDisplayed = dataToDisplay.length;
 
+    if (imageObserver) imageObserver.disconnect();
     sectionCards.innerHTML = "";
 
     if (totalInFiltered === 0) {
@@ -69,8 +91,21 @@ export function createApp({ toolsList, hostsList }) {
 
     dataToDisplay.forEach((item) => {
       const card = cardTemplate.cloneNode(true);
-      card.querySelector("img").src = item.thumb;
-      card.querySelector("img").alt = item.title;
+      const img = card.querySelector("img");
+
+      // Lazy loading: definir placeholder e carregar a imagem somente quando visível
+      img.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
+      img.dataset.src = item.thumb;
+      img.alt = item.title;
+      img.loading = "lazy";
+
+      if (imageObserver) {
+        imageObserver.observe(img);
+      } else {
+        // Fallback para navegadores antigos
+        img.src = item.thumb;
+      }
+
       card.querySelector(".title").innerText = item.title;
       card.querySelector(".text--medium").innerText = item.duration;
       card.querySelector(".badge").innerText = item.category;
