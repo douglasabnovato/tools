@@ -27,6 +27,7 @@
 - [ ] Paginação
 - [ ] Botão Menu
 - [ ] Design do Ecossistema
+- [ ] Favicon do Ecossistema
 
 ## Versão 1
 
