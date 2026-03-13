@@ -329,3 +329,24 @@
 .post-details span {
     margin-inline-end: .6vw;
 }
+
+.empty-search-container {
+  grid-column: 1 / -1; /* Ocupa toda a largura do grid */
+  text-align: center;
+  padding: 3rem 1rem;
+  background: rgba(255, 255, 255, 0.05); /* Um leve fundo translúcido */
+  border-radius: 12px;
+  border: 1px dashed var(--accent); /* Borda tracejada com sua cor principal */
+}
+
+.empty-search-message {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+}
+
+.empty-search-icon {
+  font-size: 2rem;
+  display: block;
+}

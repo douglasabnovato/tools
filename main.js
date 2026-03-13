@@ -1,20 +1,13 @@
-/* ==========================================================================
-   ESTADO GLOBAL E SELETORES
-   ========================================================================== */
 const sectionCards = document.querySelector("#box-projects");
 const originalCard = document.querySelector(".card");
 const cardTemplate = originalCard.cloneNode(true);
 const searchInput = document.getElementById("search-input");
-
-// Elementos de UI de Paginação
 const loadMoreBtn = document.getElementById("load-more");
 const endMessage = document.getElementById("all-loaded-message");
 const itemsCounter = document.getElementById("items-counter");
 
-// Remove o card estático inicial
 originalCard.remove();
 
-// Regras de Exibição
 const INITIAL_ITEMS = 12;
 const INCREMENT_ITEMS = 8;
 
@@ -39,13 +32,6 @@ const sectionContent = {
   },
 };
 
-/* ==========================================================================
-   LÓGICA DE FILTRO E RENDERIZAÇÃO
-   ========================================================================== */
-
-/**
- * Filtra os dados com base no input de busca
- */
 function filterData(query, data) {
   if (!query.trim()) return data;
   const lowerQuery = query.toLowerCase();
@@ -56,33 +42,36 @@ function filterData(query, data) {
   );
 }
 
-/**
- * Renderiza os cards respeitando a hierarquia de Busca e Paginação
- */
 function render() {
-  // 1. Hierarquia: Primeiro filtra a lista inteira
   const filteredData = filterData(searchInput.value, currentData);
-
-  // 2. Depois aplica a paginação sobre o resultado do filtro
   const totalInFiltered = filteredData.length;
   const dataToDisplay = filteredData.slice(0, itemsToShow);
   const currentDisplayed = dataToDisplay.length;
 
-  // 3. Limpa o grid para nova renderização
   sectionCards.innerHTML = "";
 
-  // 4. Mapeia e injeta os cards
+  if (totalInFiltered === 0) {
+    const label = sectionContent[activeType].label;
+    sectionCards.innerHTML = `
+      <div class="empty-search-container">
+        <p class="empty-search-message">Não temos essa ${label.slice(0, -1)}</p>
+        <span class="empty-search-icon">🔍</span>
+      </div>
+    `;
+    loadMoreBtn.style.display = "none";
+    endMessage.style.display = "none";
+    if (itemsCounter) itemsCounter.innerHTML = `0 de 0 ${label}`;
+    return;
+  }
+
   dataToDisplay.forEach((item) => {
     const card = cardTemplate.cloneNode(true);
-
-    // Configura os dados do card
     card.querySelector("img").src = item.thumb;
     card.querySelector("img").alt = item.title;
     card.querySelector(".title").innerText = item.title;
     card.querySelector(".text--medium").innerText = item.duration;
     card.querySelector(".badge").innerText = item.category;
 
-    // Evento de visita
     card.querySelector(".visit-btn").addEventListener("click", (e) => {
       e.stopPropagation();
       window.open(item.site_url, "_blank");
@@ -91,49 +80,34 @@ function render() {
     sectionCards.appendChild(card);
   });
 
-  // 5. Atualiza o Contador (Ex: 12 / 42 ferramentas)
   if (itemsCounter) {
     itemsCounter.innerHTML = `Exibindo <strong>${currentDisplayed}</strong> de <strong>${totalInFiltered}</strong> ${sectionContent[activeType].label}`;
   }
 
-  // 6. Regra da Mensagem Final vs Botão "Carregar Mais"
   if (currentDisplayed >= totalInFiltered) {
     loadMoreBtn.style.display = "none";
-    // Só exibe a mensagem de fim se houver algum item na lista
-    endMessage.style.display = totalInFiltered > 0 ? "block" : "none";
+    endMessage.style.display = "block";
   } else {
     loadMoreBtn.style.display = "block";
     endMessage.style.display = "none";
   }
 }
 
-/* ==========================================================================
-   CONTROLE DE NAVEGAÇÃO E EVENTOS
-   ========================================================================== */
-
-/**
- * Altera entre Ferramentas e Hospedagem
- */
 function changeContext(type) {
   activeType = type;
   const content = sectionContent[type];
-
-  // Reset de estado ao trocar de aba
   itemsToShow = INITIAL_ITEMS;
   currentData = content.list;
 
-  // Atualiza Textos do Header
   document.getElementById("section-title").innerHTML = content.title;
   document.getElementById("section-subtitle").textContent = content.subtitle;
 
-  // Gerencia classe Active no Menu
   document
     .querySelectorAll(".nav-link")
     .forEach((link) => link.classList.remove("active"));
   const activeNav = document.getElementById(`nav-${type}`);
   if (activeNav) activeNav.classList.add("active");
 
-  // Roda a animação de fade no header
   const header = document.querySelector(".section-header");
   header.classList.remove("fadeIn");
   void header.offsetWidth;
@@ -143,16 +117,13 @@ function changeContext(type) {
 }
 
 window.onload = () => {
-  // Inicialização padrão
   changeContext("tools");
 
-  // Evento: Carregar Mais (Incremento de 8)
   loadMoreBtn.addEventListener("click", () => {
     itemsToShow += INCREMENT_ITEMS;
     render();
   });
 
-  // Evento: Busca (Reset de paginação para 12 a cada tecla)
   let debounceTimer;
   searchInput.addEventListener("input", () => {
     clearTimeout(debounceTimer);
@@ -162,7 +133,6 @@ window.onload = () => {
     }, 300);
   });
 
-  // Eventos de Navegação
   document.getElementById("nav-tools").addEventListener("click", (e) => {
     e.preventDefault();
     changeContext("tools");
@@ -173,7 +143,6 @@ window.onload = () => {
     changeContext("host");
   });
 
-  // Toggle de Tema (Dark/Light)
   const themeToggle = document.getElementById("theme-toggle");
   const themeIcon = themeToggle.querySelector(".theme-icon");
 
@@ -183,7 +152,6 @@ window.onload = () => {
     const newTheme = isDark ? "light" : "dark";
     document.documentElement.setAttribute("data-theme", newTheme);
 
-    // Troca o SVG dinamicamente se necessário
     if (newTheme === "light") {
       themeIcon.innerHTML =
         '<path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>';
@@ -193,7 +161,6 @@ window.onload = () => {
     }
   });
 
-  // Toggle Menu Mobile
   const menuToggle = document.getElementById("menu-toggle");
   const headerMenu = document.querySelector(".header-menu");
   menuToggle.addEventListener("click", () => {
@@ -201,7 +168,6 @@ window.onload = () => {
     menuToggle.setAttribute("aria-expanded", isOpen);
   });
 
-  // Ano Dinâmico
   const yearElement = document.getElementById("year");
   if (yearElement) yearElement.textContent = new Date().getFullYear();
 };
