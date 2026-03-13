@@ -1,6 +1,34 @@
 <h4 align="center"> 
-	🚧 Portfolio 🚀
+	🚧 Tools 🚀
 </h4>
+
+## Evolução da Plataforma
+
+- [x] Menu e Lista de Cards
+
+<p align="center" style="display: flex; align-items: flex-start; justify-content: center;">
+  <img alt="versão 1 do projeto" title="#Portfolio" src="./.github/versao-2-tela-1.jpg">
+</p>  
+
+- [x] Barra de Busca e Resultado de Card
+
+<p align="center" style="display: flex; align-items: flex-start; justify-content: center;">
+  <img alt="versão 1 do projeto" title="#Portfolio" src="./.github/versao-2-tela-2.jpg">
+</p>  
+
+- [x] Footer
+
+<p align="center" style="display: flex; align-items: flex-start; justify-content: center;">
+  <img alt="versão 1 do projeto" title="#Portfolio" src="./.github/versao-2-tela-3.jpg">
+</p>  
+
+### 💻 Funcionalidades
+
+- [ ] Paginação
+- [ ] Botão Menu
+- [ ] Design do Ecossistema
+
+## Versão 1
 
 <p align="center" style="display: flex; align-items: flex-start; justify-content: center;">
   <img alt="versão 1 do projeto" title="#Portfolio" src="./.github/tela-1.jpg">
@@ -17,7 +45,7 @@ Neste desafio você poderá criar uma página web para que seja seu portfolio e 
 
 #### 💻 Como começar?
 
-1 - Use o link do Figma como base para o projeto. Também disponibilizamos para download todos os assets necessários (imagens e ícones), para fazer o download basta clicar no link acima.  
+1 - Use o link do [Figma](https://www.figma.com/file/CGGQ00BVKb28kaSLQKgrQl/DD-%2F-Portfolio-(Copy)?node-id=3%3A2) como base para o projeto. Também disponibilizamos para download todos os assets necessários (imagens e ícones), para fazer o download basta clicar no link acima.  
 
 2 - Leia com atenção todas as instruções do desafio.
 
@@ -25,7 +53,7 @@ Neste desafio você poderá criar uma página web para que seja seu portfolio e 
 
 4 - Compartilhe seu resultado ou tire suas dúvidas na nossa [**comunidade aberta**](https://discord.gg/bacwY2gDCF)
 
-### 💡 Conteúdos Aplicado
+### 💡 Conteúdos Aplicados
 
 Neste desafio você vai construir o seu próprio portfolio. Caso você ainda não tenha feito os cursos do Discover ou queira fazer uma revisão, segue abaixo uma lista dos cursos que podem te ajudar a resolver este desafio.
 

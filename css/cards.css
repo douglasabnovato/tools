@@ -1,0 +1,331 @@
+
+/* cards.css */
+.cards,
+.cards-title,
+.cards-posts {
+    background-color: var(--bg-cards);
+    border-radius: 1em;
+}
+
+/* PROFILE */
+
+.profile a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.profile .avatar {
+    margin-block-start: 2.5vh;
+}
+
+.profile .avatar img {
+    width: 100%;
+    max-width: 35%;
+    border-radius: 50%;
+    display: block;
+    margin: auto;
+}
+
+.profile .texts {
+    margin-block-end: 2vh;
+}
+
+.profile .texts .name {
+    margin-block-start: 2vh;
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    font-weight: bold;
+    text-align: center;
+    line-height: 1.4;
+}
+
+.profile .texts .job {
+    margin-block-start: 0.8vh;
+    text-align: center;
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+/* LINKS */
+
+.links .social-medias {
+    margin-inline-start: 2vw;
+    margin-block-start: 2.5vh;
+}
+
+.links .social-media {
+    margin-block-end: 1.5vh;
+    display: flex;
+}
+
+.links .icons {
+    margin-inline-end: 1vw;
+    margin-inline-start: 1vw;
+}
+
+.links .icons-local {
+    content: url(../assets/icons/map-pin.svg);
+}
+
+.links .icons-sa {
+    content: url(../assets/icons/briefcase.svg);
+}
+
+.links .icons-github {
+    content: url(../assets/icons/github.svg);
+}
+
+.links .icons-linkedin {
+    content: url(../assets/icons/linkedin.svg);
+}
+
+.links .icons-twitter {
+    content: url(../assets/icons/twitter.svg);
+}
+
+.links .icons-globe {
+    content: url(../assets/icons/globe.svg);
+}
+
+.links .icons-mail {
+    content: url(../assets/icons/mail.svg);
+}
+
+/* TECHNOLOGIES */
+
+.technologies h2 {
+    margin-inline-start: 2.5vw;
+    margin-block-start: 3.5vh;
+}
+
+.box-techs {
+    margin-inline: 2vw;
+    margin-block: 3vh;
+}
+
+.techs {
+    display: flex;
+    gap: .35rem;
+    margin-block-start: 1.9vh;
+}
+
+.tooltip {
+    background-color: var(--bg-techs);
+    color: var(--text-tooltip);
+    border-radius: 1em;
+    font-size: .7rem;
+    font-weight: bold;
+    text-align: center;
+    padding: .5rem;
+}
+
+/* EXPERIENCES */
+
+.experiences-list {
+    list-style: none;
+    margin-block: 2vh;
+}
+
+.experiences-list span {
+    font-weight: bold;
+}
+
+/* EDUCATION */
+
+.education-list {
+    list-style: none;
+}
+
+.education-list span {
+    font-weight: bold;
+}
+
+/* PROJECTS */
+
+.project a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.fragment {
+    margin: 2vh 2vw;
+}
+
+.project .title-project span:nth-child(2) {
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.icons-folder {
+    content: url(../assets/icons/folder.svg);
+    margin-inline-end: .9vw;
+}
+
+/* Estilização específica para os cards dinâmicos */
+.card {
+    background-color: var(--bg-cards);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    transition: transform 0.25s, box-shadow 0.25s;
+    border: 2px solid transparent;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    max-width: 400px;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+}
+
+.card .image {
+    position: relative;
+    background-color: var(--bg-card-hover);
+    border-radius: 0.5em;
+    overflow: hidden;
+}
+
+.card .image img {
+    width: 100%;
+    border-radius: 0.5em;
+    margin-bottom: 1rem;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    transition: transform 0.25s;
+}
+
+.card .image img:hover {
+    transform: scale(1.05);
+}
+
+.card .image::before {
+    content: "🖼️";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    color: var(--text-secondary);
+    display: none;
+}
+
+.card .image img[src=""],
+.card .image img:not([src]) {
+    display: none;
+}
+
+.card .image img[src=""],
+.card .image img:not([src]) ~ .card .image::before {
+    display: block;
+}
+
+.card .title {
+    font-weight: bold;
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+    line-height: 1.4;
+}
+
+.card .info {
+    display: flex;
+    justify-content: space-between;
+    font-size: clamp(0.8rem, 2vw, 0.9rem);
+    opacity: 0.8;
+    line-height: 1.5;
+    align-items: center;
+}
+
+.badge {
+    background: var(--accent);
+    color: var(--text-primary);
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.5rem;
+    font-size: 0.75rem;
+    font-weight: bold;
+}
+
+.visit-btn {
+    background: var(--accent);
+    color: var(--text-primary);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-weight: bold;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: 0.5rem;
+    width: 100%;
+}
+
+.visit-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Skeletons */
+.skeleton-card {
+    background-color: var(--bg-cards);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    animation: shimmer 1.5s infinite linear;
+    background: linear-gradient(90deg, var(--bg-cards) 25%, var(--bg-card-hover) 50%, var(--bg-cards) 75%);
+    background-size: 200% 100%;
+}
+
+.skeleton-img {
+    height: 150px;
+    background-color: var(--bg-card-hover);
+    border-radius: 0.5em;
+    margin-bottom: 1rem;
+}
+
+.skeleton-title {
+    height: 1.3rem;
+    background-color: var(--bg-card-hover);
+    border-radius: 0.25em;
+    margin-bottom: 0.5rem;
+}
+
+.skeleton-info {
+    height: 0.9rem;
+    background-color: var(--bg-card-hover);
+    border-radius: 0.25em;
+    margin-bottom: 0.5rem;
+}
+
+.skeleton-btn {
+    height: 2rem;
+    background-color: var(--bg-card-hover);
+    border-radius: var(--border-radius);
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+/* Empty message */
+.empty-message {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    padding: 2rem;
+    grid-column: 1 / -1;
+}
+
+/* POSTS */
+
+.post-avatar img {
+    width: 8vw;
+    border-radius: 50%;
+}
+
+.post-title div:nth-child(1) {
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+
+.post-details span {
+    margin-inline-end: .6vw;
+}
