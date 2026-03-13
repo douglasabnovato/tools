@@ -1,144 +1,75 @@
-const sectionCards = document.querySelector("#box-projects");
-const originalCard = document.querySelector(".card");
-const cardTemplate = originalCard.cloneNode(true); 
-const menuLinks = document.querySelectorAll(".header-menu a");
-const searchInput = document.getElementById("search-input");
-
-let currentData = toolsList; // Lista atual (tools ou hosts)
-
-originalCard.remove();
-
-/**
- * Filtra os dados baseado na query de busca
- * @param {string} query - Termo de busca
- * @param {Array} data - Lista a ser filtrada
- * @returns {Array} - Lista filtrada
- */
-function filterData(query, data) {
-  if (!query.trim()) return data;
-  const lowerQuery = query.toLowerCase();
-  return data.filter(item =>
-    item.title.toLowerCase().includes(lowerQuery) ||
-    item.category.toLowerCase().includes(lowerQuery)
-  );
+function getApi(url_github) {
+  let request = new XMLHttpRequest();
+  request.open("GET", url_github, false);
+  request.send();
+  return request.responseText;
 }
 
-/**
- * Renderiza a lista selecionada
- * @param {Array} data - Array de ferramentas ou hosts
- */
-function render(data) {
-  sectionCards.innerHTML = "";
-
-  if (data.length === 0) {
-    sectionCards.innerHTML = '<p class="empty-message">Nenhum item encontrado.</p>';
-    return;
-  }
-
-  // Adicionar skeletons
-  for (let i = 0; i < 6; i++) {
-    const skeleton = document.createElement('div');
-    skeleton.className = 'skeleton-card';
-    skeleton.innerHTML = `
-      <div class="skeleton-img"></div>
-      <div class="skeleton-title"></div>
-      <div class="skeleton-info"></div>
-      <div class="skeleton-btn"></div>
-    `;
-    sectionCards.appendChild(skeleton);
-  }
-
-  // Simular delay de carregamento
-  setTimeout(() => {
-    sectionCards.innerHTML = ""; // Remove skeletons
-
-    data.forEach((item) => {
-      const card = cardTemplate.cloneNode(true);
-
-      card.querySelector("img").src = item.thumb;
-      card.querySelector("img").alt = item.title;
-      card.querySelector(".title").innerText = item.title;
-      card.querySelector(".text--medium").innerText = item.duration;
-      card.querySelector(".badge").innerText = item.category;
-
-      const visitBtn = card.querySelector('.visit-btn');
-      visitBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        window.open(item.site_url, '_blank');
-      });
-
-      sectionCards.appendChild(card);
-    });
-  }, 800); // 800ms delay simulado
+function createRepo(repository) {
+  const div_project_cards = document.createElement("div");
+  div_project_cards.setAttribute("class", "project cards");
+  const a_repos = document.createElement("a");
+  a_repos.setAttribute("href", repository.html_url);
+  a_repos.setAttribute("target", "_blank");
+  a_repos.setAttribute("rel", "noopener");
+  const div_fragment = document.createElement("div");
+  div_fragment.setAttribute("class", "fragment");
+  const div_title_project = document.createElement("div");
+  div_title_project.setAttribute("class", "title-project");
+  const span_icons_folder = document.createElement("span");
+  span_icons_folder.setAttribute("class", "icons-folder");
+  const span_title = document.createElement("span");
+  span_title.innerText = repository.name;
+  div_title_project.appendChild(span_icons_folder);
+  div_title_project.appendChild(span_title);
+  const div_description_project = document.createElement("div");
+  div_description_project.setAttribute("class", "description-project");
+  div_description_project.innerText = repository.description;
+  const div_details_project = document.createElement("div");
+  div_details_project.setAttribute("class", "details-project");
+  const div_stars_branches = document.createElement("div");
+  div_stars_branches.setAttribute("class", "stars-branches");
+  const div_stars = document.createElement("div");
+  const span_icons_star = document.createElement("span");
+  span_icons_star.setAttribute("class", "icons-star");
+  const span_star = document.createElement("span");
+  span_star.innerText = repository.stargazers_count;
+  div_stars.appendChild(span_icons_star);
+  div_stars.appendChild(span_star);
+  const div_gitbranch = document.createElement("div");
+  const span_icons_gitbranch = document.createElement("span");
+  span_icons_gitbranch.setAttribute("class", "icons-gitbranch");
+  const span_gitbranch = document.createElement("span");
+  span_gitbranch.innerText = repository.forks_count;
+  div_gitbranch.appendChild(span_icons_gitbranch);
+  div_gitbranch.appendChild(span_gitbranch);
+  div_stars_branches.appendChild(div_stars);
+  div_stars_branches.appendChild(div_gitbranch);
+  const div_languages = document.createElement("div");
+  const span_icons_languages = document.createElement("span");
+  span_icons_languages.setAttribute("class", "icons-languages");
+  const span_languages = document.createElement("span");
+  span_languages.innerText = repository.language;
+  div_languages.appendChild(span_icons_languages);
+  div_languages.appendChild(span_languages);
+  div_details_project.appendChild(div_stars_branches);
+  div_details_project.appendChild(div_languages);
+  div_fragment.appendChild(div_title_project);
+  div_fragment.appendChild(div_description_project);
+  div_fragment.appendChild(div_details_project);
+  a_repos.appendChild(div_fragment);
+  div_project_cards.appendChild(a_repos);
+  return div_project_cards;
 }
 
-menuLinks.forEach((link, index) => {
-  link.addEventListener("click", (e) => {
-    e.preventDefault();
-
-    // Estilo Active
-    menuLinks.forEach((l) => {
-      l.style.color = "var(--text-color)";
-      l.removeAttribute("aria-pressed");
-    });
-    link.style.color = "var(--accent)";
-    link.setAttribute("aria-pressed", "true");
-
-    // Troca de Conteúdo
-    if (index === 0) {
-      currentData = toolsList;
-      render(filterData(searchInput.value, currentData));
-    }  
-    if (index === 1) {
-      currentData = hostsList;
-      render(filterData(searchInput.value, currentData));
-    }  
+function main() {
+  let data = getApi("https://api.github.com/users/douglasabnovato/repos");
+  let repositories = JSON.parse(data);
+  let div_box_projects = document.getElementById("box-projects");
+  repositories.forEach((repository) => {
+    let repo = createRepo(repository);
+    div_box_projects.appendChild(repo);
   });
-});
- 
-window.onload = () => {
-  if (typeof toolsList !== "undefined") {
-    currentData = toolsList;
-    render(currentData);
-    menuLinks[0].style.color = "var(--accent)";
-    menuLinks[0].setAttribute("aria-pressed", "true");
-  }
+}
 
-  // Busca com debounce
-  let debounceTimer;
-  searchInput.addEventListener('input', () => {
-    clearTimeout(debounceTimer);
-    debounceTimer = setTimeout(() => {
-      render(filterData(searchInput.value, currentData));
-    }, 300);
-  });
-
-  // Toggle tema
-  const themeToggle = document.getElementById('theme-toggle');
-  const themeIcon = themeToggle.querySelector('.theme-icon');
-  themeToggle.addEventListener('click', () => {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-    document.documentElement.setAttribute('data-theme', newTheme);
-    // Mudar ícone
-    if (newTheme === 'light') {
-      themeIcon.innerHTML = '<path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>';
-    } else {
-      themeIcon.innerHTML = '<path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z"/>';
-    }
-  });
-
-  // Toggle menu mobile
-  const menuToggle = document.getElementById('menu-toggle');
-  const headerMenu = document.querySelector('.header-menu');
-  menuToggle.addEventListener('click', () => {
-    const isOpen = headerMenu.classList.toggle('open');
-    menuToggle.setAttribute('aria-expanded', isOpen);
-  });
-
-  // Ano dinâmico no footer
-  const yearElement = document.getElementById('year');
-  if (yearElement) {
-    yearElement.textContent = new Date().getFullYear();
-  }
-};
+main();
