@@ -1,4 +1,4 @@
-const toolsList = [
+export const toolsList = [
   {
     title: "Discord",
     duration: "1 dia",
