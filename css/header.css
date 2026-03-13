@@ -8,6 +8,7 @@
     position: relative;
     opacity: 0;
     animation: fadeIn 0.5s ease-in-out forwards;
+    overflow-x: hidden;
 }
 
 @keyframes fadeIn {
@@ -222,6 +223,14 @@
 @media (max-width: 768px) {
     .site-header {
         padding: 16px 16px;
+    }
+
+    .header-menu a {
+        padding: 0.5rem 1rem;
+    }
+
+    .search-container {
+        display: none; /* Ocultar busca em mobile para simplificar */
     }
 
     .header-menu a {
