@@ -2,8 +2,11 @@
 	🚧 Tools 🚀
 </h4>
 
+### 💻 Funcionalidades
 
-
+- Paginação
+- Botão Menu
+- Design do Ecossistema
 
 ## Versão 1
 
