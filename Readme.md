@@ -160,6 +160,10 @@ Onde os dados são consumidos pelo main.js:
 - [ ] Passo 6: Implementar lazy loading para imagens dos cards 
 - [ ] Passo 7: Testes em dispositivos reais
 
+
+---
+
+
 ## Versão 1
 
 <p align="center" style="display: flex; align-items: flex-start; justify-content: center;">
