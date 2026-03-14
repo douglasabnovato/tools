@@ -102,6 +102,8 @@
 ### 🎯 QA-3 do projeto - bugfix/menu-mobile-responsividade
 
 - [ ] no menu no modo mobile, os dois botões não estão sendo exibidos corretamente
+- [ ] Link 'rel' attribute should include 'noopener'
+- [ ] 'backdrop-filter' is not supported by Safari, Safari on iOS. Add '-webkit-backdrop-filter' to support Safari 9+, Safari on iOS 9+
 
 ### 🎯 Workflow do projeto em branches
 
