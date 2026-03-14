@@ -99,6 +99,10 @@
 
 - [x] caminho das imagens para serem exibidas no deploy via github pages
 
+### 🎯 QA-3 do projeto - bugfix/menu-mobile-responsividade
+
+- [ ] no menu no modo mobile, os dois botões não estão sendo exibidos corretamente
+
 ### 🎯 Workflow do projeto em branches
 
 - main - em produção
@@ -107,7 +111,7 @@
 - feature/versao-2 - funcionalidades dessa sprint
 - feature/improvements - melhorias apontadas pelo QA da versão 2
 - hotfix/deploy-image - erro encontrado na main em produção
-- bugfix/ - erro encontrado na developer em teste
+- bugfix/menu-mobile-responsividade - erro encontrado na developer em teste
 
 ### 📂 Estrutura de pastas
 
