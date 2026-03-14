@@ -28,13 +28,7 @@
   border-bottom: 1px solid rgba(var(--accent-rgb), 0.35);
 }
 
-/* Ajustes específicos para mobile (melhor legibilidade ao rolar) */
-@media (max-width: 768px) {
-  .site-header.header-scrolled {
-    padding: 8px 0;
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.22);
-  }
-}
+
 
 @keyframes fadeIn {
   to {
@@ -355,28 +349,27 @@
     padding: 20px 24px;
   }
 }
+ 
 
 @media (max-width: 768px) {
   .site-header {
-    padding: 16px 16px;
+    padding: 12px 16px;
   }
 
-  .header-menu a {
-    padding: 0.5rem 1rem;
+  /* Mantém o botão de tema visível ao lado do hambúrguer */
+  #theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
   }
 
   .search-container {
-    display: none; /* Ocultar busca em mobile para simplificar */
+    display: none; 
   }
 
+  /* Esconde os links por padrão no mobile */
   .header-menu a {
-    display: none;
-    opacity: 0;
-    transform: translateY(-10px);
-    transition: opacity 0.25s ease, transform 0.25s ease;
-  }
-
-  #theme-toggle {
     display: none;
   }
 
@@ -384,31 +377,26 @@
     display: block;
   }
 
-  .header-menu.open a {
-    display: block;
+  /* Quando o menu estiver aberto */
+  .header-menu.open {
+    flex-direction: column;
     position: absolute;
-    top: 100%;
+    top: 100%; /* Aparece logo abaixo do header */
     left: 0;
     right: 0;
     background: var(--bg-cards);
-    padding: 1rem;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    margin: 0.5rem 0;
+    padding: 20px;
+    gap: 16px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    border-bottom: 2px solid var(--accent);
+    animation: slideIn 0.3s ease-out forwards;
+  }
+
+  .header-menu.open a {
+    display: block;
+    width: 100%;
+    text-align: center;
     opacity: 1;
     transform: translateY(0);
   }
-
-  .header-menu.open a:nth-child(1) {
-    transition-delay: 0.05s;
-  }
-
-  .header-menu.open a:nth-child(2) {
-    transition-delay: 0.1s;
-  }
-
-  .header-menu.open a:nth-child(3) {
-    transition-delay: 0.15s;
-  }
 }
-

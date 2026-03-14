@@ -93,8 +93,8 @@ export function createApp({ toolsList, hostsList }) {
       const card = cardTemplate.cloneNode(true);
       const img = card.querySelector("img");
 
-      // Lazy loading: definir placeholder e carregar a imagem somente quando visível
-      img.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
+      img.src =
+        "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
       img.dataset.src = item.thumb;
       img.alt = item.title;
       img.loading = "lazy";
@@ -102,7 +102,6 @@ export function createApp({ toolsList, hostsList }) {
       if (imageObserver) {
         imageObserver.observe(img);
       } else {
-        // Fallback para navegadores antigos
         img.src = item.thumb;
       }
 
@@ -156,7 +155,10 @@ export function createApp({ toolsList, hostsList }) {
 
   function init() {
     const header = document.querySelector(".site-header");
+    const menuToggle = document.getElementById("menu-toggle");
+    const headerMenu = document.querySelector(".header-menu");
 
+    // Efeito de scroll no header
     window.addEventListener("scroll", () => {
       if (window.scrollY > 50) {
         header.classList.add("header-scrolled");
@@ -164,6 +166,22 @@ export function createApp({ toolsList, hostsList }) {
         header.classList.remove("header-scrolled");
       }
     });
+
+    // Lógica do Menu Mobile
+    if (menuToggle && headerMenu) {
+      menuToggle.addEventListener("click", () => {
+        const isOpen = headerMenu.classList.toggle("open");
+        menuToggle.setAttribute("aria-expanded", isOpen);
+      });
+
+      // Fecha o menu ao clicar em qualquer link de navegação (Melhor UX mobile)
+      headerMenu.querySelectorAll(".nav-link").forEach((link) => {
+        link.addEventListener("click", () => {
+          headerMenu.classList.remove("open");
+          menuToggle.setAttribute("aria-expanded", "false");
+        });
+      });
+    }
 
     changeContext("tools");
 
@@ -206,13 +224,6 @@ export function createApp({ toolsList, hostsList }) {
         themeIcon.innerHTML =
           '<path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z"/>';
       }
-    });
-
-    const menuToggle = document.getElementById("menu-toggle");
-    const headerMenu = document.querySelector(".header-menu");
-    menuToggle.addEventListener("click", () => {
-      const isOpen = headerMenu.classList.toggle("open");
-      menuToggle.setAttribute("aria-expanded", isOpen);
     });
 
     const yearElement = document.getElementById("year");
