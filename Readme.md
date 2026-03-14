@@ -109,9 +109,9 @@
 - developer - para avaliação
 - feature/versao-1 - funcionalidades dessa sprint
 - feature/versao-2 - funcionalidades dessa sprint
-- feature/improvements - melhorias apontadas pelo QA da versão 2
-- hotfix/deploy-image - erro encontrado na main em produção
-- bugfix/menu-mobile-responsividade - erro encontrado na developer em teste
+- feature/improvements - melhorias apontadas pelo QA-1 da versão 2
+- hotfix/deploy-image - erro encontrado na main em produção para correções apontadas pelo QA-2 da versão 2
+- bugfix/menu-mobile-responsividade - erro encontrado na developer em teste para correções apontadas pelo QA-3 da versão 2
 
 ### 📂 Estrutura de pastas
 
