@@ -58,7 +58,7 @@
 - [x] Design do Ecossistema
 - [x] Favicon do Ecossistema
 
-### 🎯 QA do projeto
+### 🎯 QA-1 do projeto - feature/improvements
 
 - [x] ⚠️ Menu mobile funcional mas sem animações CSS suaves
 - [x] ⚠️ Header scroll não testado em mobile
@@ -95,6 +95,10 @@
 - Performance - ⭐⭐⭐⭐⭐ - 92/100 - Debounce, template cloning
 - Acessibilidade - ⭐⭐⭐⭐ - 87/100 - Boa base, poderia ter mais ARIA
 
+### 🎯 QA-2 do projeto - hotfix/deploy-image
+
+- [ ] caminho das imagens para serem exibidas no deploy via github pages
+
 ### 🎯 Workflow do projeto em branches
 
 - main - em produção
@@ -102,6 +106,8 @@
 - feature/versao-1 - funcionalidades dessa sprint
 - feature/versao-2 - funcionalidades dessa sprint
 - feature/improvements - melhorias apontadas pelo QA da versão 2
+- hotfix/deploy-image - erro encontrado na main em produção
+- bugfix/ - erro encontrado na developer em teste
 
 ### 📂 Estrutura de pastas
 
