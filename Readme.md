@@ -97,7 +97,7 @@
 
 ### 🎯 QA-2 do projeto - hotfix/deploy-image
 
-- [ ] caminho das imagens para serem exibidas no deploy via github pages
+- [x] caminho das imagens para serem exibidas no deploy via github pages
 
 ### 🎯 Workflow do projeto em branches
 
