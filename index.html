@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta name="theme-color" content="#0ad2ff" />
+
     <meta
       name="description"
       content="Catálogo de ferramentas e hospedagens do ecossistema LearnTECH para desenvolvedores fullstack."
@@ -15,7 +18,7 @@
       content="Otimize seu workflow com a curadoria LearnTECH."
     />
     <meta property="og:type" content="website" />
-
+    <meta property="og:image" content="./public/og-image.png" />
     <link
       rel="apple-touch-icon"
       sizes="180x180"
@@ -42,12 +45,24 @@
       rel="stylesheet"
     />
 
-    <title>Tools | LearnTECH</title>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <title>Ferramentas | LearnTECH</title>
 
     <link rel="stylesheet" href="./css/layout.css" />
     <link rel="stylesheet" href="./css/header.css" />
     <link rel="stylesheet" href="./css/cards.css" />
     <link rel="stylesheet" href="./css/footer.css" />
+
+    <script>
+      (function () {
+        const savedTheme = localStorage.getItem("theme") || "dark";
+        document.documentElement.setAttribute("data-theme", savedTheme);
+      })();
+    </script>
   </head>
   <body>
     <a href="#main-content" class="skip-link">Pular para o conteúdo</a>
@@ -69,14 +84,6 @@
 
           <div class="header-controls">
             <button
-              id="theme-toggle"
-              class="icon-btn"
-              aria-label="Alternar tema escuro/claro"
-            >
-              <i class="bx bx-sun" id="theme-icon"></i>
-            </button>
-
-            <button
               id="menu-toggle"
               class="menu-toggle"
               aria-label="Abrir menu"
@@ -97,7 +104,7 @@
         </div>
 
         <div class="header-actions">
-          <div class="search-wrapper"> 
+          <div class="search-wrapper">
             <i class="bx bx-search search-icon"></i>
             <input
               type="search"
@@ -109,7 +116,14 @@
 
         <nav class="header-menu" aria-label="Navegação Principal">
           <a href="#" id="nav-tools" class="nav-link active">Ferramentas</a>
-          <a href="#" id="nav-host" class="nav-link">Hospedagem</a>
+          <a href="#" id="nav-host" class="nav-link">Hospedagens</a>
+          <button
+            id="theme-toggle"
+            class="icon-btn"
+            aria-label="Alternar tema escuro/claro"
+          >
+            <i class="bx bx-sun" id="theme-icon"></i>
+          </button>
         </nav>
       </div>
     </header>

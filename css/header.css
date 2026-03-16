@@ -7,13 +7,11 @@
   width: 100%;
   z-index: 1000;
   background: rgba(10, 25, 41, 0.7);
-  backdrop-filter: var(--glass-blur); /* Usando a variável do layout.css */
+  backdrop-filter: var(--glass-blur);
   -webkit-backdrop-filter: var(--glass-blur);
   border-bottom: 1px solid rgba(var(--accent-rgb), 0.1);
-  padding: 15px 0; /* Padding lateral controlado pelo container */
+  padding: 15px 0;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-
-  /* Animação de Entrada */
   opacity: 0;
   transform: translateY(-20px);
   animation: headerEntry 0.8s ease forwards;
@@ -26,12 +24,10 @@
   }
 }
 
-/* Estado ao Scrollar */
 .site-header.header-scrolled {
   background: rgba(10, 25, 41, 0.9);
   padding: 10px 0;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
-  border-bottom: 1px solid rgba(var(--accent-rgb), 0.3);
 }
 
 .header-container {
@@ -41,14 +37,16 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
+  gap: 20px;
 }
 
-/* LOGO */
+/* --- LOGO --- */
 .logo {
   display: flex;
   align-items: center;
   gap: 12px;
   text-decoration: none;
+  flex-shrink: 0;
 }
 
 .logo img {
@@ -74,26 +72,51 @@
 .brand-text .highlight {
   color: var(--accent);
   font-weight: 800;
-  text-shadow: 0 0 15px rgba(var(--accent-rgb), 0.4);
 }
 
-/* SEARCH - Otimizado para foco e leitura */
-.search-container {
+/* header.css */
+
+/* 1. LARGURA DA BARRA DE BUSCA */
+.search-wrapper {
   position: relative;
-  flex: 1;
-  max-width: 450px;
-  margin: 0 30px;
+  flex: 1; /* Isso faz ela tentar ocupar o espaço disponível */
+  max-width: 650px; /* Aumente este valor (estava em 450px) para o tamanho desejado */
+  margin: 0 30px; /* Espaçamento lateral para não grudar na logo ou no menu */
+}
+
+/* 2. GARANTIR ALINHAMENTO DO TOGGLE NO MENU */
+.header-menu {
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Espaço entre links e o botão de tema */
+}
+
+/* Ajuste fino no botão de tema para não quebrar a linha */
+#theme-toggle {
+  margin-left: 10px; /* Um respiro extra após o último link */
+  flex-shrink: 0; /* Garante que o botão não "esprema" em telas menores */
+}
+
+.search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-secondary);
+  pointer-events: none;
+  font-size: 1.2rem;
+  z-index: 2;
 }
 
 #search-input {
   width: 100%;
-  padding: 0.7rem 1rem 0.7rem 2.8rem;
+  padding: 0.7rem 1rem 0.7rem 2.8rem; /* Espaço para o ícone na esquerda */
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: rgba(255, 255, 255, 0.05);
   color: var(--text-primary);
   font-size: 0.9rem;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s ease;
 }
 
 #search-input:focus {
@@ -103,30 +126,20 @@
   outline: none;
 }
 
-.search-icon {
-  position: absolute;
-  left: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--text-secondary);
-  pointer-events: none;
-  font-size: 1.2rem;
-}
-
-/* CONTROLS (Theme + Menu) */
+/* --- CONTROLS & MENU (Alinhados à direita) --- */
 .header-controls {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
-/* Estilo Base para botões de ícone (Tema e Menu Mobile) */
+/* Botão de Tema */
 .icon-btn {
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  color: var(--text-color);
-  padding: 10px;
-  border-radius: 12px;
+  color: var(--accent);
+  padding: 8px;
+  border-radius: 10px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -135,34 +148,18 @@
 }
 
 .icon-btn:hover {
-  background: rgba(var(--accent-rgb), 0.1);
-  border-color: var(--accent);
-  color: var(--accent);
-  transform: translateY(-2px);
-}
-
-/* Específico do Botão de Tema para o efeito de rotação */
-#theme-toggle {
-  color: var(--accent); /* Garante que o sol/lua brilhe em azul neon */
-  font-size: 1.3rem; /* Tamanho do ícone do Boxicons */
-}
-
-#theme-toggle:hover {
   transform: rotate(15deg) scale(1.1);
+  background: rgba(var(--accent-rgb), 0.1);
   box-shadow: 0 0 15px rgba(var(--accent-rgb), 0.3);
 }
 
-/* Ajuste para o ícone interno */
-#theme-icon {
-  display: block;
-  line-height: 1;
-}
-
-/* NAVEGAÇÃO */
-.header-menu {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+/* Esconde o Hambúrguer no Desktop */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  cursor: pointer;
 }
 
 .nav-link {
@@ -170,48 +167,53 @@
   text-decoration: none;
   padding: 8px 16px;
   border-radius: 8px;
-  font-size: 0.95rem;
-  font-weight: 500;
-  position: relative;
+  font-size: 0.9rem;
+  font-weight: 600;
   transition: all 0.3s ease;
 }
 
 .nav-link:hover,
 .nav-link.active {
   color: var(--accent);
-  background: rgba(var(--accent-rgb), 0.05);
+  background: rgba(var(--accent-rgb), 0.08);
 }
 
-.nav-link.active::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 15%;
-  width: 70%;
-  height: 2px;
-  background: var(--accent);
-  box-shadow: 0 0 10px var(--accent);
-  border-radius: 2px;
-}
+/* --- RESPONSIVIDADE MOBILE --- */
 
-/* MOBILE RESPONSIVITY */
 @media (max-width: 768px) {
+  /* 1. Ajuste do Container Pai */
   .header-container {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    gap: 15px;
-    padding: 0 1rem;
+    display: flex;
+    flex-wrap: wrap; /* Permite quebrar linha */
+    justify-content: space-between; /* Logo na esquerda, controles na direita */
+    align-items: center;
+    padding: 0 1.5rem;
   }
 
-  .search-container {
-    grid-column: 1 / span 3;
-    grid-row: 2;
-    margin: 0;
-    max-width: none;
+  /* 2. Logo e Controles na primeira linha */
+  .header-top,
+  .header-controls {
+    display: contents; /* Desfaz o container para os filhos obedecerem o flex do pai */
   }
 
+  /* Garante que o sanduíche vá para o final da linha */
+  .menu-toggle {
+    display: flex !important;
+    order: 2; /* Fica depois da logo */
+  }
+
+  /* 3. BARRA DE BUSCA (Segunda Linha Sozinha) */
+  .header-actions,
+  .search-wrapper {
+    flex: 0 0 100%; /* Ocupa 100% da largura */
+    max-width: 100%;
+    margin: 15px 0 5px 0;
+    order: 3; /* Vai para baixo de tudo */
+  }
+
+  /* 4. MENU MOBILE (O dropdown) */
   .header-menu {
-    display: none;
+    display: none; /* Escondido por padrão */
     flex-direction: column;
     position: absolute;
     top: 100%;
@@ -220,20 +222,28 @@
     background: var(--body-bg-color);
     padding: 1rem;
     border-bottom: 2px solid var(--accent);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     z-index: 999;
+    gap: 10px;
   }
 
+  /* Quando aberto pelo JS */
   .header-menu.open {
     display: flex;
-    animation: slideDown 0.4s ease forwards;
+    animation: slideDown 0.3s ease-out forwards;
   }
 
+  /* Ajuste dos links e do Toggle de Tema no Mobile */
   .nav-link {
     width: 100%;
-    padding: 15px;
     text-align: center;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  #theme-toggle {
+    width: fit-content;
+    margin: 10px auto 0; /* Centraliza o sol/lua no menu aberto */
   }
 }
 

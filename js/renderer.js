@@ -15,7 +15,7 @@ export function createApp({ toolsList, hostsList }) {
 
   let currentData = toolsList;
   let itemsToShow = INITIAL_ITEMS;
-  let activeType = "tools";
+  let activeType = "";
 
   // --- CONFIGURAÇÕES DE CONTEÚDO ---
   const sectionContent = {
@@ -27,7 +27,7 @@ export function createApp({ toolsList, hostsList }) {
       label: "ferramentas",
     },
     host: {
-      title: 'Hospedagem <span class="highlight">LearnTECH</span>',
+      title: 'Hospedagens <span class="highlight">LearnTECH</span>',
       subtitle: "Infraestruturas para performance e segurança.",
       list: hostsList,
       label: "hospedagens",
@@ -150,7 +150,7 @@ export function createApp({ toolsList, hostsList }) {
 
     activeType = type;
     itemsToShow = INITIAL_ITEMS;
-    currentData = sectionContent[type].list;
+    currentData = sectionContent[type].list || [];
 
     // UI Updates
     document.getElementById("section-title").innerHTML =
@@ -175,6 +175,15 @@ export function createApp({ toolsList, hostsList }) {
 
   // --- INICIALIZAÇÃO E EVENTOS ---
   function init() {
+    // 1. Aplica o tema salvo logo no início do init para sincronizar ícones
+    const savedTheme = localStorage.getItem("theme") || "dark";
+    document.documentElement.setAttribute("data-theme", savedTheme);
+
+    const themeIcon = document.getElementById("theme-icon");
+    if (themeIcon) {
+      themeIcon.className = savedTheme === "dark" ? "bx bx-sun" : "bx bx-moon";
+    }
+
     // Header Scroll
     const siteHeader = document.querySelector(".site-header");
     window.addEventListener(
@@ -221,17 +230,33 @@ export function createApp({ toolsList, hostsList }) {
     changeContext("tools");
   }
 
+  /* renderer.js - Trecho alterado dentro da função createApp */
+
   function setupCoreUI() {
     const menuToggle = document.getElementById("menu-toggle");
     const headerMenu = document.querySelector(".header-menu");
     const themeToggle = document.getElementById("theme-toggle");
+    const navLinks = document.querySelectorAll(".nav-link"); // Seleciona os links
 
+    // 1. Abrir/Fechar Menu Mobile
     menuToggle?.addEventListener("click", (e) => {
       e.stopPropagation();
       const isOpen = headerMenu.classList.toggle("open");
       menuToggle.setAttribute("aria-expanded", isOpen);
     });
 
+    // 2. NOVO: Fechar menu ao clicar em um link (Ferramentas/Hospedagens)
+    navLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        if (window.innerWidth <= 768) {
+          // Só executa no mobile
+          headerMenu?.classList.remove("open");
+          menuToggle?.setAttribute("aria-expanded", "false");
+        }
+      });
+    });
+
+    // 3. Fechar menu ao clicar fora dele
     document.addEventListener("click", (e) => {
       if (!headerMenu?.contains(e.target) && !menuToggle?.contains(e.target)) {
         headerMenu?.classList.remove("open");
@@ -239,19 +264,29 @@ export function createApp({ toolsList, hostsList }) {
       }
     });
 
-    themeToggle?.addEventListener("click", () => {
+    // 4. Lógica de Tema (Corrigida para o novo posicionamento)
+    themeToggle?.addEventListener("click", (e) => {
+      e.stopPropagation(); // Evita que o clique no tema feche o menu pelo listener do document
+
       const doc = document.documentElement;
       const isDark = doc.getAttribute("data-theme") === "dark";
       const nextTheme = isDark ? "light" : "dark";
+
       doc.setAttribute("data-theme", nextTheme);
+      localStorage.setItem("theme", nextTheme); // Dica: Salva a preferência do usuário
 
       const icon = themeToggle.querySelector("i");
-      if (icon)
+      if (icon) {
+        // Ajusta as classes do Boxicons conforme o tema
         icon.className = nextTheme === "dark" ? "bx bx-sun" : "bx bx-moon";
+      }
     });
+    
   }
-
-  // Lifecycle
-  if (document.readyState === "complete") init();
-  else window.addEventListener("load", init);
+  // Lifecycle - ALTERE PARA:
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
 }
