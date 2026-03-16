@@ -1,9 +1,25 @@
-/*footer.css*/
+/* footer.css */
+
 .site-footer {
-  background: var(--body-bg-color); /* Fundo sólido para fechar o layout */
-  border-top: 1px solid var(--bg-card-hover);
+  background-color: var(--body-bg-color);
+  border-top: 1px solid rgba(var(--accent-rgb), 0.1);
   color: var(--text-color);
-  padding: 4rem 0 2rem;
+  padding: 5rem 0 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Efeito sutil de brilho no fundo do footer */
+.site-footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  box-shadow: 0 0 20px rgba(var(--accent-rgb), 0.4);
 }
 
 .footer-container {
@@ -24,90 +40,141 @@
 }
 
 .footer-brand .logo {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
+  display: inline-block;
 }
 
 .footer-brand p {
   font-size: 0.95rem;
-  line-height: 1.6;
+  line-height: 1.7;
   color: var(--text-secondary);
+  font-weight: 400;
 }
 
+/* Seção Social Otimizada */
 .footer-social-section {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 1rem;
+  gap: 1.25rem;
 }
 
 .social-label {
-  font-size: 0.75rem;
-  letter-spacing: 2px;
-  color: var(--text-secondary);
-  font-weight: 600;
+  font-size: 0.7rem;
+  letter-spacing: 3px;
+  color: var(--accent);
+  text-transform: uppercase;
+  font-weight: 700;
+  opacity: 0.8;
 }
 
 .footer-socials {
   display: flex;
-  gap: 1rem;
+  gap: 0.85rem;
 }
 
 .footer-socials a {
-  background: var(--bg-cards);
-  border: 1px solid var(--bg-card-hover);
-  width: 44px;
-  height: 44px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  width: 46px;
+  height: 46px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 10px;
+  border-radius: 12px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+.footer-socials a i,
+.footer-socials a svg {
+  font-size: 1.25rem;
   transition: all 0.3s ease;
 }
 
-.footer-socials a svg {
-  fill: var(--text-color);
-  transition: fill 0.3s ease;
-}
-
 .footer-socials a:hover {
+  background: rgba(var(--accent-rgb), 0.1);
   border-color: var(--accent);
-  transform: translateY(-3px);
-  box-shadow: 0 5px 15px rgba(var(--accent-rgb), 0.2);
+  color: var(--accent);
+  transform: translateY(-5px);
+  box-shadow:
+    0 10px 20px rgba(0, 0, 0, 0.3),
+    0 0 12px rgba(var(--accent-rgb), 0.2);
 }
 
-.footer-socials a:hover svg {
-  fill: var(--accent);
-  stroke: var(--accent); /* Para ícones que usam stroke */
-}
-
+/* Footer Bottom */
 .footer-bottom {
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   padding-top: 2rem;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: var(--text-secondary);
-  letter-spacing: 0.5px;
+}
+
+.copyright-text {
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .stack-highlight {
-  color: var(--accent);
-  font-weight: bold;
+  color: var(--text-primary);
+  font-weight: 600;
+  position: relative;
+  transition: color 0.3s ease;
 }
 
+.stack-highlight:hover {
+  color: var(--accent);
+}
+
+.stack-highlight::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.stack-highlight:hover::after {
+  transform: scaleX(1);
+}
+
+/* ============================ */
+/* RESPONSIVIDADE (MOBILE) */
+/* ============================ */
+
 @media (max-width: 768px) {
+  .site-footer {
+    padding: 4rem 0 2rem;
+  }
+
   .footer-top {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 3rem;
+    gap: 3.5rem;
   }
+
+  .footer-brand {
+    max-width: 100%;
+  }
+
   .footer-social-section {
     align-items: center;
   }
+
   .footer-bottom {
     flex-direction: column;
-    gap: 1rem;
+    text-align: center;
+    gap: 1.5rem;
+    padding-bottom: 1rem;
   }
 }
