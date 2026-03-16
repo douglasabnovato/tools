@@ -104,6 +104,7 @@
 - [ ] no menu no modo mobile, os dois botões não estão sendo exibidos corretamente
 - [ ] Link 'rel' attribute should include 'noopener'
 - [ ] 'backdrop-filter' is not supported by Safari, Safari on iOS. Add '-webkit-backdrop-filter' to support Safari 9+, Safari on iOS 9+
+- [ ] Warning - Console - Uncaught (in promise) Error: A listener indicated an asynchronous response by returning true, but the message channel closed before a response was received
 
 ### 🎯 Workflow do projeto em branches
 

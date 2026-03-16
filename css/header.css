@@ -1,401 +1,248 @@
-/*header.css*/
+/* header.css */
 
 .site-header {
-  width: 100%;
-  z-index: 1000;
-  background: linear-gradient(
-    135deg,
-    var(--bg-cards) 0%,
-    var(--bg-card-hover) 100%
-  );
-  padding: 24px 32px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   position: fixed;
   top: 0;
   left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(10, 25, 41, 0.7);
+  backdrop-filter: var(--glass-blur); /* Usando a variável do layout.css */
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-bottom: 1px solid rgba(var(--accent-rgb), 0.1);
+  padding: 15px 0; /* Padding lateral controlado pelo container */
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Animação de Entrada */
   opacity: 0;
-  animation: fadeIn 0.5s ease-in-out forwards;
-  overflow-x: hidden;
-  transition: all 0.3s ease-in-out;
+  transform: translateY(-20px);
+  animation: headerEntry 0.8s ease forwards;
 }
-  
-/* Estado quando o usuário rola a página */
+
+@keyframes headerEntry {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Estado ao Scrollar */
 .site-header.header-scrolled {
-  background-color: rgba(var(--bg-rgb), 0.92); /* Cor com transparência */
-  backdrop-filter: blur(12px); /* Efeito de vidro fosco */
-  padding: 10px 0; /* Diminui a altura sutilmente */
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
-  border-bottom: 1px solid rgba(var(--accent-rgb), 0.35);
-}
-
-
-
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes slideIn {
-  from {
-    transform: translateY(-10px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(180deg);
-  }
-}
-
-@keyframes bounce {
-  0%,
-  20%,
-  50%,
-  80%,
-  100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-4px);
-  }
-  60% {
-    transform: translateY(-2px);
-  }
-}
-
-@keyframes slideIn {
-  from {
-    transform: translateY(-10px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(180deg);
-  }
-}
-
-@keyframes bounce {
-  0%,
-  20%,
-  50%,
-  80%,
-  100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(-4px);
-  }
-  60% {
-    transform: translateY(-2px);
-  }
+  background: rgba(10, 25, 41, 0.9);
+  padding: 10px 0;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+  border-bottom: 1px solid rgba(var(--accent-rgb), 0.3);
 }
 
 .header-container {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   max-width: 1200px;
-  margin: auto;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 
+/* LOGO */
 .logo {
   display: flex;
   align-items: center;
   gap: 12px;
-  cursor: pointer;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.logo:hover {
-  transform: scale(1.05);
-}
-
-.brand-text {
-  font-family: "Montserrat", sans-serif;
-  font-size: 1.4rem;
-  color: var(--text-primary); /* Branco Puro */
-  font-weight: 500;
-  letter-spacing: -0.5px;
-  text-transform: none; /* Mantém CamelCase */
-}
-
-.brand-text .highlight {
-  color: var(--accent); /* O Ciano Neon #00D7FF */
-  font-weight: 800; /* Peso extra para destacar a tecnologia */
-  /* Efeito sutil de brilho no texto para combinar com o cubo */
-  text-shadow: 0 0 10px rgba(var(--accent-rgb), 0.4);
+  text-decoration: none;
 }
 
 .logo img {
   width: 38px;
-  height: auto;
-  /* Removido o border-radius para preservar o formato do cubo 3D */
-  border-radius: 4px;
-  /* Glow azulado que conecta a imagem ao texto */
-  filter: drop-shadow(0 0 8px rgba(var(--accent-rgb), 0.5));
-  transition: filter 0.3s ease;
+  height: 38px;
+  border-radius: 8px;
+  filter: drop-shadow(0 0 8px rgba(var(--accent-rgb), 0.4));
+  transition: transform 0.3s ease;
 }
 
 .logo:hover img {
-  filter: drop-shadow(0 0 12px rgba(var(--accent-rgb), 0.8));
+  transform: rotate(-5deg) scale(1.05);
 }
 
+.brand-text {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+}
+
+.brand-text .highlight {
+  color: var(--accent);
+  font-weight: 800;
+  text-shadow: 0 0 15px rgba(var(--accent-rgb), 0.4);
+}
+
+/* SEARCH - Otimizado para foco e leitura */
 .search-container {
-  display: flex;
-  align-items: center;
   position: relative;
   flex: 1;
-  max-width: 400px;
-  margin: 0 20px;
+  max-width: 450px;
+  margin: 0 30px;
 }
 
 #search-input {
   width: 100%;
-  padding: 0.5rem 2.5rem 0.5rem 1rem;
-  border: 1px solid var(--border-color);
-  border-radius: var(--border-radius);
-  background: var(--bg-cards);
-  color: var(--text-color);
+  padding: 0.7rem 1rem 0.7rem 2.8rem;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
   font-size: 0.9rem;
-  transition:
-    border-color 0.25s,
-    box-shadow 0.25s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 #search-input:focus {
-  outline: none;
   border-color: var(--accent);
-  box-shadow: 0 0 0 2px rgba(var(--accent-rgb), 0.2);
+  background: rgba(var(--accent-rgb), 0.05);
+  box-shadow: 0 0 20px rgba(var(--accent-rgb), 0.15);
+  outline: none;
 }
 
 .search-icon {
   position: absolute;
-  right: 0.75rem;
-  color: var(--text-muted);
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-secondary);
   pointer-events: none;
-}
-
-.header-menu {
-  display: flex;
-  gap: 24px;
-}
-
-.header-menu a {
-  color: var(--text-color);
-  text-decoration: none;
-  font-weight: 500;
-  font-size: clamp(0.9rem, 2vw, 1rem);
-  line-height: 1.5;
-  padding: 0.75rem 1.25rem;
-  border-radius: 12px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: pointer;
-  position: relative;
-  background: linear-gradient(
-    135deg,
-    var(--bg-cards) 0%,
-    var(--bg-card-hover) 100%
-  );
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border: 1px solid transparent;
-}
-
-.header-menu a:hover {
-  transform: translateY(-2px) scale(1.05);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  border-color: var(--accent);
-  background: linear-gradient(
-    135deg,
-    var(--bg-card-hover) 0%,
-    var(--accent) 100%
-  );
-  color: var(--text-primary);
-}
-
-.header-menu a:focus {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
-}
-
-.header-menu a[aria-pressed="true"] {
-  background: var(--accent);
-  color: var(--text-primary) !important;
-  box-shadow: 0 4px 12px rgba(var(--accent-rgb), 0.3);
-  border-color: rgba(255, 255, 255, 0.2);
-}
-
-.header-menu a[aria-pressed="true"]:hover {
-  background: linear-gradient(
-    135deg,
-    #b6317a 0%,
-    var(--accent) 100%
-  ) !important;
-  box-shadow: 0 0 20px rgba(var(--accent-rgb), 0.6);
-  color: var(--text-primary) !important;
-  border-color: rgba(255, 255, 255, 0.4);
-  transform: translateY(-2px) scale(1.05);
-}
-
-.header-menu a::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  width: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--accent), var(--text-primary));
-  border-radius: 2px;
-  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-
-.header-menu a:hover::after,
-.header-menu a[aria-pressed="true"]::after {
-  width: 80%;
-  left: 10%;
-}
-
-.header-menu a[aria-pressed="true"]::after {
-  background: var(--text-primary);
-}
-
-#theme-toggle {
-  background: linear-gradient(
-    135deg,
-    var(--bg-cards) 0%,
-    var(--bg-card-hover) 100%
-  );
-  border: 1px solid transparent;
-  color: var(--text-color);
   font-size: 1.2rem;
-  cursor: pointer;
-  padding: 0.75rem;
+}
+
+/* CONTROLS (Theme + Menu) */
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Estilo Base para botões de ícone (Tema e Menu Mobile) */
+.icon-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-color);
+  padding: 10px;
   border-radius: 12px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.icon-btn:hover {
+  background: rgba(var(--accent-rgb), 0.1);
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+}
+
+/* Específico do Botão de Tema para o efeito de rotação */
+#theme-toggle {
+  color: var(--accent); /* Garante que o sol/lua brilhe em azul neon */
+  font-size: 1.3rem; /* Tamanho do ícone do Boxicons */
 }
 
 #theme-toggle:hover {
-  transform: translateY(-2px) scale(1.1);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  border-color: var(--accent);
-  background: linear-gradient(
-    135deg,
-    var(--bg-card-hover) 0%,
-    var(--accent) 100%
-  );
+  transform: rotate(15deg) scale(1.1);
+  box-shadow: 0 0 15px rgba(var(--accent-rgb), 0.3);
 }
 
-.theme-icon {
-  fill: var(--text-color);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+/* Ajuste para o ícone interno */
+#theme-icon {
+  display: block;
+  line-height: 1;
 }
 
-#theme-toggle:hover .theme-icon {
-  animation: rotate 0.5s ease-in-out;
+/* NAVEGAÇÃO */
+.header-menu {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-#menu-toggle {
-  display: none;
-  background: linear-gradient(
-    135deg,
-    var(--bg-cards) 0%,
-    var(--bg-card-hover) 100%
-  );
-  border: 1px solid transparent;
+.nav-link {
   color: var(--text-color);
-  cursor: pointer;
-  padding: 0.75rem;
-  border-radius: 12px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  position: relative;
+  transition: all 0.3s ease;
 }
 
-#menu-toggle:hover {
-  transform: translateY(-2px) scale(1.1);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  border-color: var(--accent);
-  background: linear-gradient(
-    135deg,
-    var(--bg-card-hover) 0%,
-    var(--accent) 100%
-  );
+.nav-link:hover,
+.nav-link.active {
+  color: var(--accent);
+  background: rgba(var(--accent-rgb), 0.05);
 }
 
-#menu-toggle svg {
-  fill: var(--text-color);
-  transition: fill 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+.nav-link.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 15%;
+  width: 70%;
+  height: 2px;
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+  border-radius: 2px;
 }
 
-@media (max-width: 1024px) {
-  .site-header {
-    padding: 20px 24px;
-  }
-}
- 
-
+/* MOBILE RESPONSIVITY */
 @media (max-width: 768px) {
-  .site-header {
-    padding: 12px 16px;
-  }
-
-  /* Mantém o botão de tema visível ao lado do hambúrguer */
-  #theme-toggle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.5rem;
+  .header-container {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 15px;
+    padding: 0 1rem;
   }
 
   .search-container {
-    display: none; 
+    grid-column: 1 / span 3;
+    grid-row: 2;
+    margin: 0;
+    max-width: none;
   }
 
-  /* Esconde os links por padrão no mobile */
-  .header-menu a {
+  .header-menu {
     display: none;
-  }
-
-  #menu-toggle {
-    display: block;
-  }
-
-  /* Quando o menu estiver aberto */
-  .header-menu.open {
     flex-direction: column;
     position: absolute;
-    top: 100%; /* Aparece logo abaixo do header */
+    top: 100%;
     left: 0;
-    right: 0;
-    background: var(--bg-cards);
-    padding: 20px;
-    gap: 16px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    background: var(--body-bg-color);
+    padding: 1rem;
     border-bottom: 2px solid var(--accent);
-    animation: slideIn 0.3s ease-out forwards;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    z-index: 999;
   }
 
-  .header-menu.open a {
-    display: block;
+  .header-menu.open {
+    display: flex;
+    animation: slideDown 0.4s ease forwards;
+  }
+
+  .nav-link {
     width: 100%;
+    padding: 15px;
     text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
     opacity: 1;
     transform: translateY(0);
   }
