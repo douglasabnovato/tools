@@ -1,65 +1,99 @@
+/* host.js — catálogo de hospedagens.
+   Mesmos campos de tools.js: title, description, category, pricing, thumb, site_url. */
+
 export const hostsList = [
   {
-    title: "netlify",
-    duration: "10 dias",
+    title: "Vercel",
+    description:
+      "Hospedagem otimizada para front-end, com preview por branch e CDN global.",
+    category: "Site Estático",
+    pricing: "Freemium",
+    thumb: "./assets/thumb_host/vercel.jpg",
+    site_url: "https://vercel.com/",
+  },
+  {
+    title: "Netlify",
+    description:
+      "Deploy contínuo de site estático, com preview por pull request e redirects.",
+    category: "Site Estático",
+    pricing: "Freemium",
     thumb: "./assets/thumb_host/netlify.jpg",
     site_url: "https://www.netlify.com/",
-    category: "Servidor de Hospedagem",
   },
   {
-    title: "vercel",
-    duration: "10 dias",
-    thumb: "./assets/thumb_host/vercel.jpg",
-    site_url: "https://vercel.com/dashboard",
-    category: "Servidor de Hospedagem",
+    title: "Cloudflare Pages",
+    description:
+      "Site estático na rede da Cloudflare; tráfego de arquivo estático é ilimitado no plano gratuito.",
+    category: "Site Estático",
+    pricing: "Freemium",
+    thumb:
+      "https://www.google.com/s2/favicons?domain=pages.cloudflare.com&sz=256",
+    thumbFit: "contain",
+    site_url: "https://pages.cloudflare.com/",
   },
   {
-    title: "surge",
-    duration: "10 dias",
-    thumb: "./assets/thumb_host/surge.jpg",
-    site_url: "https://surge.sh/",
-    category: "Servidor de Hospedagem",
-  },
-  {
-    title: "github pages",
-    duration: "10 dias",
+    title: "GitHub Pages",
+    description:
+      "Site estático servido direto do repositório, sem configuração e sem custo.",
+    category: "Site Estático",
+    pricing: "Gratuito",
     thumb: "./assets/thumb_host/github-pages.jpg",
     site_url: "https://pages.github.com/",
-    category: "Servidor de Hospedagem",
   },
   {
-    title: "gitlab pages",
-    duration: "10 dias",
+    title: "GitLab Pages",
+    description:
+      "Site estático publicado pelo pipeline do próprio repositório GitLab.",
+    category: "Site Estático",
+    pricing: "Gratuito",
     thumb: "./assets/thumb_host/gitlab-pages.jpg",
     site_url: "https://about.gitlab.com/",
-    category: "Servidor de Hospedagem",
   },
   {
-    title: "Firebase",
-    duration: "10 dias",
+    title: "Surge",
+    description:
+      "Publica um site estático pela linha de comando, em um comando só.",
+    category: "Site Estático",
+    pricing: "Freemium",
+    thumb: "./assets/thumb_host/surge.jpg",
+    site_url: "https://surge.sh/",
+  },
+  {
+    title: "Firebase Hosting",
+    description:
+      "Hospedagem estática com CDN, SSL automático e rollback de versão.",
+    category: "Aplicação",
+    pricing: "Freemium",
     thumb: "./assets/thumb_host/firebase.jpg",
     site_url: "https://firebase.google.com/docs/hosting?hl=pt-br",
-    category: "Servidor de Hospedagem",
   },
   {
-    title: "railway",
-    duration: "10 dias",
+    title: "Railway",
+    description:
+      "Deploy de aplicação e banco a partir do repositório; hoje sem plano gratuito permanente.",
+    category: "Aplicação",
+    pricing: "Pago",
     thumb: "./assets/thumb_host/railway.jpg",
     site_url: "https://railway.app/",
-    category: "Servidor de Hospedagem",
   },
   {
-    title: "pusher",
-    duration: "10 dias",
-    thumb: "./assets/thumb_host/pusher.jpg",
-    site_url: "https://dashboard.pusher.com/",
-    category: "Servidor de Hospedagem",
-  },
-  {
-    title: "heroku",
-    duration: "10 dias",
+    title: "Heroku",
+    description:
+      "PaaS para aplicação com banco gerenciado; o plano gratuito foi encerrado em 2022.",
+    category: "Aplicação",
+    pricing: "Pago",
     thumb: "./assets/thumb_host/heroku.jpg",
     site_url: "https://www.heroku.com/",
-    category: "Servidor de Hospedagem",
+  },
+  {
+    title: "Pusher",
+    description:
+      "Canais de tempo real por WebSocket para notificação, chat e presença.",
+    category: "Tempo Real",
+    pricing: "Freemium",
+    thumb: "./assets/thumb_host/pusher.jpg",
+    site_url: "https://pusher.com/",
   },
 ];
+
+/* Fim de host.js */

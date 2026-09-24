@@ -1,259 +1,226 @@
-/* header.css */
+/* header.css — cabeçalho fixo, abas de seção, busca e alternância de tema. */
 
 .site-header {
-  position: fixed;
+  position: sticky;
   top: 0;
-  left: 0;
+  z-index: 40;
+  background: var(--bg);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.site-header.is-stuck {
+  border-bottom-color: var(--border);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-height: var(--header-h);
   width: 100%;
-  z-index: 1000;
-  background: rgba(10, 25, 41, 0.7);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  border-bottom: 1px solid rgba(var(--accent-rgb), 0.1);
-  padding: 15px 0;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  opacity: 0;
-  transform: translateY(-20px);
-  animation: headerEntry 0.8s ease forwards;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
 }
 
-@keyframes headerEntry {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.site-header.header-scrolled {
-  background: rgba(10, 25, 41, 0.9);
-  padding: 10px 0;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
-}
-
-.header-container {
-  display: flex;
+.brand {
+  display: inline-flex;
   align-items: center;
-  justify-content: space-between;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-  gap: 20px;
-}
-
-/* --- LOGO --- */
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  text-decoration: none;
+  gap: 0.55rem;
   flex-shrink: 0;
+  font-family: var(--font-title);
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
-.logo img {
-  width: 38px;
-  height: 38px;
-  border-radius: 8px;
-  filter: drop-shadow(0 0 8px rgba(var(--accent-rgb), 0.4));
-  transition: transform 0.3s ease;
+.brand img {
+  width: 30px;
+  height: 30px;
+  border-radius: var(--r-sm);
 }
 
-.logo:hover img {
-  transform: rotate(-5deg) scale(1.05);
-}
-
-.brand-text {
-  font-family: "Poppins", sans-serif;
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: var(--text-primary);
-  letter-spacing: -0.5px;
-}
-
-.brand-text .highlight {
+.brand .accent {
   color: var(--accent);
-  font-weight: 800;
 }
 
-/* header.css */
-
-/* 1. LARGURA DA BARRA DE BUSCA */
-.search-wrapper {
-  position: relative;
-  flex: 1; /* Isso faz ela tentar ocupar o espaço disponível */
-  max-width: 650px; /* Aumente este valor (estava em 450px) para o tamanho desejado */
-  margin: 0 30px; /* Espaçamento lateral para não grudar na logo ou no menu */
-}
-
-/* 2. GARANTIR ALINHAMENTO DO TOGGLE NO MENU */
-.header-menu {
+.tabs {
   display: flex;
-  align-items: center;
-  gap: 15px; /* Espaço entre links e o botão de tema */
+  gap: 0.25rem;
+  padding: 0.25rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
 }
 
-/* Ajuste fino no botão de tema para não quebrar a linha */
-#theme-toggle {
-  margin-left: 10px; /* Um respiro extra após o último link */
-  flex-shrink: 0; /* Garante que o botão não "esprema" em telas menores */
+.tab {
+  padding: 0.4rem 0.95rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.87rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
 }
 
-.search-icon {
+.tab:hover {
+  color: var(--text);
+}
+
+.tab[aria-selected="true"] {
+  background: var(--accent);
+  color: var(--accent-on);
+  font-weight: 600;
+}
+
+.search {
+  position: relative;
+  flex: 1 1 200px;
+  min-width: 0;
+  max-width: 380px;
+  margin-left: auto;
+}
+
+.search svg {
   position: absolute;
-  left: 14px;
+  left: 0.8rem;
   top: 50%;
-  transform: translateY(-50%);
-  color: var(--text-secondary);
+  translate: 0 -50%;
+  width: 16px;
+  height: 16px;
+  color: var(--text-faint);
   pointer-events: none;
-  font-size: 1.2rem;
-  z-index: 2;
 }
 
-#search-input {
+.search input {
   width: 100%;
-  padding: 0.7rem 1rem 0.7rem 2.8rem; /* Espaço para o ícone na esquerda */
-  border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--text-primary);
-  font-size: 0.9rem;
-  transition: all 0.3s ease;
+  padding: 0.55rem 2.4rem 0.55rem 2.35rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  font-size: 0.88rem;
+  transition: border-color 0.15s ease;
 }
 
-#search-input:focus {
+.search input::placeholder {
+  color: var(--text-faint);
+}
+
+.search input:focus {
   border-color: var(--accent);
-  background: rgba(var(--accent-rgb), 0.05);
-  box-shadow: 0 0 20px rgba(var(--accent-rgb), 0.15);
   outline: none;
 }
 
-/* --- CONTROLS & MENU (Alinhados à direita) --- */
-.header-controls {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.search-hint {
+  position: absolute;
+  right: 0.6rem;
+  top: 50%;
+  translate: 0 -50%;
+  padding: 0.1rem 0.4rem;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  color: var(--text-faint);
+  font-family: ui-monospace, monospace;
+  font-size: 0.7rem;
+  pointer-events: none;
 }
 
-/* Botão de Tema */
-.icon-btn {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: var(--accent);
-  padding: 8px;
-  border-radius: 10px;
+.search input:not(:placeholder-shown) ~ .search-hint {
+  display: none;
+}
+
+.search-clear {
+  position: absolute;
+  right: 0.45rem;
+  top: 50%;
+  translate: 0 -50%;
+  display: none;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--surface-2);
+  color: var(--text-muted);
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.search input:not(:placeholder-shown) ~ .search-clear {
+  display: grid;
+}
+
+.icon-btn {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease;
 }
 
 .icon-btn:hover {
-  transform: rotate(15deg) scale(1.1);
-  background: rgba(var(--accent-rgb), 0.1);
-  box-shadow: 0 0 15px rgba(var(--accent-rgb), 0.3);
+  color: var(--text);
+  border-color: var(--border-strong);
 }
 
-/* Esconde o Hambúrguer no Desktop */
-.menu-toggle {
+.icon-btn svg {
+  width: 17px;
+  height: 17px;
+}
+
+[data-theme="light"] .icon-sun,
+.icon-moon {
   display: none;
-  background: none;
-  border: none;
-  color: var(--text-primary);
-  cursor: pointer;
 }
 
-.nav-link {
-  color: var(--text-color);
-  text-decoration: none;
-  padding: 8px 16px;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  transition: all 0.3s ease;
+[data-theme="light"] .icon-moon {
+  display: block;
 }
 
-.nav-link:hover,
-.nav-link.active {
-  color: var(--accent);
-  background: rgba(var(--accent-rgb), 0.08);
-}
-
-/* --- RESPONSIVIDADE MOBILE --- */
-
-@media (max-width: 768px) {
-  /* 1. Ajuste do Container Pai */
-  .header-container {
-    display: flex;
-    flex-wrap: wrap; /* Permite quebrar linha */
-    justify-content: space-between; /* Logo na esquerda, controles na direita */
-    align-items: center;
-    padding: 0 1.5rem;
+@media (max-width: 860px) {
+  .header-inner {
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    padding-block: 0.7rem;
   }
 
-  /* 2. Logo e Controles na primeira linha */
-  .header-top,
-  .header-controls {
-    display: contents; /* Desfaz o container para os filhos obedecerem o flex do pai */
+  .search {
+    order: 3;
+    flex-basis: 100%;
+    max-width: none;
+    margin-left: 0;
   }
 
-  /* Garante que o sanduíche vá para o final da linha */
-  .menu-toggle {
-    display: flex !important;
-    order: 2; /* Fica depois da logo */
+  .search-hint {
+    display: none;
   }
 
-  /* 3. BARRA DE BUSCA (Segunda Linha Sozinha) */
-  .header-actions,
-  .search-wrapper {
-    flex: 0 0 100%; /* Ocupa 100% da largura */
-    max-width: 100%;
-    margin: 15px 0 5px 0;
-    order: 3; /* Vai para baixo de tudo */
+  .tabs {
+    margin-left: auto;
   }
 
-  /* 4. MENU MOBILE (O dropdown) */
-  .header-menu {
-    display: none; /* Escondido por padrão */
-    flex-direction: column;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    background: var(--body-bg-color);
-    padding: 1rem;
-    border-bottom: 2px solid var(--accent);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    z-index: 999;
-    gap: 10px;
-  }
-
-  /* Quando aberto pelo JS */
-  .header-menu.open {
-    display: flex;
-    animation: slideDown 0.3s ease-out forwards;
-  }
-
-  /* Ajuste dos links e do Toggle de Tema no Mobile */
-  .nav-link {
-    width: 100%;
-    text-align: center;
-    padding: 12px;
-    background: rgba(255, 255, 255, 0.03);
-  }
-
-  #theme-toggle {
-    width: fit-content;
-    margin: 10px auto 0; /* Centraliza o sol/lua no menu aberto */
+  .tab {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.82rem;
   }
 }
 
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+@media (max-width: 420px) {
+  .brand span.brand-text {
+    display: none;
   }
 }
+
+/* Fim de header.css */
