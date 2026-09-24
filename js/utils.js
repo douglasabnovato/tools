@@ -1,7 +1,21 @@
-export function debounce(fn, delay = 300) {
-  let timer;
+/* utils.js — funções auxiliares sem dependência de DOM. */
+
+/* Adia a execução até parar de receber chamadas por `espera` milissegundos. */
+export function debounce(fn, espera = 300) {
+  let temporizador;
   return (...args) => {
-    clearTimeout(timer);
-    timer = setTimeout(() => fn(...args), delay);
+    clearTimeout(temporizador);
+    temporizador = setTimeout(() => fn(...args), espera);
   };
 }
+
+/* Deixa o texto em caixa baixa e sem acento, para a busca casar "codigo" com "código". */
+export function normalizar(texto) {
+  return String(texto)
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .trim();
+}
+
+/* Fim de utils.js */
