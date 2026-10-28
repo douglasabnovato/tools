@@ -1,0 +1,30 @@
+# CI estático do catálogo "tools": sem dependência nova, sem build.
+# Roda docs/claudeia/verificar.ps1 (pwsh já vem no ubuntu-latest) e checa a sintaxe dos módulos JS com o node do runner.
+name: ci
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verificações estáticas (arquivos, dados, manifest)
+        shell: pwsh
+        run: ./docs/claudeia/verificar.ps1
+
+      - name: Sintaxe dos módulos JS
+        run: |
+          set -e
+          for f in main.js js/*.js data/*.js; do
+            node --input-type=module --check < "$f"
+            echo "ok $f"
+          done

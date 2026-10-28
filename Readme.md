@@ -97,6 +97,28 @@ montada a partir dos próprios dados, com a contagem de cada uma.
 - **Card inteiro é um link** — abre em nova aba, com `rel="noopener noreferrer"`
   e nome acessível próprio
 
+### 📄 Página de detalhe
+
+Quando um item vindo da API tem `slug` e `detalhe`, o card abre
+`detalhe.html#id=<slug>` na mesma aba (o `#` funciona em qualquer servidor; `?id=` também é aceito), em vez do site oficial. Item sem detalhe
+continua abrindo o site em nova aba.
+
+- **O que mostra** — miniatura, título, categoria e preço, resumo em destaque,
+  parágrafos, galeria (com legenda), vídeo do YouTube em modo `youtube-nocookie`,
+  botão "Acessar site oficial", links oficiais, fontes e "Atualizado em dd/mm/aaaa"
+- **De onde vem** — só da API (`/v1/tools/ferramentas.json` e
+  `/v1/tools/hospedagens.json`; procura nas duas). Os dados locais não têm detalhe
+- **Estados** — carregando; não encontrado; API não configurada ou fora do ar
+  ("Os detalhes ficam disponíveis quando a API está ativa"), sempre com link de volta
+- **Voltar** — retorna ao catálogo com a mesma seção, filtro e busca quando o
+  visitante veio dele
+- **Segurança** — o DOM é montado com `textContent`; links e imagens só `http(s)`
+  (ou `./assets/` para miniatura); caminhos `/media/...` viram URL da API
+- **Arquivos** — `detalhe.html`, `js/detalhe.js`, `css/detalhe.css`
+
+Para testar: `http://localhost:3000/detalhe.html#id=<slug>` com `js/config.js`
+apontando para a API.
+
 ---
 
 ## 🗂️ Estrutura de pastas
@@ -104,6 +126,7 @@ montada a partir dos próprios dados, com a contagem de cada uma.
 ```text
 tools/
 ├── index.html              estrutura da página, ícones SVG e o <template> do card
+├── detalhe.html            página de detalhe de um item (?id=<slug>)
 ├── main.js                 ponto de entrada: entrega os dados para a aplicação
 │
 ├── data/
@@ -112,13 +135,17 @@ tools/
 │
 ├── js/
 │   ├── renderer.js         a aplicação: seção, filtro, busca, paginação, tema, URL
+│   ├── detalhe.js          página de detalhe: busca o item na API e monta a tela
+│   ├── api.js              cliente da API: tempo limite, /media/ e identificação
+│   ├── config.js           endereço da API
 │   └── utils.js            debounce e normalização de texto
 │
 ├── css/
 │   ├── layout.css          tokens de tema, base tipográfica, grade e filtros
 │   ├── header.css          cabeçalho fixo, abas, busca e alternância de tema
 │   ├── cards.css           o card do catálogo
-│   └── footer.css          rodapé
+│   ├── footer.css          rodapé
+│   └── detalhe.css         página de detalhe
 │
 ├── assets/
 │   ├── thumb_tools/        miniaturas das ferramentas

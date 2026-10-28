@@ -7,6 +7,11 @@ import { buscarRecurso, resolverMidia, esperarAte, carregarIdentificacao } from 
 
 const ESPERA_API_MS = 2500;
 
+/* Confere se a API devolveu uma lista não vazia de itens com título e link; senão o site usa os dados locais. */
+function listaValida(lista) {
+  return Array.isArray(lista) && lista.length > 0 && lista.every((item) => item && item.title && item.site_url);
+}
+
 /* Busca ferramentas e hospedagens na API; devolve null quando ela falha, e o site segue com os dados locais. */
 async function carregarCatalogo() {
   try {
@@ -14,6 +19,7 @@ async function carregarCatalogo() {
       buscarRecurso("tools/ferramentas.json"),
       buscarRecurso("tools/hospedagens.json"),
     ]);
+    if (!listaValida(ferramentas) || !listaValida(hospedagens)) throw new Error("resposta da API em formato inesperado");
     return { toolsList: resolverMidia(ferramentas), hostsList: resolverMidia(hospedagens) };
   } catch (e) {
     console.warn("[learntech-content] usando dados locais:", e.message);
