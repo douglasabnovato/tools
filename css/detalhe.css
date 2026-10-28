@@ -1,0 +1,313 @@
+/* detalhe.css — página de detalhe de uma ferramenta: topo, texto, vídeo, galeria e links.
+   Usa só os tokens de layout.css, então segue o tema claro e escuro sem cor própria. */
+
+.detalhe-nav {
+  margin-left: auto;
+}
+
+.detalhe-nav-link {
+  padding: 0.4rem 0.95rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text-muted);
+  font-size: 0.87rem;
+  font-weight: 500;
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.detalhe-nav-link:hover {
+  color: var(--text);
+  border-color: var(--border-strong);
+}
+
+.detalhe-voltar {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 1.75rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.detalhe-voltar:hover {
+  color: var(--accent);
+}
+
+/* Estados: carregando, não encontrado e API indisponível. */
+.detalhe-estado {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 3rem 0;
+  color: var(--text-muted);
+}
+
+.detalhe-estado[hidden] {
+  display: none;
+}
+
+.detalhe-estado .empty {
+  width: 100%;
+}
+
+.detalhe-estado-titulo {
+  font-size: 1.3rem;
+  color: var(--text);
+}
+
+.detalhe-estado-acoes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.detalhe-spinner {
+  width: 28px;
+  height: 28px;
+  border: 3px solid var(--border-strong);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: girar 0.8s linear infinite;
+}
+
+@keyframes girar {
+  to {
+    rotate: 360deg;
+  }
+}
+
+/* Topo: miniatura ao lado das informações; empilha no celular. */
+.detalhe-topo {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: clamp(1.25rem, 4vw, 2.5rem);
+  align-items: center;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.detalhe-thumb {
+  aspect-ratio: 16 / 10;
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface-2);
+  overflow: hidden;
+}
+
+.detalhe-thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.detalhe-thumb img[data-fit="contain"] {
+  object-fit: contain;
+  padding: 18%;
+}
+
+.detalhe-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.9rem;
+}
+
+.detalhe-titulo {
+  font-size: clamp(1.9rem, 4.5vw, 2.6rem);
+  line-height: 1.15;
+}
+
+.detalhe-tags {
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+.detalhe-tags .tag {
+  font-size: 0.78rem;
+}
+
+/* Etiqueta de categoria um tom mais forte que no card, para passar de 4,5:1 nos dois temas. */
+.detalhe-tags .tag-cat {
+  color: var(--text-muted);
+}
+
+.detalhe-resumo {
+  margin: 0;
+  padding-left: 1rem;
+  border-left: 3px solid var(--accent);
+  color: var(--text);
+  font-size: 1.1rem;
+  line-height: 1.55;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--accent-on);
+  font-size: 0.92rem;
+  font-weight: 600;
+  transition:
+    filter 0.15s ease,
+    translate 0.15s ease;
+}
+
+.btn-primary:hover {
+  filter: brightness(1.08);
+  translate: 0 -1px;
+}
+
+/* Corpo de leitura. */
+.detalhe-corpo {
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
+  max-width: 72ch;
+  padding-top: 2rem;
+}
+
+.detalhe-texto p {
+  margin: 0 0 1rem;
+  color: var(--text-muted);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.detalhe-texto p:last-child {
+  margin-bottom: 0;
+}
+
+.detalhe-video {
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  background: var(--surface-2);
+  overflow: hidden;
+}
+
+.detalhe-video iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.detalhe-galeria {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.detalhe-galeria figure {
+  margin: 0;
+}
+
+.detalhe-galeria img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  border-radius: var(--r);
+  background: var(--surface-2);
+}
+
+.detalhe-galeria figcaption {
+  margin-top: 0.45rem;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+/* Links oficiais, fontes e data. */
+.detalhe-rodape {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--border);
+}
+
+.detalhe-links h2 {
+  margin-bottom: 0.6rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.detalhe-links ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.detalhe-redes a {
+  display: inline-block;
+  padding: 0.4rem 0.85rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text-muted);
+  font-size: 0.86rem;
+  font-weight: 500;
+}
+
+.detalhe-redes a:hover {
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+.detalhe-fontes ul {
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.detalhe-fontes a {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: var(--border-strong);
+}
+
+.detalhe-fontes a:hover {
+  color: var(--accent);
+}
+
+.detalhe-atualizado {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.84rem;
+}
+
+@media (max-width: 720px) {
+  .detalhe-topo {
+    grid-template-columns: 1fr;
+  }
+
+  .detalhe-resumo {
+    font-size: 1.02rem;
+  }
+
+  .btn-primary {
+    align-self: stretch;
+    justify-content: center;
+  }
+}
+
+/* Fim de detalhe.css */

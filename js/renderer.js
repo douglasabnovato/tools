@@ -120,7 +120,11 @@ export function createApp({ toolsList, hostsList }) {
     botao.className = "chip";
     botao.dataset.categoria = valor;
     botao.setAttribute("aria-pressed", String(estado.categoria === valor));
-    botao.innerHTML = `${texto}<span class="chip-count">${quantidade}</span>`;
+    /* textContent em vez de innerHTML: a categoria pode vir da API e não deve virar HTML. */
+    const contador = document.createElement("span");
+    contador.className = "chip-count";
+    contador.textContent = String(quantidade);
+    botao.append(texto, contador);
     return botao;
   }
 
@@ -130,8 +134,18 @@ export function createApp({ toolsList, hostsList }) {
     const link = no.querySelector(".card");
     const img = no.querySelector("img");
 
-    link.href = item.site_url;
-    link.setAttribute("aria-label", `Abrir ${item.title} em uma nova aba`);
+    if (item.slug && item.detalhe) {
+      /* Item com página de detalhe: abre detalhe.html na mesma aba. */
+      link.href = `detalhe.html#id=${encodeURIComponent(item.slug)}`; /* "#" sobrevive a servidores que redirecionam .html e descartam a query (ex.: npx serve). */
+      link.removeAttribute("target");
+      link.removeAttribute("rel");
+      link.setAttribute("aria-label", `Ver detalhes de ${item.title}`);
+      no.querySelector(".go").textContent = "→";
+    } else {
+      /* Só aceita link http(s): protege contra "javascript:" vindo de dado externo. */
+      if (/^https?:\/\//i.test(String(item.site_url))) link.href = item.site_url;
+      link.setAttribute("aria-label", `Abrir ${item.title} em uma nova aba`);
+    }
 
     img.alt = `Miniatura de ${item.title}`;
     img.dataset.src = item.thumb;
