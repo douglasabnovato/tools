@@ -1,7 +1,7 @@
 <h1 align="center">🧰 Tools</h1>
 
 <p align="center">
-  <strong>O catálogo de ferramentas do ecossistema learnTECH.</strong><br />
+  <strong>O catálogo de ferramentas do ecossistema LearnTECH</strong><br />
   45 ferramentas · 10 hospedagens · 12 categorias
 </p>
 
