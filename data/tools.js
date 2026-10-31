@@ -20,9 +20,9 @@ export const toolsList = [
   },
   {
     "title": "Mockingbird",
-    "description": "Wireframes de baixa fidelidade para validar telas antes de escrever código.",
+    "description": "Wireframes de baixa fidelidade no navegador; o serviço foi encerrado e hoje serve de referência histórica.",
     "category": "Design",
-    "pricing": "Freemium",
+    "pricing": "Descontinuado",
     "thumb": "./assets/thumb_tools/mockingbird.jpg",
     "site_url": "https://gomockingbird.com/home"
   },
@@ -35,7 +35,7 @@ export const toolsList = [
     "site_url": "https://whimsical.com/"
   },
   {
-    "title": "Diagrams",
+    "title": "draw.io (diagrams.net)",
     "description": "Diagramas de arquitetura, fluxo e rede direto no navegador, sem criar conta.",
     "category": "Design",
     "pricing": "Gratuito",
@@ -177,7 +177,7 @@ export const toolsList = [
     "title": "Pomofocus",
     "description": "Timer Pomodoro no navegador para alternar blocos de foco e pausas.",
     "category": "Produtividade",
-    "pricing": "Gratuito",
+    "pricing": "Freemium",
     "thumb": "./assets/thumb_tools/pomodoro.jpg",
     "site_url": "https://pomofocus.io/"
   },
@@ -207,9 +207,9 @@ export const toolsList = [
   },
   {
     "title": "Hashnode",
-    "description": "Blog técnico com domínio próprio, sem anúncio e com publicação a partir do Git.",
+    "description": "Blog técnico com publicação a partir do Git; domínio próprio e recursos avançados ficaram no plano Pro (2026).",
     "category": "Comunidade",
-    "pricing": "Gratuito",
+    "pricing": "Freemium",
     "thumb": "./assets/thumb_tools/hashnode.jpg",
     "site_url": "https://hashnode.com/"
   },
@@ -217,7 +217,7 @@ export const toolsList = [
     "title": "Behance",
     "description": "Portfólios de design publicados — bons para estudar composição e processo.",
     "category": "Comunidade",
-    "pricing": "Gratuito",
+    "pricing": "Freemium",
     "thumb": "./assets/thumb_tools/behance.jpg",
     "site_url": "https://www.behance.net/"
   },
@@ -254,12 +254,12 @@ export const toolsList = [
     "site_url": "https://illlustrations.co/"
   },
   {
-    "title": "Freepik",
+    "title": "Magnific (antigo Freepik)",
     "description": "Vetores, fotos e modelos editáveis para montar peça gráfica rápido.",
     "category": "Imagens",
     "pricing": "Freemium",
     "thumb": "./assets/thumb_tools/freepik.jpg",
-    "site_url": "https://br.freepik.com/"
+    "site_url": "https://www.magnific.com/"
   },
   {
     "title": "Photopea",
@@ -304,7 +304,7 @@ export const toolsList = [
   {
     "title": "Google Fonts",
     "description": "Catálogo de fontes livres, com preview e o código de incorporação pronto.",
-    "category": "Ícones",
+    "category": "Design",
     "pricing": "Gratuito",
     "thumb": "./assets/thumb_tools/fonts-google.jpg",
     "site_url": "https://fonts.google.com/"
@@ -431,7 +431,7 @@ export const toolsList = [
   {
     "title": "Logisim Evolution",
     "description": "Simulador de circuitos digitais para estudar portas lógicas e arquitetura de computadores.",
-    "category": "Design",
+    "category": "Código",
     "pricing": "Gratuito",
     "thumb": "https://www.google.com/s2/favicons?domain=github.com&sz=128",
     "site_url": "https://github.com/logisim-evolution/logisim-evolution",
@@ -441,7 +441,7 @@ export const toolsList = [
     "title": "StarUML",
     "description": "Modelagem UML: diagramas de classes, casos de uso e sequência.",
     "category": "Design",
-    "pricing": "Freemium",
+    "pricing": "Pago",
     "thumb": "https://www.google.com/s2/favicons?domain=staruml.io&sz=128",
     "site_url": "https://staruml.io/",
     "thumbFit": "contain"
@@ -495,5 +495,165 @@ export const toolsList = [
     "pricing": "Gratuito",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/cryptojs.webp",
     "site_url": "https://github.com/brix/crypto-js"
+  },
+  {
+    "title": "WhatsApp Business Platform",
+    "description": "API oficial da Meta para empresas conversarem com clientes no WhatsApp, com modelos aprovados, janela de atendimento e cobrança por mensagem.",
+    "category": "Back-end",
+    "pricing": "Pago",
+    "thumb": "https://www.google.com/s2/favicons?domain=whatsapp.com&sz=128",
+    "site_url": "https://business.whatsapp.com/"
+  },
+  {
+    "title": "Miro",
+    "description": "Quadro branco infinito na nuvem para desenhar fluxos, jornadas e mapas com o time em tempo real.",
+    "category": "Produtividade",
+    "pricing": "Freemium",
+    "thumb": "https://www.google.com/s2/favicons?domain=miro.com&sz=128",
+    "site_url": "https://miro.com/"
+  },
+  {
+    "title": "ClickUp",
+    "description": "Gestão de tarefas e projetos com listas, quadros, documentos e automações num mesmo espaço.",
+    "category": "Produtividade",
+    "pricing": "Freemium",
+    "thumb": "https://www.google.com/s2/favicons?domain=clickup.com&sz=128",
+    "site_url": "https://clickup.com/"
+  },
+  {
+    "title": "Microsoft Planner",
+    "description": "Quadros de tarefas do Microsoft 365, integrados ao Teams, para organizar o trabalho do time em baldes e prazos.",
+    "category": "Produtividade",
+    "pricing": "Pago",
+    "thumb": "https://www.google.com/s2/favicons?domain=planner.cloud.microsoft&sz=128",
+    "site_url": "https://www.microsoft.com/en-us/microsoft-365/planner/microsoft-planner"
+  },
+  {
+    "title": "ChatGPT",
+    "description": "Assistente de IA conversacional da OpenAI para escrever, resumir, pesquisar e rascunhar código.",
+    "category": "Produtividade",
+    "pricing": "Freemium",
+    "thumb": "https://www.google.com/s2/favicons?domain=chatgpt.com&sz=128",
+    "site_url": "https://chatgpt.com/"
+  },
+  {
+    "title": "StreamYard",
+    "description": "Estúdio de transmissão ao vivo e gravação no navegador, com convidados e envio para várias redes ao mesmo tempo.",
+    "category": "Vídeo",
+    "pricing": "Freemium",
+    "thumb": "https://www.google.com/s2/favicons?domain=streamyard.com&sz=128",
+    "site_url": "https://streamyard.com/"
+  },
+  {
+    "title": "VEED",
+    "description": "Editor e compressor de vídeo no navegador, com legendas automáticas e ajuste de tamanho de arquivo.",
+    "category": "Vídeo",
+    "pricing": "Freemium",
+    "thumb": "https://www.google.com/s2/favicons?domain=veed.io&sz=128",
+    "site_url": "https://www.veed.io/"
+  },
+  {
+    "title": "Bitly",
+    "description": "Encurtador de links e gerador de QR Code com contagem de cliques para campanhas.",
+    "category": "Marketing e CRM",
+    "pricing": "Freemium",
+    "thumb": "https://www.google.com/s2/favicons?domain=bitly.com&sz=128",
+    "site_url": "https://bitly.com/"
+  },
+  {
+    "title": "Zenvia",
+    "description": "Plataforma brasileira para disparar e atender por WhatsApp, SMS, e-mail e chatbot em um só painel.",
+    "category": "Marketing e CRM",
+    "pricing": "Pago",
+    "thumb": "https://www.google.com/s2/favicons?domain=zenvia.com&sz=128",
+    "site_url": "https://zenvia.com/"
+  },
+  {
+    "title": "Blip",
+    "description": "Plataforma de chatbots e atendimento conversacional, com forte uso no WhatsApp das empresas brasileiras.",
+    "category": "Marketing e CRM",
+    "pricing": "Pago",
+    "thumb": "https://www.google.com/s2/favicons?domain=blip.ai&sz=128",
+    "site_url": "https://www.blip.ai/"
+  },
+  {
+    "title": "Constant Contact",
+    "description": "E-mail marketing para pequenas e médias empresas, com editor de arrastar e soltar, automações e SMS.",
+    "category": "Marketing e CRM",
+    "pricing": "Pago",
+    "thumb": "https://www.google.com/s2/favicons?domain=constantcontact.com&sz=128",
+    "site_url": "https://www.constantcontact.com/"
+  },
+  {
+    "title": "SharpSpring",
+    "description": "Automação de marketing com CRM, pontuação de leads e fluxos de nutrição, hoje chamada Lead Gen & CRM.",
+    "category": "Marketing e CRM",
+    "pricing": "Pago",
+    "thumb": "https://www.google.com/s2/favicons?domain=sharpspring.com&sz=128",
+    "site_url": "https://www.constantcontact.com/"
+  },
+  {
+    "title": "Ubersuggest",
+    "description": "Pesquisa de palavras-chave, auditoria de site e acompanhamento de posições no Google, com conta gratuita limitada.",
+    "category": "Marketing e CRM",
+    "pricing": "Freemium",
+    "thumb": "https://www.google.com/s2/favicons?domain=neilpatel.com&sz=128",
+    "site_url": "https://neilpatel.com/br/ubersuggest/"
+  },
+  {
+    "title": "Sults",
+    "description": "Software brasileiro de gestão de redes de franquias, com chamados, checklists, comunicação e treinamento.",
+    "category": "Produtividade",
+    "pricing": "Pago",
+    "thumb": "https://www.google.com/s2/favicons?domain=sults.com.br&sz=128",
+    "site_url": "https://www.sults.com.br/"
+  },
+  {
+    "title": "Wake Commerce",
+    "description": "Plataforma brasileira de e-commerce para médias e grandes operações B2C e B2B, sucessora da Fbits.",
+    "category": "Marca e Site",
+    "pricing": "Pago",
+    "thumb": "https://www.google.com/s2/favicons?domain=wake.tech&sz=128",
+    "site_url": "https://wake.tech/"
+  },
+  {
+    "title": "Pritunl",
+    "description": "Servidor de VPN corporativa de código aberto, com cliente para Windows, macOS e Linux, usado para entrar na rede interna da empresa a partir de qualquer lugar.",
+    "category": "Back-end",
+    "pricing": "Freemium",
+    "thumb": "https://www.google.com/s2/favicons?domain=pritunl.com&sz=128",
+    "site_url": "https://pritunl.com/"
+  },
+  {
+    "title": "Microsoft Forms",
+    "description": "Formulários, pesquisas e questionários da Microsoft, com respostas em Excel e automações pelo Power Automate.",
+    "category": "Produtividade",
+    "pricing": "Freemium",
+    "thumb": "https://www.google.com/s2/favicons?domain=forms.office.com&sz=128",
+    "site_url": "https://forms.office.com/"
+  },
+  {
+    "title": "Meta Business Suite e WhatsApp Manager",
+    "description": "Painéis da Meta para administrar o portfólio empresarial, as contas e números do WhatsApp Business, os modelos de mensagem e o faturamento.",
+    "category": "Marketing e CRM",
+    "pricing": "Freemium",
+    "thumb": "https://www.google.com/s2/favicons?domain=business.facebook.com&sz=128",
+    "site_url": "https://business.facebook.com/"
+  },
+  {
+    "title": "Salesforce Lightning Web Components (LWC) e Experience Cloud",
+    "description": "Framework de componentes web da Salesforce, usado para montar páginas e formulários em sites do Experience Cloud ligados direto ao CRM.",
+    "category": "Código",
+    "pricing": "Freemium",
+    "thumb": "https://www.google.com/s2/favicons?domain=developer.salesforce.com&sz=128",
+    "site_url": "https://developer.salesforce.com/docs/platform/lwc/guide"
+  },
+  {
+    "title": "Taak",
+    "description": "Consultoria brasileira de implementação Salesforce que atende projetos de CRM, atendimento, marketing e bots de WhatsApp.",
+    "category": "Marketing e CRM",
+    "pricing": "Pago",
+    "thumb": "https://www.google.com/s2/favicons?domain=tiinside.com.br&sz=128",
+    "site_url": "https://tiinside.com.br/24/02/2026/taak-tem-boom-de-500-em-dois-anos-e-projeta-dobrar-a-receita-em-2026/"
   }
 ];

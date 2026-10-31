@@ -112,6 +112,28 @@ function secaoLinks(titulo, lista, classe) {
   return secao;
 }
 
+const NOME_PROJETO = { "learn-tech": "learnTECH", bootcamps: "Bootcamps", career: "Career", tools: "Tools" };
+
+/* "Veja também": itens de outros sites do ecossistema ligados a este (título e URL prontos vindos da API). */
+function secaoRelacionados(lista) {
+  const itens = (Array.isArray(lista) ? lista : []).filter((r) => urlSegura(r?.url) && r?.titulo);
+  if (!itens.length) return null;
+  const secao = criar("section", "detalhe-links detalhe-relacionados");
+  secao.append(criar("h2", null, "Veja também no ecossistema"));
+  const ul = criar("ul");
+  for (const r of itens) {
+    const li = criar("li");
+    const a = criar("a", null, String(r.titulo));
+    a.href = urlSegura(r.url);
+    const projeto = NOME_PROJETO[r.projeto];
+    if (projeto) li.append(criar("span", "tag tag-cat", projeto), document.createTextNode(" "));
+    li.append(a);
+    ul.append(li);
+  }
+  secao.append(ul);
+  return secao;
+}
+
 /* Monta a página inteira do item. */
 function renderizar(item) {
   const d = item.detalhe;
@@ -195,6 +217,8 @@ function renderizar(item) {
   const rodape = criar("footer", "detalhe-rodape");
   const links = secaoLinks("Links oficiais", d.links, "detalhe-redes");
   const fontes = secaoLinks("Fontes", d.fontes, "detalhe-fontes");
+  const relacionados = secaoRelacionados(d.relacionados);
+  if (relacionados) rodape.append(relacionados);
   if (links) rodape.append(links);
   if (fontes) rodape.append(fontes);
   const data = formatarData(d.atualizadoEm);
