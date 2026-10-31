@@ -133,6 +133,13 @@
   font-weight: 600;
 }
 
+.tag-price[data-price="Descontinuado"] {
+  background: transparent;
+  border-color: var(--text-muted);
+  color: var(--text-muted);
+  font-style: italic;
+}
+
 .grid-enter {
   animation: rise 0.35s ease-out both;
 }

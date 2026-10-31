@@ -41,7 +41,7 @@ export const hostsList = [
     "category": "Site Estático",
     "pricing": "Gratuito",
     "thumb": "./assets/thumb_host/gitlab-pages.jpg",
-    "site_url": "https://about.gitlab.com/"
+    "site_url": "https://docs.gitlab.com/user/project/pages/"
   },
   {
     "title": "Surge",
@@ -54,16 +54,16 @@ export const hostsList = [
   {
     "title": "Firebase Hosting",
     "description": "Hospedagem estática com CDN, SSL automático e rollback de versão.",
-    "category": "Aplicação",
+    "category": "Site Estático",
     "pricing": "Freemium",
     "thumb": "./assets/thumb_host/firebase.jpg",
     "site_url": "https://firebase.google.com/docs/hosting?hl=pt-br"
   },
   {
     "title": "Railway",
-    "description": "Deploy de aplicação e banco a partir do repositório; hoje sem plano gratuito permanente.",
+    "description": "Deploy de aplicação e banco a partir do repositório; o plano Free dá US$ 1 de crédito por mês (out/2026).",
     "category": "Aplicação",
-    "pricing": "Pago",
+    "pricing": "Freemium",
     "thumb": "./assets/thumb_host/railway.jpg",
     "site_url": "https://railway.app/"
   },
