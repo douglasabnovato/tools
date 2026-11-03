@@ -655,5 +655,68 @@ export const toolsList = [
     "pricing": "Pago",
     "thumb": "https://www.google.com/s2/favicons?domain=tiinside.com.br&sz=128",
     "site_url": "https://tiinside.com.br/24/02/2026/taak-tem-boom-de-500-em-dois-anos-e-projeta-dobrar-a-receita-em-2026/"
+  },
+  {
+    "title": "Trailhead",
+    "description": "Plataforma gratuita de aprendizado da Salesforce, com módulos, trilhas, emblemas e ambientes de prática para treinar CRM e desenvolvimento.",
+    "category": "Produtividade",
+    "pricing": "Gratuito",
+    "thumb": "https://www.google.com/s2/favicons?domain=trailhead.salesforce.com&sz=128",
+    "thumbFit": "contain",
+    "site_url": "https://trailhead.salesforce.com/"
+  },
+  {
+    "title": "Hotmart",
+    "description": "Plataforma brasileira para criar, hospedar e vender cursos online, e-books, mentorias e outros produtos digitais, com área de membros e checkout.",
+    "category": "Marca e Site",
+    "pricing": "Freemium",
+    "thumb": "https://www.google.com/s2/favicons?domain=hotmart.com&sz=128",
+    "thumbFit": "contain",
+    "site_url": "https://hotmart.com/pt-BR"
+  },
+  {
+    "title": "RD Station",
+    "description": "Plataforma brasileira de automação de marketing, CRM de vendas e atendimento, com e-mail, landing pages, formulários e fluxos de nutrição de leads.",
+    "category": "Marketing e CRM",
+    "pricing": "Freemium",
+    "thumb": "https://www.google.com/s2/favicons?domain=rdstation.com&sz=128",
+    "thumbFit": "contain",
+    "site_url": "https://www.rdstation.com/"
+  },
+  {
+    "title": "Google Analytics",
+    "description": "Ferramenta gratuita do Google para medir o uso de sites e aplicativos, com modelo baseado em eventos no Google Analytics 4 (GA4).",
+    "category": "Dados",
+    "pricing": "Gratuito",
+    "thumb": "https://www.google.com/s2/favicons?domain=analytics.google.com&sz=128",
+    "thumbFit": "contain",
+    "site_url": "https://marketingplatform.google.com/intl/pt-BR/about/analytics/"
+  },
+  {
+    "title": "GitHub Copilot",
+    "description": "Assistente de código com IA do GitHub: sugestões enquanto você digita, chat, modo agente e revisão de código no editor e no GitHub.",
+    "category": "Código",
+    "pricing": "Freemium",
+    "thumb": "https://www.google.com/s2/favicons?domain=github.com&sz=128",
+    "thumbFit": "contain",
+    "site_url": "https://github.com/features/copilot"
+  },
+  {
+    "title": "Cursor",
+    "description": "Editor de código com IA baseado no VS Code, com sugestões, chat e agente que edita vários arquivos e roda comandos no projeto.",
+    "category": "Código",
+    "pricing": "Freemium",
+    "thumb": "https://www.google.com/s2/favicons?domain=cursor.com&sz=128",
+    "thumbFit": "contain",
+    "site_url": "https://cursor.com/"
+  },
+  {
+    "title": "Claude Code",
+    "description": "Assistente de programação da Anthropic que lê o projeto, edita arquivos, roda comandos e trabalha com Git, no terminal, na IDE, no desktop e na web.",
+    "category": "Código",
+    "pricing": "Pago",
+    "thumb": "https://www.google.com/s2/favicons?domain=claude.com&sz=128",
+    "thumbFit": "contain",
+    "site_url": "https://code.claude.com/"
   }
 ];
