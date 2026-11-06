@@ -16,19 +16,29 @@ function Aviso($msg) { Write-Host "  [AVISO] $msg" -ForegroundColor Yellow; $scr
 function Ler($p)     { [System.IO.File]::ReadAllText((Join-Path $raiz $p), [System.Text.Encoding]::UTF8) }
 function Existe($p)  { Test-Path -LiteralPath (Join-Path $raiz ($p -replace '^\./', '')) }
 
-Write-Host "`n1. Arquivos locais referenciados no index.html"
-$html = Ler 'index.html'
-$refs = [regex]::Matches($html, '(?:src|href)="(\./[^"#?]*)"') | ForEach-Object { $_.Groups[1].Value } | Sort-Object -Unique
-foreach ($r in $refs) {
-  if ($r -eq './') { continue }
-  if (Existe $r) { Ok $r } else { Erro "index.html aponta para $r, que não existe" }
+Write-Host "`n1. Arquivos locais referenciados no index.html e no detalhe.html"
+foreach ($pagina in 'index.html','detalhe.html') {
+  $conteudo = Ler $pagina
+  $refs = [regex]::Matches($conteudo, '(?:src|href)="(\./[^"#?]*)"') | ForEach-Object { $_.Groups[1].Value } | Sort-Object -Unique
+  foreach ($r in $refs) {
+    if ($r -eq './') { continue }
+    if (Existe $r) { Ok "$pagina -> $r" } else { Erro "$pagina aponta para $r, que não existe" }
+  }
+  if ($conteudo -match '<html[^>]*\blang="pt-BR"') { Ok "$pagina com lang=`"pt-BR`"" } else { Erro "$pagina sem lang=`"pt-BR`"" }
+  if ($conteudo -match '<meta\s+name="description"') { Ok "$pagina com meta description" } else { Erro "$pagina sem meta description" }
+  if ($conteudo -match '<link rel="canonical" href="https://douglasabnovato\.github\.io/tools/') { Ok "$pagina com canonical" } else { Erro "$pagina sem canonical absoluto" }
+  if ($conteudo -match 'property="og:image" content="https://') { Ok "$pagina com og:image absoluto" } else { Erro "$pagina com og:image ausente ou relativo" }
 }
-if ($html -match '<html[^>]*\blang="pt-BR"') { Ok 'lang="pt-BR" presente' } else { Erro 'index.html sem lang="pt-BR"' }
-if ($html -match '<meta\s+name="description"') { Ok 'meta description presente' } else { Erro 'index.html sem meta description' }
+$html = Ler 'index.html'
 foreach ($id in 'catalogo','modelo-card','busca','limpar-busca','filtros','contador','ver-mais','fim-da-lista','rotulo-secao','titulo-secao','subtitulo-secao','conteudo','cabecalho','alternar-tema','ano','aba-tools','aba-host') {
   if ($html -notmatch "id=`"$id`"") { Erro "id `"$id`" usado por js/renderer.js não existe no index.html" }
 }
 Ok 'ids usados pelo renderer conferidos'
+$detalheHtml = Ler 'detalhe.html'
+foreach ($id in 'estado','detalhe','voltar','alternar-tema','cabecalho','ano') {
+  if ($detalheHtml -notmatch "id=`"$id`"") { Erro "id `"$id`" usado por js/detalhe.js não existe no detalhe.html" }
+}
+Ok 'ids usados pelo detalhe conferidos'
 
 Write-Host "`n2. Imports entre módulos JS"
 foreach ($js in @('main.js') + (Get-ChildItem js -Filter *.js | ForEach-Object { "js/$($_.Name)" })) {
@@ -43,10 +53,11 @@ Write-Host "`n3. Dados do catálogo (data/tools.js e data/host.js)"
 $total = @{}
 foreach ($arq in 'data/tools.js','data/host.js') {
   $txt = Ler $arq
-  $titulos = @([regex]::Matches($txt, 'title:\s*"([^"]+)"') | ForEach-Object { $_.Groups[1].Value })
+  # As cópias são geradas pela API em formato JSON ("title": "..."); aceita também a chave sem aspas.
+  $titulos = @([regex]::Matches($txt, '"?title"?:\s*"([^"]+)"') | ForEach-Object { $_.Groups[1].Value })
   $campos = @{}
   foreach ($c in 'description','category','pricing','thumb','site_url') {
-    $campos[$c] = @([regex]::Matches($txt, "${c}:\s*`"([^`"]+)`"") | ForEach-Object { $_.Groups[1].Value })
+    $campos[$c] = @([regex]::Matches($txt, "`"?${c}`"?:\s*`"([^`"]+)`"") | ForEach-Object { $_.Groups[1].Value })
   }
   $n = $titulos.Count
   $total[$arq] = $n
@@ -57,11 +68,13 @@ foreach ($arq in 'data/tools.js','data/host.js') {
   $dup = $titulos | Group-Object | Where-Object Count -gt 1
   foreach ($d in $dup) { Erro "$arq tem título duplicado: $($d.Name)" }
   foreach ($u in $campos['site_url']) { if ($u -notmatch '^https://') { Erro "$arq site_url sem https: $u" } }
-  foreach ($p in $campos['pricing']) { if ($p -notin 'Gratuito','Freemium','Pago') { Erro "$arq pricing fora do padrão: $p" } }
+  foreach ($p in $campos['pricing']) { if ($p -notin 'Gratuito','Freemium','Pago','Descontinuado') { Erro "$arq pricing fora do padrão: $p" } }
+  $externas = 0
   foreach ($t in $campos['thumb']) {
-    if ($t -match '^https?://') { Aviso "$arq usa miniatura externa: $t" }
+    if ($t -match '^https?://') { $externas++ }
     elseif (-not (Existe $t)) { Erro "$arq aponta miniatura inexistente: $t" }
   }
+  if ($externas) { Aviso "$arq usa $externas miniatura(s) externa(s)" }
 }
 
 Write-Host "`n4. Manifest (public/site.webmanifest é JSON válido e os ícones existem)"
@@ -73,14 +86,26 @@ try {
   }
 } catch { Erro "site.webmanifest inválido: $($_.Exception.Message)" }
 
-Write-Host "`n5. Coerência e higiene (avisos)"
+Write-Host "`n5. Sitemap (gerado pela API: learntech-content/scripts/gerar-sitemaps.mjs)"
+try {
+  [xml]$mapa = Ler 'sitemap.xml'
+  $locs = @($mapa.urlset.url | ForEach-Object { $_.loc })
+  $fora = @($locs | Where-Object { $_ -notlike 'https://douglasabnovato.github.io/tools/*' })
+  if ($locs.Count -eq 0) { Erro 'sitemap.xml sem <loc>' }
+  elseif ($fora.Count) { Erro "sitemap.xml com $($fora.Count) <loc> fora de https://douglasabnovato.github.io/tools/" }
+  else { Ok "sitemap.xml é XML válido com $($locs.Count) URLs" }
+  $esperado = 1 + $total['data/tools.js'] + $total['data/host.js']
+  if ($locs.Count -lt $esperado) { Aviso "sitemap.xml tem $($locs.Count) URLs; com home, ferramentas e hospedagens seriam $esperado (corrigir no gerador da API)" }
+} catch { Erro "sitemap.xml inválido: $($_.Exception.Message)" }
+
+Write-Host "`n6. Coerência e higiene (avisos)"
 $readme = Ler 'Readme.md'
 if ($readme -match '(\d+) ferramentas · (\d+) hospedagens') {
   if ([int]$Matches[1] -ne $total['data/tools.js'] -or [int]$Matches[2] -ne $total['data/host.js']) {
     Aviso "Readme diz $($Matches[1]) ferramentas / $($Matches[2]) hospedagens; dados têm $($total['data/tools.js']) / $($total['data/host.js'])"
   } else { Ok 'contagem do Readme bate com os dados' }
 }
-if ((Ler 'js/config.js') -match 'SEU-SUBDOMINIO') { Aviso 'js/config.js ainda tem o placeholder SEU-SUBDOMINIO: API e script de identificação ficam desligados' }
+if ((Ler 'js/config.js') -match 'API_URL\s*=\s*"[^"]*SEU-SUBDOMINIO') { Aviso 'js/config.js ainda tem o placeholder SEU-SUBDOMINIO: API e script de identificação ficam desligados' }
 $usado = (Ler 'index.html') + (Ler 'data/tools.js') + (Ler 'data/host.js')
 Get-ChildItem assets -Recurse -File | ForEach-Object {
   $rel = $_.FullName.Substring($raiz.Length + 1) -replace '\\', '/'

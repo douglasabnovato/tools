@@ -2,7 +2,7 @@
 
 <p align="center">
   <strong>O catálogo de ferramentas do ecossistema LearnTECH</strong><br />
-  45 ferramentas · 10 hospedagens · 12 categorias
+  87 ferramentas · 11 hospedagens · 14 categorias
 </p>
 
 <p align="center">
@@ -36,11 +36,11 @@ profissionais de tecnologia que perdem tempo procurando a ferramenta certa.
 
 | | |
 | --- | --- |
-| **Catálogo** | 45 ferramentas em 12 categorias + 10 hospedagens em 3 |
-| **Stack** | HTML5, CSS3 e JavaScript ES6 — sem framework, sem build, zero dependência |
+| **Catálogo** | 87 ferramentas em 14 categorias + 11 hospedagens em 3 (contagem da cópia de 03/11/2026) |
+| **Stack** | HTML5, CSS3 e JavaScript ES6 — sem framework, sem build, zero dependência em produção (o `package.json` só traz eslint e prettier) |
 | **Hospedagem** | GitHub Pages (`.nojekyll` na raiz) |
 | **Tema** | Claro e escuro, seguindo o sistema na primeira visita e salvando a escolha |
-| **Externo** | Apenas Google Fonts — os ícones são SVG embutidos no HTML |
+| **Externo** | API learntech-content (dados, `/media/` e o script de identificação, que usa Cloudflare Turnstile), Google Fonts e o serviço de favicons do Google em parte das miniaturas — os ícones da interface são SVG embutidos |
 
 ### ▶️ Como rodar localmente
 
@@ -60,26 +60,35 @@ Depois abra `http://localhost:3000`.
 
 ### ➕ Como adicionar um item ao catálogo
 
-1. Coloque a miniatura em `assets/thumb_tools/` (ou `assets/thumb_host/`)
-2. Adicione um objeto ao array em `data/tools.js` (ou `data/host.js`)
-3. Pronto — não há build, a página lê o array direto
+Os dados **não são editados neste repositório**. A fonte é a API
+[learntech-content](https://github.com/douglasabnovato/learntech-content):
 
-O objeto tem seis campos obrigatórios e um opcional:
+1. Edite `content/tools/ferramentas.json` (ou `content/tools/hospedagens.json`)
+   no repositório learntech-content
+2. Rode `npm run copias` lá: ele regenera as cópias de reserva deste site,
+   `data/tools.js` e `data/host.js`
+3. Faça o commit das cópias aqui
 
-```js
-{
-  title: "Squoosh",
-  description: "Comprime e converte imagem para WebP e AVIF dentro do próprio navegador.",
-  category: "Performance",
-  pricing: "Gratuito",              // Gratuito | Freemium | Pago
-  thumb: "./assets/thumb_tools/squoosh.jpg",
-  thumbFit: "contain",              // opcional: use com logo em vez de captura de tela
-  site_url: "https://squoosh.app/",
-}
-```
+**Não edite `data/tools.js` nem `data/host.js` à mão** — a próxima geração
+sobrescreve. Elas também ficam fora do prettier (`.prettierignore`).
+
+O site busca os dados na API e usa as cópias só quando a API falha ou demora
+mais de 1,5 s; se a resposta chegar depois, ela substitui a cópia na tela sem
+recarregar. Só os dados da API trazem `slug` e `detalhe` (a página de detalhe).
 
 A categoria **não precisa ser cadastrada em lugar nenhum**: a barra de filtros é
 montada a partir dos próprios dados, com a contagem de cada uma.
+
+### ✅ Testes e qualidade
+
+```bash
+npm ci
+npm test              # node --test
+npm run lint          # eslint
+npm run format:check  # prettier
+```
+
+A CI (`.github/workflows/ci.yml`) roda os três, mais `docs/claudeia/verificar.ps1`.
 
 ---
 
@@ -89,18 +98,19 @@ montada a partir dos próprios dados, com a contagem de cada uma.
 - **Filtro por categoria** com a contagem de cada uma; clicar de novo desmarca
 - **Busca** por nome, descrição, categoria ou modelo de cobrança — ignora acento,
   então "codigo" encontra "Código"
-- **Atalho `/`** para focar a busca e `Esc` para limpar
+- **Atalho `/`** para focar a busca (fora de campos de texto) e `Esc` para limpar
+- **Abas por teclado** — setas, `Home` e `End` trocam entre Ferramentas e Hospedagens
 - **URL compartilhável** — `?s=host&c=Aplicação` reabre exatamente aquele recorte
 - **Paginação incremental** — 12 iniciais, +12 por clique
 - **Carregamento preguiçoso** das imagens via `IntersectionObserver`
 - **Tema claro e escuro** respeitando a preferência do sistema na primeira visita
-- **Card inteiro é um link** — abre em nova aba, com `rel="noopener noreferrer"`
-  e nome acessível próprio
+- **Card inteiro é um link** — abre o detalhe na mesma aba ou, sem detalhe, o site
+  em nova aba com `rel="noopener noreferrer"`; sempre com nome acessível próprio
 
 ### 📄 Página de detalhe
 
 Quando um item vindo da API tem `slug` e `detalhe`, o card abre
-`detalhe.html#id=<slug>` na mesma aba (o `#` funciona em qualquer servidor; `?id=` também é aceito), em vez do site oficial. Item sem detalhe
+`detalhe.html?id=<slug>` na mesma aba (o mesmo endereço do `sitemap.xml`; o formato antigo com `#` continua aceito), em vez do site oficial. Item sem detalhe
 continua abrindo o site em nova aba.
 
 - **O que mostra** — miniatura, título, categoria e preço, resumo em destaque,
@@ -108,15 +118,18 @@ continua abrindo o site em nova aba.
   botão "Acessar site oficial", links oficiais, fontes e "Atualizado em dd/mm/aaaa"
 - **De onde vem** — só da API (`/v1/tools/ferramentas.json` e
   `/v1/tools/hospedagens.json`; procura nas duas). Os dados locais não têm detalhe
-- **Estados** — carregando; não encontrado; API não configurada ou fora do ar
-  ("Os detalhes ficam disponíveis quando a API está ativa"), sempre com link de volta
+- **Estados** — carregando; item não encontrado; API não configurada ou fora do ar
+  ("Os detalhes ficam disponíveis quando a API está ativa", com "Tentar novamente"),
+  sempre com link de volta
+- **SEO** — `canonical` e `og:url` em `detalhe.html?id=<slug>`, `og:image` absoluto,
+  `og:title`/`og:description` do item e description cortada em 160 caracteres
 - **Voltar** — retorna ao catálogo com a mesma seção, filtro e busca quando o
   visitante veio dele
 - **Segurança** — o DOM é montado com `textContent`; links e imagens só `http(s)`
   (ou `./assets/` para miniatura); caminhos `/media/...` viram URL da API
 - **Arquivos** — `detalhe.html`, `js/detalhe.js`, `css/detalhe.css`
 
-Para testar: `http://localhost:3000/detalhe.html#id=<slug>` com `js/config.js`
+Para testar: `http://localhost:3000/detalhe.html?id=<slug>` com `js/config.js`
 apontando para a API.
 
 ---
@@ -130,15 +143,15 @@ tools/
 ├── main.js                 ponto de entrada: entrega os dados para a aplicação
 │
 ├── data/
-│   ├── tools.js            45 ferramentas
-│   └── host.js             10 hospedagens
+│   ├── tools.js            cópia de reserva: 87 ferramentas (gerada pela API)
+│   └── host.js             cópia de reserva: 11 hospedagens (gerada pela API)
 │
 ├── js/
 │   ├── renderer.js         a aplicação: seção, filtro, busca, paginação, tema, URL
 │   ├── detalhe.js          página de detalhe: busca o item na API e monta a tela
 │   ├── api.js              cliente da API: tempo limite, /media/ e identificação
 │   ├── config.js           endereço da API
-│   └── utils.js            debounce e normalização de texto
+│   └── utils.js            debounce, normalização, validação de lista e corte de texto
 │
 ├── css/
 │   ├── layout.css          tokens de tema, base tipográfica, grade e filtros
@@ -153,6 +166,9 @@ tools/
 │   └── logos/              identidade visual
 │
 ├── public/                 favicons, manifest e a imagem de compartilhamento
+├── tests/                  testes com node --test
+├── sitemap.xml             gerado pela API (scripts/gerar-sitemaps.mjs)
+├── serve.json              mantém ?id= no npx serve (cleanUrls desligado)
 └── .github/                capturas de tela usadas neste arquivo
 ```
 
@@ -160,7 +176,8 @@ tools/
 
 ```text
 main.js
-   ├── data/tools.js ─┐
+   ├── js/api.js ────── busca na API (até 1,5 s; resposta tardia entra depois)
+   ├── data/tools.js ─┐ cópia de reserva
    ├── data/host.js ──┤
    └── js/renderer.js ┘── monta filtros, grade, busca e paginação
                           └── js/utils.js
@@ -208,7 +225,7 @@ trocou o modelo de dado.
 
 ### Concluído
 
-- [x] Catálogo de 45 ferramentas e 10 hospedagens
+- [x] Catálogo de 87 ferramentas e 11 hospedagens, servido pela API learntech-content
 - [x] Campo de descrição em todos os itens
 - [x] Campo de modelo de cobrança (Gratuito / Freemium / Pago)
 - [x] Categorias reorganizadas — de 16 (oito com um item só) para 12
@@ -220,16 +237,18 @@ trocou o modelo de dado.
 - [x] Ícones SVG embutidos — o CDN de ícones externo saiu
 - [x] Imagem de compartilhamento (`og:image`) e caminhos do manifest corrigidos
 - [x] Carregamento preguiçoso das imagens
+- [x] Página de detalhe com canonical, `og:url` e `og:image` absoluto
+- [x] Testes com `node --test`, eslint e prettier na CI
 
 ### Em aberto
 
 | Prioridade | Item |
 | --- | --- |
-| 🔴 | Converter as miniaturas de `.jpg` para `.webp` — hoje são 12 MB em `assets/` |
+| 🔴 | Converter as miniaturas de `.jpg` para `.webp` — hoje são cerca de 10 MB em `assets/` |
 | 🟡 | Trocar captura de tela por favicon do serviço: resolve peso e legibilidade |
 | 🟡 | O HTML servido chega vazio ao buscador — o catálogo é montado por JavaScript |
 | 🟡 | Miniatura própria para os quatro itens novos (hoje usam link externo) |
-| 🟢 | Remover arquivos não referenciados em `assets/` (~2,2 MB) |
+| 🟡 | Hospedagens fora do `sitemap.xml` — correção no gerador da API (`learntech-content/scripts/gerar-sitemaps.mjs`) |
 | 🟢 | Definir e publicar a URL de produção neste arquivo |
 
 ---
@@ -239,9 +258,7 @@ trocou o modelo de dado.
 ### Fase 1 — Peso
 
 - [ ] Converter `assets/thumb_tools/` e `assets/thumb_host/` para `.webp`
-- [ ] Remover os arquivos órfãos: `logos/logo-tools-1.png`, `thumbs/tool-1.jpg`,
-      `icons/image.jpg`, `icons/*.svg`, `thumb_tools/tools.jpg`,
-      `thumb_host/host.jpg`, `avatar.jpg`
+      (todos os arquivos de `assets/` têm referência hoje)
 
 ### Fase 2 — Miniaturas
 
@@ -252,40 +269,46 @@ trocou o modelo de dado.
 ### Fase 3 — Descoberta
 
 - [ ] Resolver a indexação do catálogo pelos buscadores
-- [ ] `canonical` e `og:url` com a URL de produção
+- [ ] Incluir as hospedagens no `sitemap.xml` (no gerador da API)
+- [x] `canonical` e `og:url` com a URL de produção (catálogo e detalhe)
 
 ### Fase 4 — Catálogo
 
 - [ ] Revisar as hospedagens sem plano gratuito (Railway, Heroku)
 - [ ] Avaliar se Pusher continua em Hospedagens ou muda de lugar
-- [ ] Crescer as categorias novas: Performance (2) e Dados (1)
+- [ ] Crescer as categorias menores: Performance (2) e Vídeo (2)
 
 ---
 
 ## 📚 O catálogo
 
+Contagem da cópia de 03/11/2026 (`data/tools.js` e `data/host.js`). A fonte
+é a API; se os números divergirem, vale o que a API serve.
+
 ### Ferramentas
 
 | Categoria | Itens |
 | --- | --- |
+| Código | 15 |
+| Produtividade | 12 |
+| Marketing e CRM | 9 |
+| Design | 8 |
 | Comunidade | 7 |
-| Design | 6 |
+| Dados | 6 |
+| Marca e Site | 6 |
+| Back-end | 5 |
 | Imagens | 5 |
-| Código | 4 |
-| Produtividade | 4 |
-| Ícones | 4 |
-| Marca e Site | 4 |
-| Versionamento | 3 |
+| Versionamento | 4 |
 | Cores | 3 |
-| Back-end | 2 |
+| Ícones | 3 |
 | Performance | 2 |
-| Dados | 1 |
+| Vídeo | 2 |
 
 ### Hospedagens
 
 | Categoria | Itens |
 | --- | --- |
-| Site Estático | 6 |
+| Site Estático | 7 |
 | Aplicação | 3 |
 | Tempo Real | 1 |
 
@@ -295,13 +318,9 @@ trocou o modelo de dado.
 
 | Branch | Papel |
 | --- | --- |
-| `main` | em produção |
+| `main` | em produção (GitHub Pages) |
 | `developer` | avaliação antes de subir |
-| `feature/versao-1` | funcionalidades da primeira versão |
-| `feature/versao-2` | funcionalidades da segunda versão |
-| `feature/improvements` | melhorias apontadas pelo QA-1 |
-| `hotfix/deploy-image` | correção do QA-2, caminho das imagens no GitHub Pages |
-| `bugfix/menu-mobile-responsividade` | correções do QA-3 |
+| `feature/tasks-<dd-mm-aaaa>` | levas de tarefas do dia, integradas por merge |
 
 ---
 
