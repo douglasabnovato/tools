@@ -718,5 +718,41 @@ export const toolsList = [
     "thumb": "https://www.google.com/s2/favicons?domain=claude.com&sz=128",
     "thumbFit": "contain",
     "site_url": "https://code.claude.com/"
+  },
+  {
+    "title": "Supabase",
+    "description": "Plataforma de back-end sobre PostgreSQL, com autenticação, armazenamento de arquivos, tempo real e APIs geradas a partir do banco.",
+    "category": "Back-end",
+    "pricing": "Freemium",
+    "thumb": "https://www.google.com/s2/favicons?domain=supabase.com&sz=128",
+    "thumbFit": "contain",
+    "site_url": "https://supabase.com/"
+  },
+  {
+    "title": "Google Search Console",
+    "description": "Serviço gratuito do Google para acompanhar como um site aparece na busca do Google: indexação, consultas, cliques e problemas técnicos.",
+    "category": "Dados",
+    "pricing": "Gratuito",
+    "thumb": "https://www.google.com/s2/favicons?domain=search.google.com&sz=128",
+    "thumbFit": "contain",
+    "site_url": "https://search.google.com/search-console/about"
+  },
+  {
+    "title": "GitHub Actions",
+    "description": "Automação de integração e entrega contínuas no GitHub: workflows em YAML que testam, publicam e organizam o repositório a cada evento.",
+    "category": "Versionamento",
+    "pricing": "Freemium",
+    "thumb": "https://www.google.com/s2/favicons?domain=github.com&sz=128",
+    "thumbFit": "contain",
+    "site_url": "https://github.com/features/actions"
+  },
+  {
+    "title": "Playwright",
+    "description": "Framework de código aberto da Microsoft para testes de ponta a ponta em Chromium, Firefox e WebKit com uma única API.",
+    "category": "Código",
+    "pricing": "Gratuito",
+    "thumb": "https://www.google.com/s2/favicons?domain=playwright.dev&sz=128",
+    "thumbFit": "contain",
+    "site_url": "https://playwright.dev/"
   }
 ];

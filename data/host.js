@@ -91,5 +91,14 @@ export const hostsList = [
     "thumb": "https://www.google.com/s2/favicons?domain=cloudflare.com&sz=128",
     "site_url": "https://workers.cloudflare.com/",
     "thumbFit": "contain"
+  },
+  {
+    "title": "Render",
+    "description": "Nuvem para publicar sites estáticos, APIs e bancos Postgres a partir do repositório, com instâncias gratuitas para estudo.",
+    "category": "Aplicação",
+    "pricing": "Freemium",
+    "thumb": "https://www.google.com/s2/favicons?domain=render.com&sz=128",
+    "thumbFit": "contain",
+    "site_url": "https://render.com/"
   }
 ];
