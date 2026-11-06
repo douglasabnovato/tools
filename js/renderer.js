@@ -24,8 +24,7 @@ export function createApp({ toolsList, hostsList }) {
       lista: hostsList,
       rotulo: "Hospedagens",
       titulo: "Onde colocar o projeto no ar",
-      subtitulo:
-        "Plataformas de publicação que eu já usei, com o modelo de cobrança declarado em cada card.",
+      subtitulo: "Plataformas de publicação que eu já usei, com o modelo de cobrança declarado em cada card.",
       singular: "hospedagem",
       plural: "hospedagens",
     },
@@ -79,19 +78,12 @@ export function createApp({ toolsList, hostsList }) {
   /* Aplica seção, categoria e busca sobre a lista da seção corrente. */
   function filtrar() {
     const base = secoes[estado.secao].lista;
-    const porCategoria =
-      estado.categoria === TODAS
-        ? base
-        : base.filter((item) => item.category === estado.categoria);
+    const porCategoria = estado.categoria === TODAS ? base : base.filter((item) => item.category === estado.categoria);
 
     if (!estado.busca) return porCategoria;
 
     const termo = normalizar(estado.busca);
-    return porCategoria.filter((item) =>
-      normalizar(
-        `${item.title} ${item.description} ${item.category} ${item.pricing}`
-      ).includes(termo)
-    );
+    return porCategoria.filter((item) => normalizar(`${item.title} ${item.description} ${item.category} ${item.pricing}`).includes(termo));
   }
 
   /* Conta quantos itens da seção pertencem a cada categoria. */
@@ -136,7 +128,7 @@ export function createApp({ toolsList, hostsList }) {
 
     if (item.slug && item.detalhe) {
       /* Item com página de detalhe: abre detalhe.html na mesma aba. */
-      link.href = `detalhe.html#id=${encodeURIComponent(item.slug)}`; /* "#" sobrevive a servidores que redirecionam .html e descartam a query (ex.: npx serve). */
+      link.href = `detalhe.html?id=${encodeURIComponent(item.slug)}`; /* mesmo endereço do sitemap e do canonical; o serve.json mantém a query no npx serve. */
       link.removeAttribute("target");
       link.removeAttribute("rel");
       link.setAttribute("aria-label", `Ver detalhes de ${item.title}`);
@@ -181,9 +173,7 @@ export function createApp({ toolsList, hostsList }) {
   /* Atualiza o contador de resultados e os controles de paginação. */
   function atualizarControles(exibidos, total) {
     const rotulo = total === 1 ? secoes[estado.secao].singular : secoes[estado.secao].plural;
-    el.contador.textContent = total
-      ? `Exibindo ${exibidos} de ${total} ${rotulo}`
-      : `Nenhuma ${secoes[estado.secao].singular} encontrada`;
+    el.contador.textContent = total ? `Exibindo ${exibidos} de ${total} ${rotulo}` : `Nenhuma ${secoes[estado.secao].singular} encontrada`;
 
     const acabou = exibidos >= total;
     el.verMais.hidden = acabou || total === 0;
@@ -249,8 +239,10 @@ export function createApp({ toolsList, hostsList }) {
     el.subtitulo.textContent = secao.subtitulo;
     document.title = `${secao.rotulo} | learnTECH Tools`;
 
+    /* Padrão ARIA de abas: só a aba ativa entra no Tab; as setas trocam entre elas (ver ligarEventos). */
     for (const [chave, aba] of Object.entries(el.abas)) {
       aba.setAttribute("aria-selected", String(chave === estado.secao));
+      aba.tabIndex = chave === estado.secao ? 0 : -1;
     }
     el.painel.setAttribute("aria-labelledby", `aba-${estado.secao}`);
   }
@@ -294,6 +286,22 @@ export function createApp({ toolsList, hostsList }) {
     el.abas.tools.addEventListener("click", () => trocarSecao("tools"));
     el.abas.host.addEventListener("click", () => trocarSecao("host"));
 
+    /* Setas, Home e End movem entre as abas e já ativam a seção (as abas são só duas). */
+    el.abas.tools.parentElement.addEventListener("keydown", (evento) => {
+      const ordem = Object.keys(el.abas);
+      const atual = ordem.indexOf(estado.secao);
+      const destino = {
+        ArrowRight: (atual + 1) % ordem.length,
+        ArrowLeft: (atual - 1 + ordem.length) % ordem.length,
+        Home: 0,
+        End: ordem.length - 1,
+      }[evento.key];
+      if (destino === undefined) return;
+      evento.preventDefault();
+      trocarSecao(ordem[destino]);
+      el.abas[ordem[destino]].focus();
+    });
+
     el.filtros.addEventListener("click", (evento) => {
       const chip = evento.target.closest("[data-categoria]");
       if (chip) trocarCategoria(chip.dataset.categoria);
@@ -317,7 +325,7 @@ export function createApp({ toolsList, hostsList }) {
         estado.visiveis = INICIAIS;
         renderizar();
         sincronizarUrl();
-      }, 250)
+      }, 250),
     );
 
     el.limparBusca.addEventListener("click", () => {
@@ -340,7 +348,10 @@ export function createApp({ toolsList, hostsList }) {
     });
 
     document.addEventListener("keydown", (evento) => {
-      if (evento.key === "/" && document.activeElement !== el.busca) {
+      /* "/" só vira atalho fora de campos de texto (ex.: o modal de identificação tem nome e e-mail). */
+      const alvo = document.activeElement;
+      const digitando = alvo && (alvo.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(alvo.tagName));
+      if (evento.key === "/" && !digitando) {
         evento.preventDefault();
         el.busca.focus();
       }
@@ -349,12 +360,10 @@ export function createApp({ toolsList, hostsList }) {
       }
     });
 
-    window.addEventListener(
-      "scroll",
-      () => el.cabecalho.classList.toggle("is-stuck", window.scrollY > 4),
-      { passive: true }
-    );
+    window.addEventListener("scroll", () => el.cabecalho.classList.toggle("is-stuck", window.scrollY > 4), { passive: true });
   }
+
+  let iniciado = false;
 
   /* Ponto de partida: lê a URL, monta a tela e liga os eventos. */
   function iniciar() {
@@ -364,6 +373,19 @@ export function createApp({ toolsList, hostsList }) {
     renderizar();
     ligarEventos();
     el.ano.textContent = new Date().getFullYear();
+    iniciado = true;
+  }
+
+  /* Troca as listas (ex.: a API respondeu depois da cópia local) mantendo seção, filtro, busca e paginação.
+     Não religa eventos: ligarEventos roda uma vez só, em iniciar. */
+  function usarDados(dados) {
+    secoes.tools.lista = dados.toolsList;
+    secoes.host.lista = dados.hostsList;
+    if (!iniciado) return;
+    const existe = secoes[estado.secao].lista.some((item) => item.category === estado.categoria);
+    if (estado.categoria !== TODAS && !existe) estado.categoria = TODAS;
+    montarFiltros();
+    renderizar();
   }
 
   if (document.readyState === "loading") {
@@ -371,6 +393,8 @@ export function createApp({ toolsList, hostsList }) {
   } else {
     iniciar();
   }
+
+  return { usarDados };
 }
 
 /* Fim de renderer.js */

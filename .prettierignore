@@ -5,3 +5,7 @@ content
 media
 *.min.js
 package-lock.json
+
+# Cópias geradas pela API learntech-content (npm run copias lá): não formatar nem editar à mão
+data/tools.js
+data/host.js

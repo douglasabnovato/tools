@@ -3,10 +3,13 @@
    createElement/textContent (nenhum dado externo vira HTML). */
 
 import { apiConfigurada, buscarRecurso, resolverMidia, carregarIdentificacao } from "./api.js";
+import { cortarTexto } from "./utils.js";
 
 const CHAVE_TEMA = "tools:theme";
 const FORMATO_SLUG = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 const VIDEO_YOUTUBE = /^https:\/\/www\.youtube(-nocookie)?\.com\/embed\/([\w-]{11})$/;
+/* Endereço público do detalhe: o mesmo formato das URLs do sitemap.xml (gerado pela API). */
+const URL_DETALHE = "https://douglasabnovato.github.io/tools/detalhe.html";
 
 const LISTAS = [
   { caminho: "tools/ferramentas.json", secao: "tools" },
@@ -21,6 +24,10 @@ const el = {
   cabecalho: document.getElementById("cabecalho"),
   ano: document.getElementById("ano"),
   descricao: document.querySelector('meta[name="description"]'),
+  canonical: document.querySelector('link[rel="canonical"]'),
+  ogUrl: document.querySelector('meta[property="og:url"]'),
+  ogTitulo: document.querySelector('meta[property="og:title"]'),
+  ogDescricao: document.querySelector('meta[property="og:description"]'),
 };
 
 /* Só aceita URL http(s): protege contra "javascript:" e similares vindos de dado externo. */
@@ -78,8 +85,8 @@ function definirVoltar(secao) {
   el.voltar.href = href;
 }
 
-/* Troca o bloco de estado por uma mensagem com link de volta (e, opcionalmente, o site oficial). */
-function mostrarMensagem(titulo, texto, item) {
+/* Troca o bloco de estado por uma mensagem com link de volta (e, opcionalmente, o site oficial ou "Tentar novamente"). */
+function mostrarMensagem(titulo, texto, item, tentarDeNovo) {
   const caixa = criar("div", "empty");
   caixa.append(criar("h1", "detalhe-estado-titulo", titulo), criar("p", null, texto));
   const acoes = criar("div", "detalhe-estado-acoes");
@@ -88,6 +95,12 @@ function mostrarMensagem(titulo, texto, item) {
   acoes.append(voltar);
   const site = item && linkExterno(item.site_url, "Acessar site oficial", "btn-primary");
   if (site) acoes.append(site);
+  if (tentarDeNovo) {
+    const botao = criar("button", "btn-primary", "Tentar novamente");
+    botao.type = "button";
+    botao.addEventListener("click", tentarDeNovo, { once: true });
+    acoes.append(botao);
+  }
   caixa.append(acoes);
   el.estado.replaceChildren(caixa);
   el.estado.removeAttribute("aria-busy");
@@ -237,8 +250,20 @@ function renderizar(item) {
   el.estado.hidden = true;
   el.estado.removeAttribute("aria-busy");
 
-  document.title = `${item.title} | learnTECH Tools`;
-  if (el.descricao) el.descricao.setAttribute("content", String(d.resumo));
+  definirMetadados(item);
+}
+
+/* Título, description (até 160 caracteres), canonical e Open Graph do item exibido. */
+function definirMetadados(item) {
+  const titulo = `${item.title} | learnTECH Tools`;
+  const descricao = cortarTexto(item.detalhe.resumo, 160);
+  const url = `${URL_DETALHE}?id=${encodeURIComponent(item.slug)}`;
+  document.title = titulo;
+  el.descricao?.setAttribute("content", descricao);
+  el.ogTitulo?.setAttribute("content", titulo);
+  el.ogDescricao?.setAttribute("content", descricao);
+  el.canonical?.setAttribute("href", url);
+  el.ogUrl?.setAttribute("content", url);
 }
 
 /* Confere o mínimo para montar a página. */
@@ -279,6 +304,28 @@ function ligarTema() {
   });
 }
 
+/* Busca o item e desenha a página ou a mensagem de estado; quando a API falha, oferece nova tentativa. */
+async function carregar(slug) {
+  el.estado.setAttribute("aria-busy", "true");
+  const r = await procurar(slug);
+  if (r.item) definirVoltar(r.secao);
+
+  if (r.motivo === "indisponivel" && !r.item) {
+    mostrarMensagem(
+      "Detalhes indisponíveis",
+      "Os detalhes ficam disponíveis quando a API está ativa. Tente de novo em alguns minutos.",
+      null,
+      () => carregar(slug),
+    );
+  } else if (!r.item) {
+    mostrarMensagem("Item não encontrado", "Não há nenhuma ferramenta ou hospedagem com esse endereço no catálogo.");
+  } else if (!detalheValido(r.item)) {
+    mostrarMensagem(String(r.item.title), "Este item ainda não tem página de detalhe.", r.item);
+  } else {
+    renderizar(r.item);
+  }
+}
+
 async function iniciar() {
   ligarTema();
   if (el.ano) el.ano.textContent = new Date().getFullYear();
@@ -287,27 +334,19 @@ async function iniciar() {
 
   const slug = new URLSearchParams(location.search || location.hash.slice(1)).get("id") ?? ""; /* aceita ?id= e #id= */
   if (!FORMATO_SLUG.test(slug)) {
-    mostrarMensagem("Ferramenta não encontrada", "O endereço não aponta para nenhuma ferramenta do catálogo.");
+    mostrarMensagem("Item não encontrado", "O endereço não aponta para nenhuma ferramenta ou hospedagem do catálogo.");
     return;
   }
 
   if (!apiConfigurada()) {
-    mostrarMensagem("Detalhes indisponíveis", "Os detalhes ficam disponíveis quando a API está ativa. Enquanto isso, o catálogo continua funcionando.");
+    mostrarMensagem(
+      "Detalhes indisponíveis",
+      "Os detalhes ficam disponíveis quando a API está ativa. Enquanto isso, o catálogo continua funcionando.",
+    );
     return;
   }
 
-  const r = await procurar(slug);
-  if (r.item) definirVoltar(r.secao);
-
-  if (r.motivo === "indisponivel" && !r.item) {
-    mostrarMensagem("Detalhes indisponíveis", "Os detalhes ficam disponíveis quando a API está ativa. Tente de novo em alguns minutos.");
-  } else if (!r.item) {
-    mostrarMensagem("Ferramenta não encontrada", "Não há nenhuma ferramenta ou hospedagem com esse endereço no catálogo.");
-  } else if (!detalheValido(r.item)) {
-    mostrarMensagem(String(r.item.title), "Este item ainda não tem página de detalhe.", r.item);
-  } else {
-    renderizar(r.item);
-  }
+  await carregar(slug);
 }
 
 carregarIdentificacao("tools");

@@ -72,8 +72,10 @@
           <button
             class="tab"
             id="aba-tools"
+            type="button"
             role="tab"
             aria-selected="true"
+            tabindex="0"
             aria-controls="conteudo"
           >
             Ferramentas
@@ -81,8 +83,10 @@
           <button
             class="tab"
             id="aba-host"
+            type="button"
             role="tab"
             aria-selected="false"
+            tabindex="-1"
             aria-controls="conteudo"
           >
             Hospedagens
@@ -134,7 +138,7 @@
 
         <div class="toolbar" id="filtros" role="group" aria-label="Filtrar por categoria"></div>
 
-        <p class="result-line" id="contador" aria-live="polite"></p>
+        <p class="result-line" id="contador" aria-live="polite">Carregando catálogo...</p>
 
         <div class="grid" id="catalogo"></div>
 

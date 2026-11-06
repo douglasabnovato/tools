@@ -4,7 +4,9 @@ import assert from "node:assert/strict";
 import { apiConfigurada, buscarRecurso, resolverMidia } from "../js/api.js";
 
 const original = globalThis.fetch;
-afterEach(() => { globalThis.fetch = original; });
+afterEach(() => {
+  globalThis.fetch = original;
+});
 
 test("a API está configurada em js/config.js", () => assert.equal(apiConfigurada(), true));
 
@@ -15,7 +17,10 @@ test("buscarRecurso devolve o JSON e rejeita em erro", async () => {
 });
 
 test("resolverMidia completa só caminhos /media/", () => {
-  const [a, b] = resolverMidia([{ thumb: "/media/t.webp", detalhe: { imagens: [{ url: "/media/i.webp" }] } }, { thumb: "https://x.com/a.png" }]);
+  const [a, b] = resolverMidia([
+    { thumb: "/media/t.webp", detalhe: { imagens: [{ url: "/media/i.webp" }] } },
+    { thumb: "https://x.com/a.png" },
+  ]);
   assert.match(a.thumb, /^https:\/\/.+\/media\/t\.webp$/);
   assert.match(a.detalhe.imagens[0].url, /\/media\/i\.webp$/);
   assert.equal(b.thumb, "https://x.com/a.png");

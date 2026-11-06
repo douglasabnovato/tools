@@ -3,14 +3,11 @@
 import { toolsList } from "./data/tools.js";
 import { hostsList } from "./data/host.js";
 import { createApp } from "./js/renderer.js";
+import { listaValida } from "./js/utils.js";
 import { buscarRecurso, resolverMidia, esperarAte, carregarIdentificacao } from "./js/api.js";
 
-const ESPERA_API_MS = 2500;
-
-/* Confere se a API devolveu uma lista não vazia de itens com título e link; senão o site usa os dados locais. */
-function listaValida(lista) {
-  return Array.isArray(lista) && lista.length > 0 && lista.every((item) => item && item.title && item.site_url);
-}
+/* Tempo máximo esperando a API antes de desenhar com a cópia local (mesmo valor do career). */
+const ESPERA_API_MS = 1500;
 
 /* Busca ferramentas e hospedagens na API; devolve null quando ela falha, e o site segue com os dados locais. */
 async function carregarCatalogo() {
@@ -28,6 +25,16 @@ async function carregarCatalogo() {
 }
 
 carregarIdentificacao("tools");
-createApp((await esperarAte(carregarCatalogo(), ESPERA_API_MS)) ?? { toolsList, hostsList });
+const remoto = carregarCatalogo();
+const primeiro = await esperarAte(remoto, ESPERA_API_MS);
+const app = createApp(primeiro ?? { toolsList, hostsList });
+
+/* A API passou do tempo de espera: a cópia local já está na tela e, quando a resposta chegar,
+   os dados novos entram sem recarregar (é a API que traz slug e detalhe para os cards abrirem detalhe.html). */
+if (primeiro === undefined) {
+  remoto.then((dados) => {
+    if (dados) app.usarDados(dados);
+  });
+}
 
 /* Fim de main.js */
