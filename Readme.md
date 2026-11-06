@@ -16,6 +16,14 @@
 
 ---
 
+## 📍 Estado do projeto (06/11/2026)
+
+- **Onde está:** Em produção no GitHub Pages. CI verde com lint, formato, 9 testes e verificação estática.
+- **O que fizemos na rodada de MVP (03 a 05/11):** Resposta tardia da API aproveitada, SEO do detalhe com canonical, abas por teclado, "Tentar novamente" no detalhe e o lote 4 de conteúdo.
+- **O que queremos fazer:** [#55](https://github.com/douglasabnovato/tools/issues/55), [#60](https://github.com/douglasabnovato/tools/issues/60), [#58](https://github.com/douglasabnovato/tools/issues/58), [#59](https://github.com/douglasabnovato/tools/issues/59), [#56](https://github.com/douglasabnovato/tools/issues/56), [#57](https://github.com/douglasabnovato/tools/issues/57) (miniaturas WebP, contraste, Lighthouse, 404 e CSP, filtro por cobrança e medição). Todas com o label `proximos-passos` e critérios de entrega.
+
+A linha do tempo completa, os números e a ordem sugerida estão em [`docs/ESTADO-DO-PROJETO.md`](docs/ESTADO-DO-PROJETO.md).
+
 ## 🧭 Sobre
 
 Reúne, num lugar só, os serviços que eu realmente usei em projetos reais —
@@ -244,41 +252,18 @@ trocou o modelo de dado.
 
 ### Em aberto
 
-| Prioridade | Item |
+O que falta virou issue com o label `proximos-passos` e critérios de entrega, na ordem sugerida. O detalhe está em [`docs/ESTADO-DO-PROJETO.md`](docs/ESTADO-DO-PROJETO.md).
+
+| Issue | Item |
 | --- | --- |
-| 🔴 | Converter as miniaturas de `.jpg` para `.webp` — hoje são cerca de 10 MB em `assets/` |
-| 🟡 | Trocar captura de tela por favicon do serviço: resolve peso e legibilidade |
-| 🟡 | O HTML servido chega vazio ao buscador — o catálogo é montado por JavaScript |
-| 🟡 | Miniatura própria para os quatro itens novos (hoje usam link externo) |
-| 🟡 | Hospedagens fora do `sitemap.xml` — correção no gerador da API (`learntech-content/scripts/gerar-sitemaps.mjs`) |
-| 🟢 | Definir e publicar a URL de produção neste arquivo |
+| [#55](https://github.com/douglasabnovato/tools/issues/55) | Miniaturas leves: WebP e tamanho padrão (cerca de 10 MB em `assets/` hoje) |
+| [#60](https://github.com/douglasabnovato/tools/issues/60) | Contraste de cor e nome acessível dos cards |
+| [#58](https://github.com/douglasabnovato/tools/issues/58) | Lighthouse, e2e e acessibilidade com relatório |
+| [#59](https://github.com/douglasabnovato/tools/issues/59) | Página 404 e Content-Security-Policy |
+| [#56](https://github.com/douglasabnovato/tools/issues/56) | Filtro por modelo de cobrança |
+| [#57](https://github.com/douglasabnovato/tools/issues/57) | Medição do catálogo: buscas, filtros e cliques |
 
----
-
-## 🗺️ Próximos passos
-
-### Fase 1 — Peso
-
-- [ ] Converter `assets/thumb_tools/` e `assets/thumb_host/` para `.webp`
-      (todos os arquivos de `assets/` têm referência hoje)
-
-### Fase 2 — Miniaturas
-
-- [ ] Decidir entre captura de tela e favicon do serviço
-- [ ] Gerar as miniaturas de PageSpeed Insights, Squoosh, Data Studio e
-      Cloudflare Pages
-
-### Fase 3 — Descoberta
-
-- [ ] Resolver a indexação do catálogo pelos buscadores
-- [ ] Incluir as hospedagens no `sitemap.xml` (no gerador da API)
-- [x] `canonical` e `og:url` com a URL de produção (catálogo e detalhe)
-
-### Fase 4 — Catálogo
-
-- [ ] Revisar as hospedagens sem plano gratuito (Railway, Heroku)
-- [ ] Avaliar se Pusher continua em Hospedagens ou muda de lugar
-- [ ] Crescer as categorias menores: Performance (2) e Vídeo (2)
+Ainda sem issue, à espera de decisão: captura de tela ou favicon do serviço nas miniaturas; hospedagens sem plano gratuito (Railway, Heroku); crescer as categorias menores (Performance e Vídeo, com 2 itens cada).
 
 ---
 
