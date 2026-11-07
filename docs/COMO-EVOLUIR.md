@@ -46,5 +46,6 @@ Guia curto para mudar o site com segurança. Ferramentas e hospedagens **não na
 ## 7. Documentos
 - `Readme.md`: visão geral. `docs/README.md`: engenharia.
 - `docs/claudeia/`: histórico datado, com o diagnóstico de MVP e o relatório de 03/11/2026.
+- `CLAUDE.md`: instruções para o Claude. Contrato do conteúdo deste site: `../learntech-content/docs/contratos/tools.md`.
 - `docs/ESTADO-DO-PROJETO.md`: o que fizemos, como está hoje e o que queremos fazer, com as issues em ordem.
 - Próximos passos: issues com a label `proximos-passos`.
