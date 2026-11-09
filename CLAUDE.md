@@ -14,7 +14,8 @@ Site estático em JavaScript puro, sem build, no GitHub Pages (`douglasabnovato.
 - **Privacidade:** nenhum dado pessoal de terceiro, nome de cliente ou link interno de ex-empregador. O Claude não lê nem cadastra segredos.
 
 ## Git
-- Branch do dia `feature/tasks-DD-MM-AAAA`, criada da `main`. Depois: push, CI verde, `developer` e `main` por `--ff-only`.
+- Branch do dia `feature/tasks-DD-MM-AAAA`, criada da `main`. Depois: push, CI verde e `developer` por `--ff-only`.
+- **O Claude para na `developer`.** A `main` é produção: quem leva a `developer` para a `main` é o autor (09/11/2026).
 - A `main` é protegida: check `verificar` obrigatório e sem force push. Nunca commit direto na `main`.
 - Comentários e issues no GitHub terminam com `<sub>por douglas ciborgue</sub>`.
 
