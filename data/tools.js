@@ -754,5 +754,59 @@ export const toolsList = [
     "thumb": "https://www.google.com/s2/favicons?domain=playwright.dev&sz=128",
     "thumbFit": "contain",
     "site_url": "https://playwright.dev/"
+  },
+  {
+    "title": "Campaign Monitor",
+    "description": "E-mail marketing com editor de arrastar e soltar, modelos, segmentação e automações, voltado a pequenas empresas e agências.",
+    "category": "Marketing e CRM",
+    "pricing": "Pago",
+    "thumb": "https://www.google.com/s2/favicons?domain=campaignmonitor.com&sz=128",
+    "thumbFit": "contain",
+    "site_url": "https://www.campaignmonitor.com/"
+  },
+  {
+    "title": "Omnisend",
+    "description": "E-mail, SMS e notificações web para lojas virtuais, com automações de carrinho abandonado e integração com Shopify e outras plataformas.",
+    "category": "Marketing e CRM",
+    "pricing": "Freemium",
+    "thumb": "https://www.google.com/s2/favicons?domain=omnisend.com&sz=128",
+    "thumbFit": "contain",
+    "site_url": "https://www.omnisend.com/"
+  },
+  {
+    "title": "GetResponse",
+    "description": "E-mail marketing e automação com landing pages, formulários, webinars e criador de cursos, com conta gratuita e planos pagos por contatos.",
+    "category": "Marketing e CRM",
+    "pricing": "Freemium",
+    "thumb": "https://www.google.com/s2/favicons?domain=getresponse.com&sz=128",
+    "thumbFit": "contain",
+    "site_url": "https://www.getresponse.com/"
+  },
+  {
+    "title": "Databox",
+    "description": "Painéis e relatórios de desempenho que juntam dados de marketing, vendas e finanças de mais de 130 fontes, com metas e análise por IA.",
+    "category": "Dados",
+    "pricing": "Freemium",
+    "thumb": "https://www.google.com/s2/favicons?domain=databox.com&sz=128",
+    "thumbFit": "contain",
+    "site_url": "https://databox.com/"
+  },
+  {
+    "title": "Rock Content",
+    "description": "Empresa brasileira de marketing de conteúdo, conhecida pelo blog e pelos cursos gratuitos e por soluções como WriterAccess, Ion e Stage.",
+    "category": "Marketing e CRM",
+    "pricing": "Pago",
+    "thumb": "https://www.google.com/s2/favicons?domain=rockcontent.com&sz=128",
+    "thumbFit": "contain",
+    "site_url": "https://rockcontent.com/br/"
+  },
+  {
+    "title": "HackerRank",
+    "description": "Desafios de programação e testes técnicos usados por empresas para avaliar e entrevistar pessoas desenvolvedoras, com prática gratuita.",
+    "category": "Código",
+    "pricing": "Freemium",
+    "thumb": "https://www.google.com/s2/favicons?domain=hackerrank.com&sz=128",
+    "thumbFit": "contain",
+    "site_url": "https://www.hackerrank.com/"
   }
 ];
