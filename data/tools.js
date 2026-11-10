@@ -7,7 +7,7 @@ export const toolsList = [
     "description": "Design de interface e protótipo navegável, com edição simultânea no navegador.",
     "category": "Design",
     "pricing": "Freemium",
-    "thumb": "./assets/thumb_tools/figma.jpg",
+    "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/figma.webp",
     "site_url": "https://www.figma.com/"
   },
   {
@@ -15,7 +15,7 @@ export const toolsList = [
     "description": "Wireframes com cara de rascunho, para discutir estrutura sem discutir estilo.",
     "category": "Design",
     "pricing": "Pago",
-    "thumb": "./assets/thumb_tools/balsamiq.jpg",
+    "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/balsamiq.webp",
     "site_url": "https://balsamiq.cloud/"
   },
   {
@@ -23,7 +23,7 @@ export const toolsList = [
     "description": "Wireframes de baixa fidelidade no navegador; o serviço foi encerrado e hoje serve de referência histórica.",
     "category": "Design",
     "pricing": "Descontinuado",
-    "thumb": "./assets/thumb_tools/mockingbird.jpg",
+    "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/mockingbird.webp",
     "site_url": "https://gomockingbird.com/home"
   },
   {
@@ -31,7 +31,7 @@ export const toolsList = [
     "description": "Fluxogramas, mapas mentais e wireframes convivendo no mesmo quadro.",
     "category": "Design",
     "pricing": "Freemium",
-    "thumb": "./assets/thumb_tools/whimsical.jpg",
+    "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/whimsical.webp",
     "site_url": "https://whimsical.com/"
   },
   {
@@ -39,7 +39,7 @@ export const toolsList = [
     "description": "Diagramas de arquitetura, fluxo e rede direto no navegador, sem criar conta.",
     "category": "Design",
     "pricing": "Gratuito",
-    "thumb": "./assets/thumb_tools/diagrams.jpg",
+    "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/diagrams.webp",
     "site_url": "https://app.diagrams.net/"
   },
   {
@@ -47,7 +47,7 @@ export const toolsList = [
     "description": "Modelagem entidade-relacionamento de banco de dados no navegador.",
     "category": "Design",
     "pricing": "Gratuito",
-    "thumb": "./assets/thumb_tools/brmodeloweb.jpg",
+    "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/brmodeloweb.webp",
     "site_url": "https://docs.brmodeloweb.com/"
   },
   {
@@ -55,7 +55,7 @@ export const toolsList = [
     "description": "Editor de HTML, CSS e JS com resultado ao vivo e galeria pública de exemplos.",
     "category": "Código",
     "pricing": "Freemium",
-    "thumb": "./assets/thumb_tools/codepen.jpg",
+    "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/codepen.webp",
     "site_url": "https://codepen.io/your-work"
   },
   {
@@ -63,7 +63,7 @@ export const toolsList = [
     "description": "Ambiente de desenvolvimento completo no navegador, com npm e preview.",
     "category": "Código",
     "pricing": "Freemium",
-    "thumb": "./assets/thumb_tools/codesandbox.jpg",
+    "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/codesandbox.webp",
     "site_url": "https://codesandbox.io/s/vanilla-vanilla"
   },
   {
@@ -71,7 +71,7 @@ export const toolsList = [
     "description": "Projetos Node e front-end rodando no navegador, sem instalar nada na máquina.",
     "category": "Código",
     "pricing": "Freemium",
-    "thumb": "./assets/thumb_tools/stackblitz.jpg",
+    "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/stackblitz.webp",
     "site_url": "https://stackblitz.com/"
   },
   {
@@ -79,7 +79,7 @@ export const toolsList = [
     "description": "Editor de HTML, CSS e JS em tela dividida, com preview instantâneo.",
     "category": "Código",
     "pricing": "Gratuito",
-    "thumb": "./assets/thumb_tools/fronteditor.jpg",
+    "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/fronteditor.webp",
     "site_url": "https://www.fronteditor.dev/"
   },
   {
@@ -87,7 +87,7 @@ export const toolsList = [
     "description": "Repositórios Git com Actions, Pages e GitHub Projects, que organiza issues e tarefas em quadros kanban — a base do trabalho em código.",
     "category": "Versionamento",
     "pricing": "Freemium",
-    "thumb": "./assets/thumb_tools/github.jpg",
+    "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/github.webp",
     "site_url": "https://github.com/"
   },
   {
@@ -95,7 +95,7 @@ export const toolsList = [
     "description": "Repositório Git com CI/CD, issues e registro de container no mesmo lugar.",
     "category": "Versionamento",
     "pricing": "Freemium",
-    "thumb": "./assets/thumb_tools/gitlab.jpg",
+    "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/gitlab.webp",
     "site_url": "https://about.gitlab.com/"
   },
   {
@@ -103,7 +103,7 @@ export const toolsList = [
     "description": "Repositórios Git com pipelines integrados ao ecossistema Atlassian.",
     "category": "Versionamento",
     "pricing": "Freemium",
-    "thumb": "./assets/thumb_tools/bitbucket.jpg",
+    "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/bitbucket.webp",
     "site_url": "https://bitbucket.org/"
   },
   {
@@ -111,7 +111,7 @@ export const toolsList = [
     "description": "Testa, documenta e versiona requisições de API organizadas em coleções.",
     "category": "Back-end",
     "pricing": "Freemium",
-    "thumb": "./assets/thumb_tools/postman.jpg",
+    "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/postman.webp",
     "site_url": "https://www.postman.com/"
   },
   {
@@ -119,7 +119,7 @@ export const toolsList = [
     "description": "Caixa de e-mail falsa para testar envios sem entregar na caixa real de ninguém.",
     "category": "Back-end",
     "pricing": "Freemium",
-    "thumb": "./assets/thumb_tools/mailtrap.jpg",
+    "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/mailtrap.webp",
     "site_url": "https://mailtrap.io/"
   },
   {
@@ -154,7 +154,7 @@ export const toolsList = [
     "description": "Documentos, bases de dados e wikis reunidos num espaço único de trabalho.",
     "category": "Produtividade",
     "pricing": "Freemium",
-    "thumb": "./assets/thumb_tools/notion.jpg",
+    "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/notion.webp",
     "site_url": "https://www.notion.so/"
   },
   {
@@ -162,7 +162,7 @@ export const toolsList = [
     "description": "Quadros kanban para organizar tarefas por coluna, prazo e responsável.",
     "category": "Produtividade",
     "pricing": "Freemium",
-    "thumb": "./assets/thumb_tools/trello.jpg",
+    "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/trello.webp",
     "site_url": "https://trello.com/home"
   },
   {
@@ -170,7 +170,7 @@ export const toolsList = [
     "description": "Bloco de notas compartilhado por URL, sem cadastro e sem instalação.",
     "category": "Produtividade",
     "pricing": "Gratuito",
-    "thumb": "./assets/thumb_tools/dontpad.jpg",
+    "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/dontpad.webp",
     "site_url": "https://dontpad.com/"
   },
   {
@@ -178,7 +178,7 @@ export const toolsList = [
     "description": "Timer Pomodoro no navegador para alternar blocos de foco e pausas.",
     "category": "Produtividade",
     "pricing": "Freemium",
-    "thumb": "./assets/thumb_tools/pomodoro.jpg",
+    "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/pomodoro.webp",
     "site_url": "https://pomofocus.io/"
   },
   {
@@ -186,7 +186,7 @@ export const toolsList = [
     "description": "A maior base de perguntas e respostas de programação da internet.",
     "category": "Comunidade",
     "pricing": "Gratuito",
-    "thumb": "./assets/thumb_tools/stackoverflow.jpg",
+    "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/stackoverflow.webp",
     "site_url": "https://stackoverflow.com/"
   },
   {
@@ -194,7 +194,7 @@ export const toolsList = [
     "description": "Servidores de comunidade para tirar dúvida e acompanhar projeto em tempo real.",
     "category": "Comunidade",
     "pricing": "Freemium",
-    "thumb": "./assets/thumb_tools/discord.jpg",
+    "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/discord.webp",
     "site_url": "https://discord.com/"
   },
   {
@@ -202,7 +202,7 @@ export const toolsList = [
     "description": "Comunicação por canais, com integrações e histórico pesquisável.",
     "category": "Comunidade",
     "pricing": "Freemium",
-    "thumb": "./assets/thumb_tools/slack.jpg",
+    "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/slack.webp",
     "site_url": "https://slack.com/intl/pt-br"
   },
   {
@@ -210,7 +210,7 @@ export const toolsList = [
     "description": "Blog técnico com publicação a partir do Git; domínio próprio e recursos avançados ficaram no plano Pro (2026).",
     "category": "Comunidade",
     "pricing": "Freemium",
-    "thumb": "./assets/thumb_tools/hashnode.jpg",
+    "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/hashnode.webp",
     "site_url": "https://hashnode.com/"
   },
   {
@@ -218,7 +218,7 @@ export const toolsList = [
     "description": "Portfólios de design publicados — bons para estudar composição e processo.",
     "category": "Comunidade",
     "pricing": "Freemium",
-    "thumb": "./assets/thumb_tools/behance.jpg",
+    "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/behance.webp",
     "site_url": "https://www.behance.net/"
   },
   {
@@ -226,7 +226,7 @@ export const toolsList = [
     "description": "Recortes de interface postados por designers, para referência visual rápida.",
     "category": "Comunidade",
     "pricing": "Freemium",
-    "thumb": "./assets/thumb_tools/dribbble.jpg",
+    "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/dribbble.webp",
     "site_url": "https://dribbble.com/"
   },
   {
@@ -234,7 +234,7 @@ export const toolsList = [
     "description": "Painéis de referência para montar e organizar direção de arte.",
     "category": "Comunidade",
     "pricing": "Gratuito",
-    "thumb": "./assets/thumb_tools/pinterest.jpg",
+    "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/pinterest.webp",
     "site_url": "https://br.pinterest.com/"
   },
   {
@@ -242,7 +242,7 @@ export const toolsList = [
     "description": "Fotografia em alta resolução, de uso livre e sem atribuição obrigatória.",
     "category": "Imagens",
     "pricing": "Gratuito",
-    "thumb": "./assets/thumb_tools/unsplash.jpg",
+    "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/unsplash.webp",
     "site_url": "https://unsplash.com/"
   },
   {
@@ -250,7 +250,7 @@ export const toolsList = [
     "description": "Ilustrações vetoriais de código aberto, liberadas para uso comercial.",
     "category": "Imagens",
     "pricing": "Gratuito",
-    "thumb": "./assets/thumb_tools/illlustrations.jpg",
+    "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/illlustrations.webp",
     "site_url": "https://illlustrations.co/"
   },
   {
@@ -258,7 +258,7 @@ export const toolsList = [
     "description": "Vetores, fotos e modelos editáveis para montar peça gráfica rápido.",
     "category": "Imagens",
     "pricing": "Freemium",
-    "thumb": "./assets/thumb_tools/freepik.jpg",
+    "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/freepik.webp",
     "site_url": "https://www.magnific.com/"
   },
   {
@@ -266,7 +266,7 @@ export const toolsList = [
     "description": "Editor de imagem no navegador que abre arquivos PSD, XCF e Sketch.",
     "category": "Imagens",
     "pricing": "Gratuito",
-    "thumb": "./assets/thumb_tools/photopea.jpg",
+    "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/photopea.webp",
     "site_url": "https://www.photopea.com/"
   },
   {
@@ -274,7 +274,7 @@ export const toolsList = [
     "description": "Lista comentada de bancos de imagem e recursos livres para projeto web.",
     "category": "Imagens",
     "pricing": "Gratuito",
-    "thumb": "./assets/thumb_tools/imgsgratis.jpg",
+    "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/imgsgratis.webp",
     "site_url": "https://blog.rocketseat.com.br/melhores-sites-para-baixar-imagens-gratuitas-e-outros-recursos/"
   },
   {
@@ -282,7 +282,7 @@ export const toolsList = [
     "description": "Família de ícones de código aberto em seis pesos, com SVG e componentes prontos.",
     "category": "Ícones",
     "pricing": "Gratuito",
-    "thumb": "./assets/thumb_tools/phosphoricons.jpg",
+    "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/phosphoricons.webp",
     "site_url": "https://phosphoricons.com/"
   },
   {
@@ -290,7 +290,7 @@ export const toolsList = [
     "description": "Banco de ícones em SVG e PNG; o plano gratuito exige atribuição.",
     "category": "Ícones",
     "pricing": "Freemium",
-    "thumb": "./assets/thumb_tools/flaticon.jpg",
+    "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/flaticon.webp",
     "site_url": "https://www.flaticon.com/"
   },
   {
@@ -298,7 +298,7 @@ export const toolsList = [
     "description": "Ícones, ilustrações e fotos desenhados em estilos consistentes entre si.",
     "category": "Ícones",
     "pricing": "Freemium",
-    "thumb": "./assets/thumb_tools/icons8.jpg",
+    "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/icons8.webp",
     "site_url": "https://icons8.com/"
   },
   {
@@ -306,7 +306,7 @@ export const toolsList = [
     "description": "Catálogo de fontes livres, com preview e o código de incorporação pronto.",
     "category": "Design",
     "pricing": "Gratuito",
-    "thumb": "./assets/thumb_tools/fonts-google.jpg",
+    "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/fonts-google.webp",
     "site_url": "https://fonts.google.com/"
   },
   {
@@ -314,7 +314,7 @@ export const toolsList = [
     "description": "Seletor de cor com conversão imediata entre HEX, RGB e HSL.",
     "category": "Cores",
     "pricing": "Gratuito",
-    "thumb": "./assets/thumb_tools/htmlcolorcodes.jpg",
+    "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/htmlcolorcodes.webp",
     "site_url": "https://htmlcolorcodes.com/"
   },
   {
@@ -322,7 +322,7 @@ export const toolsList = [
     "description": "Gradientes prontos com o CSS copiável ao lado de cada um.",
     "category": "Cores",
     "pricing": "Gratuito",
-    "thumb": "./assets/thumb_tools/uigradients.jpg",
+    "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/uigradients.webp",
     "site_url": "https://uigradients.com/"
   },
   {
@@ -330,7 +330,7 @@ export const toolsList = [
     "description": "Converte uma cor entre todos os formatos e sugere harmonias a partir dela.",
     "category": "Cores",
     "pricing": "Gratuito",
-    "thumb": "./assets/thumb_tools/convertingcolors.jpg",
+    "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/convertingcolors.webp",
     "site_url": "https://convertingcolors.com/"
   },
   {
@@ -338,7 +338,7 @@ export const toolsList = [
     "description": "Peças gráficas, apresentações e logo a partir de modelo, direto no navegador.",
     "category": "Marca e Site",
     "pricing": "Freemium",
-    "thumb": "./assets/thumb_tools/canva.jpg",
+    "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/canva.webp",
     "site_url": "https://www.canva.com/"
   },
   {
@@ -346,7 +346,7 @@ export const toolsList = [
     "description": "Gera identidade de marca a partir do nome e do segmento do negócio.",
     "category": "Marca e Site",
     "pricing": "Pago",
-    "thumb": "./assets/thumb_tools/tailorbrands.jpg",
+    "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/tailorbrands.webp",
     "site_url": "https://studio.tailorbrands.com/"
   },
   {
@@ -354,7 +354,7 @@ export const toolsList = [
     "description": "Construtor de página com exportação para HTML, WordPress e Joomla.",
     "category": "Marca e Site",
     "pricing": "Freemium",
-    "thumb": "./assets/thumb_tools/nicepage.jpg",
+    "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/nicepage.webp",
     "site_url": "https://nicepage.com/"
   },
   {
@@ -362,7 +362,7 @@ export const toolsList = [
     "description": "Publicação de site e blog com tema e plugin, sem precisar escrever código.",
     "category": "Marca e Site",
     "pricing": "Freemium",
-    "thumb": "./assets/thumb_tools/wordpress.jpg",
+    "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/wordpress.webp",
     "site_url": "https://wordpress.com/"
   },
   {
