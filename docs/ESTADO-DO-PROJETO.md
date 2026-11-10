@@ -44,7 +44,7 @@ Todas as issues têm o label `proximos-passos` e pelo menos três critérios de 
 
 Também na fila, sem issue própria por enquanto: decidir entre captura de tela e favicon do serviço nas miniaturas, e revisar as hospedagens sem plano gratuito (Railway, Heroku).
 
-Na #55, o que falta é trabalho na API: as 52 miniaturas JPG de `assets/thumb_tools` e `assets/thumb_host` (de 42 a 490 KB) são citadas só por `data/tools.js` e `data/host.js`, que são gerados. A conversão para WebP de até 30 KB e a troca do `thumb` entram por `learntech-content/content/tools/`, e as cópias chegam aqui por `npm run copias`.
+Na #55, o que falta é trabalho na API: as 51 miniaturas JPG de `assets/thumb_tools` e `assets/thumb_host` (de 42 a 490 KB) são citadas só por `data/tools.js` e `data/host.js`, que são gerados. A conversão para WebP de até 30 KB e a troca do `thumb` entram por `learntech-content/content/tools/`, e as cópias chegam aqui por `npm run copias`.
 
 As outras issues abertas (growth, copywriting, cases e formações) são **material de conteúdo**. Elas entram pela API, pelo processo de remessa do `learntech-content`.
 
