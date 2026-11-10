@@ -1,6 +1,6 @@
 # Estado do projeto: tools
 
-**Atualizado em 10/11/2026.** Este arquivo responde a três perguntas: onde o projeto está, o que já fizemos e o que queremos fazer. Para trazer conteúdo novo ou mudar o site, siga [`COMO-EVOLUIR.md`](COMO-EVOLUIR.md).
+**Atualizado em 10/11/2026.** A régua dos 12 critérios está em [`MVP.md`](MVP.md). Este arquivo responde a três perguntas: onde o projeto está, o que já fizemos e o que queremos fazer. Para trazer conteúdo novo ou mudar o site, siga [`COMO-EVOLUIR.md`](COMO-EVOLUIR.md).
 
 ## Onde está
 
@@ -9,7 +9,7 @@
 | Produção | `https://douglasabnovato.github.io/tools/` (GitHub Pages, publicado a cada push na `main`) |
 | Repositório | `main` protegida (check `verificar` obrigatório, sem force push). Fluxo: `feature/tasks-DD-MM-AAAA` → `developer` → `main`, só fast-forward |
 | CI | `npm ci`, lint, `format:check`, 14 testes (`node --test`) e `verificar.ps1` |
-| Conteúdo | 91 ferramentas e 12 hospedagens, com reserva local gerada pela API (`data/tools.js` e `data/host.js`) |
+| Conteúdo | 97 ferramentas e 12 hospedagens, com reserva local gerada pela API (`data/tools.js` e `data/host.js`) |
 | Acessibilidade | axe (WCAG 2.2 AA) sem violação na home, nas hospedagens, no detalhe e no 404, nos temas claro e escuro (local, 10/11/2026) |
 | Segurança | CSP por `<meta http-equiv>` nas três páginas; 404 próprio em `404.html` |
 
