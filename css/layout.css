@@ -8,10 +8,11 @@
   --border-strong: #363941;
   --text: #f2f3f5;
   --text-muted: #9ea3ad;
-  --text-faint: #6b7078;
+  --text-faint: #8a8f98;
   --accent: #ffb224;
   --accent-soft: rgba(255, 178, 36, 0.13);
   --accent-on: #1a1206;
+  --accent-text: #ffb224;
   --shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
   --r-sm: 8px;
   --r: 12px;
@@ -32,10 +33,11 @@
   --border-strong: #d1cec6;
   --text: #16181d;
   --text-muted: #5b6068;
-  --text-faint: #868b93;
+  --text-faint: #686c74;
   --accent: #b45309;
   --accent-soft: rgba(180, 83, 9, 0.1);
   --accent-on: #ffffff;
+  --accent-text: #9a4a0b;
   --shadow: 0 8px 24px rgba(30, 26, 16, 0.09);
   color-scheme: light;
 }
@@ -106,6 +108,16 @@ select {
 
 .skip-link:focus {
   left: 0;
+}
+
+/* Texto só para leitor de tela (ex.: "abre em nova aba" nos cards). */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 .container {
@@ -202,7 +214,6 @@ select {
 }
 
 .chip .chip-count {
-  opacity: 0.6;
   margin-left: 0.3rem;
   font-variant-numeric: tabular-nums;
 }

@@ -2,7 +2,7 @@
 
 <p align="center">
   <strong>O catálogo de ferramentas do ecossistema LearnTECH</strong><br />
-  91 ferramentas · 12 hospedagens · 14 categorias
+  97 ferramentas · 12 hospedagens · 14 categorias
 </p>
 
 > **Vai evoluir o projeto ou trouxe arquivos novos?** Comece por [`docs/COMO-EVOLUIR.md`](docs/COMO-EVOLUIR.md): onde fica cada coisa, o que é gerado pela API, comandos e a checklist de estabilidade.
@@ -46,7 +46,7 @@ profissionais de tecnologia que perdem tempo procurando a ferramenta certa.
 
 | | |
 | --- | --- |
-| **Catálogo** | 91 ferramentas em 14 categorias + 12 hospedagens em 3 (contagem da cópia de 05/11/2026) |
+| **Catálogo** | 97 ferramentas em 14 categorias + 12 hospedagens em 3 (contagem da API em 10/11/2026) |
 | **Stack** | HTML5, CSS3 e JavaScript ES6 — sem framework, sem build, zero dependência em produção (o `package.json` só traz eslint e prettier) |
 | **Hospedagem** | GitHub Pages (`.nojekyll` na raiz) |
 | **Tema** | Claro e escuro, seguindo o sistema na primeira visita e salvando a escolha |
@@ -153,7 +153,7 @@ tools/
 ├── main.js                 ponto de entrada: entrega os dados para a aplicação
 │
 ├── data/
-│   ├── tools.js            cópia de reserva: 91 ferramentas (gerada pela API)
+│   ├── tools.js            cópia de reserva: 97 ferramentas (gerada pela API)
 │   └── host.js             cópia de reserva: 12 hospedagens (gerada pela API)
 │
 ├── js/
@@ -235,7 +235,7 @@ trocou o modelo de dado.
 
 ### Concluído
 
-- [x] Catálogo de 91 ferramentas e 12 hospedagens, servido pela API learntech-content
+- [x] Catálogo de 97 ferramentas e 12 hospedagens, servido pela API learntech-content
 - [x] Campo de descrição em todos os itens
 - [x] Campo de modelo de cobrança (Gratuito / Freemium / Pago)
 - [x] Categorias reorganizadas — de 16 (oito com um item só) para 12

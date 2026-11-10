@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="pt-BR" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSP: o que muda aqui tem de mudar nas 3 páginas (index, detalhe e 404) e em tests/csp.test.js. Motivo de cada origem em docs/COMO-EVOLUIR.md. -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' https://learntech-content.douglasabnovato.workers.dev; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://learntech-content.douglasabnovato.workers.dev https://www.google.com https://*.gstatic.com; connect-src 'self' https://learntech-content.douglasabnovato.workers.dev https://fonts.googleapis.com; frame-src https://www.youtube-nocookie.com; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'"
+    />
+    <title>Página não encontrada | learnTECH Tools</title>
+    <meta name="description" content="Esta página não existe no catálogo learnTECH Tools. Volte para as ferramentas ou as hospedagens." />
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#0c0d10" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#faf9f7" media="(prefers-color-scheme: light)" />
+
+    <!-- O GitHub Pages serve este arquivo em qualquer rota inexistente, com a URL original na barra.
+         Por isso todos os caminhos são absolutos (/tools/...): relativos quebrariam em /tools/a/b/c. -->
+    <link rel="icon" href="/tools/public/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/tools/public/favicon-32x32.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/tools/css/layout.css" />
+    <link rel="stylesheet" href="/tools/css/header.css" />
+    <link rel="stylesheet" href="/tools/css/detalhe.css" />
+
+    <script src="/tools/js/tema.js"></script>
+  </head>
+
+  <body>
+    <a href="#conteudo" class="skip-link">Pular para o conteúdo</a>
+
+    <header class="site-header" id="cabecalho">
+      <div class="header-inner">
+        <a href="/tools/" class="brand" aria-label="Tools learnTECH, página inicial">
+          <img src="/tools/assets/logos/logo-tools.webp" alt="" width="30" height="30" />
+          <span class="brand-text">learn<span class="accent">TECH</span></span>
+        </a>
+
+        <nav class="detalhe-nav" aria-label="Navegação">
+          <a href="/tools/" class="detalhe-nav-link">Catálogo</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="conteudo" class="page">
+      <div class="container detalhe">
+        <div class="empty">
+          <h1 class="detalhe-estado-titulo">Página não encontrada</h1>
+          <p>O endereço não existe no catálogo. Ele pode ter mudado ou ter sido digitado errado.</p>
+          <div class="detalhe-estado-acoes">
+            <a href="/tools/" class="btn-primary">Ver as ferramentas</a>
+            <a href="/tools/?s=host" class="btn-more">Ver as hospedagens</a>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

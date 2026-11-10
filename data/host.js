@@ -7,7 +7,7 @@ export const hostsList = [
     "description": "Hospedagem otimizada para front-end, com preview por branch e CDN global.",
     "category": "Site Estático",
     "pricing": "Freemium",
-    "thumb": "./assets/thumb_host/vercel.jpg",
+    "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/vercel.webp",
     "site_url": "https://vercel.com/"
   },
   {
@@ -15,7 +15,7 @@ export const hostsList = [
     "description": "Deploy contínuo de site estático, com preview por pull request e redirects.",
     "category": "Site Estático",
     "pricing": "Freemium",
-    "thumb": "./assets/thumb_host/netlify.jpg",
+    "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/netlify.webp",
     "site_url": "https://www.netlify.com/"
   },
   {
@@ -32,7 +32,7 @@ export const hostsList = [
     "description": "Site estático servido direto do repositório, sem configuração e sem custo.",
     "category": "Site Estático",
     "pricing": "Gratuito",
-    "thumb": "./assets/thumb_host/github-pages.jpg",
+    "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/github-pages.webp",
     "site_url": "https://pages.github.com/"
   },
   {
@@ -40,7 +40,7 @@ export const hostsList = [
     "description": "Site estático publicado pelo pipeline do próprio repositório GitLab.",
     "category": "Site Estático",
     "pricing": "Gratuito",
-    "thumb": "./assets/thumb_host/gitlab-pages.jpg",
+    "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/gitlab-pages.webp",
     "site_url": "https://docs.gitlab.com/user/project/pages/"
   },
   {
@@ -48,7 +48,7 @@ export const hostsList = [
     "description": "Publica um site estático pela linha de comando, em um comando só.",
     "category": "Site Estático",
     "pricing": "Freemium",
-    "thumb": "./assets/thumb_host/surge.jpg",
+    "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/surge.webp",
     "site_url": "https://surge.sh/"
   },
   {
@@ -56,7 +56,7 @@ export const hostsList = [
     "description": "Hospedagem estática com CDN, SSL automático e rollback de versão.",
     "category": "Site Estático",
     "pricing": "Freemium",
-    "thumb": "./assets/thumb_host/firebase.jpg",
+    "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/firebase.webp",
     "site_url": "https://firebase.google.com/docs/hosting?hl=pt-br"
   },
   {
@@ -64,7 +64,7 @@ export const hostsList = [
     "description": "Deploy de aplicação e banco a partir do repositório; o plano Free dá US$ 1 de crédito por mês (out/2026).",
     "category": "Aplicação",
     "pricing": "Freemium",
-    "thumb": "./assets/thumb_host/railway.jpg",
+    "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/railway.webp",
     "site_url": "https://railway.app/"
   },
   {
@@ -72,7 +72,7 @@ export const hostsList = [
     "description": "PaaS para aplicação com banco gerenciado; o plano gratuito foi encerrado em 2022.",
     "category": "Aplicação",
     "pricing": "Pago",
-    "thumb": "./assets/thumb_host/heroku.jpg",
+    "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/heroku.webp",
     "site_url": "https://www.heroku.com/"
   },
   {
@@ -80,7 +80,7 @@ export const hostsList = [
     "description": "Canais de tempo real por WebSocket para notificação, chat e presença.",
     "category": "Tempo Real",
     "pricing": "Freemium",
-    "thumb": "./assets/thumb_host/pusher.jpg",
+    "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/pusher.webp",
     "site_url": "https://pusher.com/"
   },
   {
