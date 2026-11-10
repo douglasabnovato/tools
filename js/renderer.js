@@ -131,15 +131,18 @@ export function createApp({ toolsList, hostsList }) {
       link.href = `detalhe.html?id=${encodeURIComponent(item.slug)}`; /* mesmo endereço do sitemap e do canonical; o serve.json mantém a query no npx serve. */
       link.removeAttribute("target");
       link.removeAttribute("rel");
-      link.setAttribute("aria-label", `Ver detalhes de ${item.title}`);
       no.querySelector(".go").textContent = "→";
     } else {
       /* Só aceita link http(s): protege contra "javascript:" vindo de dado externo. */
       if (/^https?:\/\//i.test(String(item.site_url))) link.href = item.site_url;
-      link.setAttribute("aria-label", `Abrir ${item.title} em uma nova aba`);
+      const aviso = document.createElement("span");
+      aviso.className = "sr-only";
+      aviso.textContent = " (abre em nova aba)";
+      no.querySelector(".nome").after(aviso);
     }
 
-    img.alt = `Miniatura de ${item.title}`;
+    /* Sem aria-label: o nome do link é o texto visível do card, começando pelo nome da ferramenta (WCAG 2.5.3).
+       A miniatura é decorativa (alt vazio do template): o nome já está no título ao lado. */
     img.dataset.src = item.thumb;
     if (item.thumbFit) img.dataset.fit = item.thumbFit;
     img.addEventListener("load", () => img.classList.add("is-loaded"), { once: true });
