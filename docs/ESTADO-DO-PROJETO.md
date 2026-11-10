@@ -1,6 +1,6 @@
 # Estado do projeto: tools
 
-**Atualizado em 06/11/2026.** Este arquivo responde a três perguntas: onde o projeto está, o que já fizemos e o que queremos fazer. Para trazer conteúdo novo ou mudar o site, siga [`COMO-EVOLUIR.md`](COMO-EVOLUIR.md).
+**Atualizado em 10/11/2026.** Este arquivo responde a três perguntas: onde o projeto está, o que já fizemos e o que queremos fazer. Para trazer conteúdo novo ou mudar o site, siga [`COMO-EVOLUIR.md`](COMO-EVOLUIR.md).
 
 ## Onde está
 
@@ -8,9 +8,10 @@
 |---|---|
 | Produção | `https://douglasabnovato.github.io/tools/` (GitHub Pages, publicado a cada push na `main`) |
 | Repositório | `main` protegida (check `verificar` obrigatório, sem force push). Fluxo: `feature/tasks-DD-MM-AAAA` → `developer` → `main`, só fast-forward |
-| CI | `npm ci`, lint, `format:check`, 9 testes (`node --test`) e `verificar.ps1` |
+| CI | `npm ci`, lint, `format:check`, 14 testes (`node --test`) e `verificar.ps1` |
 | Conteúdo | 91 ferramentas e 12 hospedagens, com reserva local gerada pela API (`data/tools.js` e `data/host.js`) |
-| Acessibilidade | Sem violação crítica no axe. Restam contraste (24 na home, 5 no detalhe) e nome acessível diferente do texto visível (12), na #60 |
+| Acessibilidade | axe (WCAG 2.2 AA) sem violação na home, nas hospedagens, no detalhe e no 404, nos temas claro e escuro (local, 10/11/2026) |
+| Segurança | CSP por `<meta http-equiv>` nas três páginas; 404 próprio em `404.html` |
 
 ## O que fizemos
 
@@ -24,6 +25,7 @@
 | 05/11, MVP | Resposta tardia da API aproveitada sem recarregar; SEO do detalhe com `?id=` e canonical; abas por teclado; "Tentar novamente" no detalhe; `verificar.ps1` contando as cópias de verdade |
 | 05/11, estabilidade | e2e contra a produção passando; `COMO-EVOLUIR.md`; README com os números reais |
 | 06/11 | Este documento, README com o estado e issue nova (#60) |
+| 10/11 | Contraste e nome acessível dos cards (#60); 404 e CSP (#59); logo em WebP (#55, miniaturas dos cards ficam na API) |
 
 Detalhes: `docs/claudeia/diagnostico-mvp-2026-11-03.md` e `docs/claudeia/06-mvp-2026-11-03.md`.
 
@@ -41,6 +43,8 @@ Todas as issues têm o label `proximos-passos` e pelo menos três critérios de 
 | 6 | [#57](https://github.com/douglasabnovato/tools/issues/57) | Medição do catálogo: buscas, filtros e cliques | produto |
 
 Também na fila, sem issue própria por enquanto: decidir entre captura de tela e favicon do serviço nas miniaturas, e revisar as hospedagens sem plano gratuito (Railway, Heroku).
+
+Na #55, o que falta é trabalho na API: as 52 miniaturas JPG de `assets/thumb_tools` e `assets/thumb_host` (de 42 a 490 KB) são citadas só por `data/tools.js` e `data/host.js`, que são gerados. A conversão para WebP de até 30 KB e a troca do `thumb` entram por `learntech-content/content/tools/`, e as cópias chegam aqui por `npm run copias`.
 
 As outras issues abertas (growth, copywriting, cases e formações) são **material de conteúdo**. Elas entram pela API, pelo processo de remessa do `learntech-content`.
 
