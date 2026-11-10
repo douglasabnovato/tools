@@ -3,6 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSP: o que muda aqui tem de mudar nas 3 páginas (index, detalhe e 404) e em tests/csp.test.js. Motivo de cada origem em docs/COMO-EVOLUIR.md. -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' https://learntech-content.douglasabnovato.workers.dev; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://learntech-content.douglasabnovato.workers.dev https://www.google.com https://*.gstatic.com; connect-src 'self' https://learntech-content.douglasabnovato.workers.dev https://fonts.googleapis.com; frame-src https://www.youtube-nocookie.com; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'"
+    />
     <title>Detalhe da ferramenta | learnTECH Tools</title>
 
     <meta
@@ -44,20 +49,7 @@
     <link rel="stylesheet" href="./css/footer.css" />
     <link rel="stylesheet" href="./css/detalhe.css" />
 
-    <script>
-      (function () {
-        try {
-          var saved = localStorage.getItem("tools:theme");
-          var prefers = window.matchMedia("(prefers-color-scheme: light)").matches;
-          document.documentElement.setAttribute(
-            "data-theme",
-            saved || (prefers ? "light" : "dark")
-          );
-        } catch (e) {
-          document.documentElement.setAttribute("data-theme", "dark");
-        }
-      })();
-    </script>
+    <script src="./js/tema.js"></script>
   </head>
 
   <body>
