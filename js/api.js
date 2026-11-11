@@ -33,6 +33,7 @@ function urlMidia(valor) {
 export function resolverMidia(lista) {
   return lista.map((item) => {
     const novo = { ...item, thumb: urlMidia(item.thumb) };
+    if (item.thumbPequena) novo.thumbPequena = urlMidia(item.thumbPequena);
     if (Array.isArray(item.detalhe?.imagens)) {
       novo.detalhe = {
         ...item.detalhe,

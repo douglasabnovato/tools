@@ -62,15 +62,24 @@ export function createApp({ toolsList, hostsList }) {
         })
       : null;
 
+  /* Põe srcset e src guardados no dataset; o srcset vem antes para o navegador baixar só a versão escolhida. */
+  function carregarImagem(img) {
+    if (img.dataset.srcset) {
+      img.srcset = img.dataset.srcset;
+      img.removeAttribute("data-srcset");
+    }
+    if (img.dataset.src) {
+      img.src = img.dataset.src;
+      img.removeAttribute("data-src");
+    }
+  }
+
   /* Troca a imagem placeholder pela real quando o card chega perto da janela. */
   function aoEntrarNaTela(entradas) {
     entradas.forEach((entrada) => {
       if (!entrada.isIntersecting) return;
       const img = entrada.target;
-      if (img.dataset.src) {
-        img.src = img.dataset.src;
-        img.removeAttribute("data-src");
-      }
+      carregarImagem(img);
       observador.unobserve(img);
     });
   }
@@ -144,12 +153,18 @@ export function createApp({ toolsList, hostsList }) {
     /* Sem aria-label: o nome do link é o texto visível do card, começando pelo nome da ferramenta (WCAG 2.5.3).
        A miniatura é decorativa (alt vazio do template): o nome já está no título ao lado. */
     img.dataset.src = item.thumb;
+    /* Com a versão de 320 px, o card (até cerca de 260 px de largura) não baixa a de 640 px; tela densa ainda pega a maior (tools#55). */
+    if (item.thumbPequena) {
+      img.dataset.srcset = `${item.thumbPequena} 320w, ${item.thumb} 640w`;
+      /* Larguras do .grid (layout.css): 1 coluna abaixo de 396 px, 2 colunas até 720 px e cards de cerca de 260 px acima disso. */
+      img.sizes = "(max-width: 395px) calc(100vw - 32px), (max-width: 720px) calc(50vw - 26px), 320px";
+    }
     if (item.thumbFit) img.dataset.fit = item.thumbFit;
     img.addEventListener("load", () => img.classList.add("is-loaded"), { once: true });
     img.addEventListener("error", () => img.classList.add("is-loaded"), { once: true });
 
     if (observador) observador.observe(img);
-    else img.src = item.thumb;
+    else carregarImagem(img);
 
     no.querySelector(".nome").textContent = item.title;
     no.querySelector(".card-desc").textContent = item.description;

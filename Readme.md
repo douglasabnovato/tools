@@ -171,8 +171,6 @@ tools/
 │   └── detalhe.css         página de detalhe
 │
 ├── assets/
-│   ├── thumb_tools/        miniaturas das ferramentas
-│   ├── thumb_host/         miniaturas das hospedagens
 │   └── logos/              identidade visual
 │
 ├── public/                 favicons, manifest e a imagem de compartilhamento

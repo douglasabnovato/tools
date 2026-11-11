@@ -25,3 +25,9 @@ test("resolverMidia completa só caminhos /media/", () => {
   assert.match(a.detalhe.imagens[0].url, /\/media\/i\.webp$/);
   assert.equal(b.thumb, "https://x.com/a.png");
 });
+
+test("resolverMidia completa a thumbPequena e não a cria quando falta (tools#55)", () => {
+  const [a, b] = resolverMidia([{ thumb: "/media/t.webp", thumbPequena: "/media/320/t.webp" }, { thumb: "/media/t.webp" }]);
+  assert.match(a.thumbPequena, /^https:\/\/.+\/media\/320\/t\.webp$/);
+  assert.equal("thumbPequena" in b, false);
+});
