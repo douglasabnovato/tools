@@ -310,4 +310,10 @@
   }
 }
 
+/* O detalhe ocupa a tela desde o carregamento: antes, o rodapé aparecia no meio da tela e
+   saltava quando a ferramenta chegava (CLS 0,19 no celular com rede lenta, #64). */
+.detalhe {
+  min-height: 100vh;
+}
+
 /* Fim de detalhe.css */

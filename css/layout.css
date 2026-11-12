@@ -323,4 +323,17 @@ select {
   }
 }
 
+/* Espaço reservado enquanto o catálogo carrega (#64). Sem isso, no celular com rede lenta,
+   a linha de filtros surgia e empurrava o contador, e a paginação saía da tela quando os cards
+   chegavam (CLS 0,13). A linha vazia tem a altura de um chip; a grade vazia ocupa a tela. */
+.toolbar:empty::before {
+  content: "";
+  display: block;
+  height: 2.31rem;
+}
+
+.grid:empty {
+  min-height: 100vh;
+}
+
 /* Fim de layout.css */
