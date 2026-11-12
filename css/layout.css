@@ -213,6 +213,12 @@ select {
   font-weight: 600;
 }
 
+/* Segunda barra (cobrança, tools#56): a linha de separação fica só embaixo dela. */
+.toolbar:has(+ .toolbar--preco) {
+  padding-bottom: 0.6rem;
+  border-bottom: 0;
+}
+
 .chip .chip-count {
   margin-left: 0.3rem;
   font-variant-numeric: tabular-nums;

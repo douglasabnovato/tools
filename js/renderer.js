@@ -2,13 +2,13 @@
    Recebe as listas por parâmetro e cuida de seção, filtro, busca,
    paginação, carregamento preguiçoso das imagens, tema e estado na URL. */
 
-import { debounce, normalizar } from "./utils.js";
+import { debounce } from "./utils.js";
+import { TODAS, filtrarCatalogo, contarCategorias, contarPrecos, valorValido } from "./filtros.js";
 
 export function createApp({ toolsList, hostsList }) {
   const INICIAIS = 12;
   const INCREMENTO = 12;
   const CHAVE_TEMA = "tools:theme";
-  const TODAS = "todas";
 
   const secoes = {
     tools: {
@@ -36,6 +36,7 @@ export function createApp({ toolsList, hostsList }) {
     busca: document.getElementById("busca"),
     limparBusca: document.getElementById("limpar-busca"),
     filtros: document.getElementById("filtros"),
+    filtroPreco: document.getElementById("filtro-preco"),
     contador: document.getElementById("contador"),
     verMais: document.getElementById("ver-mais"),
     fim: document.getElementById("fim-da-lista"),
@@ -52,7 +53,7 @@ export function createApp({ toolsList, hostsList }) {
     },
   };
 
-  const estado = { secao: "tools", categoria: TODAS, busca: "", visiveis: INICIAIS };
+  const estado = { secao: "tools", categoria: TODAS, preco: TODAS, busca: "", visiveis: INICIAIS };
 
   const observador =
     "IntersectionObserver" in window
@@ -84,43 +85,36 @@ export function createApp({ toolsList, hostsList }) {
     });
   }
 
-  /* Aplica seção, categoria e busca sobre a lista da seção corrente. */
+  /* Aplica seção, categoria, cobrança e busca sobre a lista da seção corrente. */
   function filtrar() {
-    const base = secoes[estado.secao].lista;
-    const porCategoria = estado.categoria === TODAS ? base : base.filter((item) => item.category === estado.categoria);
-
-    if (!estado.busca) return porCategoria;
-
-    const termo = normalizar(estado.busca);
-    return porCategoria.filter((item) => normalizar(`${item.title} ${item.description} ${item.category} ${item.pricing}`).includes(termo));
+    return filtrarCatalogo(secoes[estado.secao].lista, estado);
   }
 
-  /* Conta quantos itens da seção pertencem a cada categoria. */
-  function contarCategorias() {
-    const contagem = new Map();
-    for (const item of secoes[estado.secao].lista) {
-      contagem.set(item.category, (contagem.get(item.category) || 0) + 1);
-    }
-    return [...contagem.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
-  }
-
-  /* Redesenha a barra de filtros com o total de cada categoria. */
+  /* Redesenha as duas barras. Cada contagem respeita o outro filtro: as categorias contam dentro da cobrança
+     escolhida e a cobrança conta dentro da categoria escolhida (tools#56). */
   function montarFiltros() {
-    const total = secoes[estado.secao].lista.length;
-    const partes = [criarChip(TODAS, "Todas", total)];
-    for (const [nome, qtd] of contarCategorias()) {
-      partes.push(criarChip(nome, nome, qtd));
-    }
-    el.filtros.replaceChildren(...partes);
+    const lista = secoes[estado.secao].lista;
+    const naCobranca = filtrarCatalogo(lista, { preco: estado.preco });
+    const naCategoria = filtrarCatalogo(lista, { categoria: estado.categoria });
+
+    el.filtros.replaceChildren(...barra("categoria", "Todas", naCobranca.length, contarCategorias(naCobranca)));
+    el.filtroPreco.replaceChildren(...barra("preco", "Qualquer cobrança", naCategoria.length, contarPrecos(naCategoria)));
   }
 
-  /* Monta um botão de categoria já com o estado de pressionado correto. */
-  function criarChip(valor, texto, quantidade) {
+  /* Botões de uma barra. O filtro ativo continua na barra mesmo com 0 itens, para poder ser desmarcado. */
+  function barra(campo, rotuloTodas, total, contagem) {
+    const ativo = estado[campo];
+    if (ativo !== TODAS && !contagem.some(([nome]) => nome === ativo)) contagem.push([ativo, 0]);
+    return [criarChip(campo, TODAS, rotuloTodas, total), ...contagem.map(([nome, qtd]) => criarChip(campo, nome, nome, qtd))];
+  }
+
+  /* Monta um botão de filtro (categoria ou cobrança) já com o estado de pressionado correto. */
+  function criarChip(campo, valor, texto, quantidade) {
     const botao = document.createElement("button");
     botao.type = "button";
     botao.className = "chip";
-    botao.dataset.categoria = valor;
-    botao.setAttribute("aria-pressed", String(estado.categoria === valor));
+    botao.dataset[campo] = valor;
+    botao.setAttribute("aria-pressed", String(estado[campo] === valor));
     /* textContent em vez de innerHTML: a categoria pode vir da API e não deve virar HTML. */
     const contador = document.createElement("span");
     contador.className = "chip-count";
@@ -227,6 +221,7 @@ export function createApp({ toolsList, hostsList }) {
     const params = new URLSearchParams();
     if (estado.secao !== "tools") params.set("s", estado.secao);
     if (estado.categoria !== TODAS) params.set("c", estado.categoria);
+    if (estado.preco !== TODAS) params.set("preco", estado.preco);
     if (estado.busca) params.set("q", estado.busca);
     const consulta = params.toString();
     history.replaceState(null, "", consulta ? `?${consulta}` : location.pathname);
@@ -244,9 +239,9 @@ export function createApp({ toolsList, hostsList }) {
       el.busca.value = busca;
     }
 
-    const categoria = params.get("c");
-    const existe = secoes[estado.secao].lista.some((item) => item.category === categoria);
-    if (categoria && existe) estado.categoria = categoria;
+    const lista = secoes[estado.secao].lista;
+    estado.categoria = valorValido(lista, "category", params.get("c"));
+    estado.preco = valorValido(lista, "pricing", params.get("preco"));
   }
 
   /* Escreve na tela os textos da seção ativa e marca a aba correspondente. */
@@ -270,6 +265,7 @@ export function createApp({ toolsList, hostsList }) {
     if (estado.secao === secao) return;
     estado.secao = secao;
     estado.categoria = TODAS;
+    estado.preco = TODAS;
     estado.busca = "";
     estado.visiveis = INICIAIS;
     el.busca.value = "";
@@ -280,9 +276,9 @@ export function createApp({ toolsList, hostsList }) {
     sincronizarUrl();
   }
 
-  /* Aplica uma categoria, permitindo desmarcar clicando na que já está ativa. */
-  function trocarCategoria(valor) {
-    estado.categoria = estado.categoria === valor ? TODAS : valor;
+  /* Aplica uma categoria ou cobrança, permitindo desmarcar clicando na que já está ativa. */
+  function trocarFiltro(campo, valor) {
+    estado[campo] = estado[campo] === valor ? TODAS : valor;
     estado.visiveis = INICIAIS;
     montarFiltros();
     renderizar();
@@ -322,12 +318,18 @@ export function createApp({ toolsList, hostsList }) {
 
     el.filtros.addEventListener("click", (evento) => {
       const chip = evento.target.closest("[data-categoria]");
-      if (chip) trocarCategoria(chip.dataset.categoria);
+      if (chip) trocarFiltro("categoria", chip.dataset.categoria);
+    });
+
+    el.filtroPreco.addEventListener("click", (evento) => {
+      const chip = evento.target.closest("[data-preco]");
+      if (chip) trocarFiltro("preco", chip.dataset.preco);
     });
 
     el.catalogo.addEventListener("click", (evento) => {
       if (!evento.target.closest('[data-acao="limpar"]')) return;
       estado.categoria = TODAS;
+      estado.preco = TODAS;
       estado.busca = "";
       estado.visiveis = INICIAIS;
       el.busca.value = "";
@@ -400,8 +402,9 @@ export function createApp({ toolsList, hostsList }) {
     secoes.tools.lista = dados.toolsList;
     secoes.host.lista = dados.hostsList;
     if (!iniciado) return;
-    const existe = secoes[estado.secao].lista.some((item) => item.category === estado.categoria);
-    if (estado.categoria !== TODAS && !existe) estado.categoria = TODAS;
+    const lista = secoes[estado.secao].lista;
+    estado.categoria = valorValido(lista, "category", estado.categoria);
+    estado.preco = valorValido(lista, "pricing", estado.preco);
     montarFiltros();
     renderizar();
   }
