@@ -203,6 +203,58 @@
   border: 0;
 }
 
+/* Fachada: a capa ocupa a caixa 16:9 e o botão inteiro é clicável. */
+.detalhe-video-play {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: #000;
+  cursor: pointer;
+}
+
+.detalhe-video-play img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.detalhe-video-icone {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 68px;
+  height: 48px;
+  transform: translate(-50%, -50%);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.75);
+  transition: background 0.15s ease;
+}
+
+.detalhe-video-icone::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 54%;
+  transform: translate(-50%, -50%);
+  border-style: solid;
+  border-width: 10px 0 10px 17px;
+  border-color: transparent transparent transparent #fff;
+}
+
+.detalhe-video-play:hover .detalhe-video-icone,
+.detalhe-video-play:focus-visible .detalhe-video-icone {
+  background: #c00;
+}
+
+.detalhe-video-play:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: -3px;
+}
+
 .detalhe-galeria {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
