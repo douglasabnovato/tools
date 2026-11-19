@@ -8,6 +8,7 @@ export const toolsList = [
     "category": "Design",
     "pricing": "Freemium",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/figma.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/figma.webp",
     "site_url": "https://www.figma.com/"
   },
   {
@@ -16,6 +17,7 @@ export const toolsList = [
     "category": "Design",
     "pricing": "Pago",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/balsamiq.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/balsamiq.webp",
     "site_url": "https://balsamiq.cloud/"
   },
   {
@@ -24,6 +26,7 @@ export const toolsList = [
     "category": "Design",
     "pricing": "Descontinuado",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/mockingbird.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/mockingbird.webp",
     "site_url": "https://gomockingbird.com/home"
   },
   {
@@ -32,6 +35,7 @@ export const toolsList = [
     "category": "Design",
     "pricing": "Freemium",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/whimsical.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/whimsical.webp",
     "site_url": "https://whimsical.com/"
   },
   {
@@ -40,6 +44,7 @@ export const toolsList = [
     "category": "Design",
     "pricing": "Gratuito",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/diagrams.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/diagrams.webp",
     "site_url": "https://app.diagrams.net/"
   },
   {
@@ -48,6 +53,7 @@ export const toolsList = [
     "category": "Design",
     "pricing": "Gratuito",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/brmodeloweb.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/brmodeloweb.webp",
     "site_url": "https://docs.brmodeloweb.com/"
   },
   {
@@ -56,6 +62,7 @@ export const toolsList = [
     "category": "Código",
     "pricing": "Freemium",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/codepen.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/codepen.webp",
     "site_url": "https://codepen.io/your-work"
   },
   {
@@ -64,6 +71,7 @@ export const toolsList = [
     "category": "Código",
     "pricing": "Freemium",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/codesandbox.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/codesandbox.webp",
     "site_url": "https://codesandbox.io/s/vanilla-vanilla"
   },
   {
@@ -72,6 +80,7 @@ export const toolsList = [
     "category": "Código",
     "pricing": "Freemium",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/stackblitz.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/stackblitz.webp",
     "site_url": "https://stackblitz.com/"
   },
   {
@@ -80,6 +89,7 @@ export const toolsList = [
     "category": "Código",
     "pricing": "Gratuito",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/fronteditor.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/fronteditor.webp",
     "site_url": "https://www.fronteditor.dev/"
   },
   {
@@ -88,6 +98,7 @@ export const toolsList = [
     "category": "Versionamento",
     "pricing": "Freemium",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/github.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/github.webp",
     "site_url": "https://github.com/"
   },
   {
@@ -96,6 +107,7 @@ export const toolsList = [
     "category": "Versionamento",
     "pricing": "Freemium",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/gitlab.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/gitlab.webp",
     "site_url": "https://about.gitlab.com/"
   },
   {
@@ -104,6 +116,7 @@ export const toolsList = [
     "category": "Versionamento",
     "pricing": "Freemium",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/bitbucket.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/bitbucket.webp",
     "site_url": "https://bitbucket.org/"
   },
   {
@@ -112,6 +125,7 @@ export const toolsList = [
     "category": "Back-end",
     "pricing": "Freemium",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/postman.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/postman.webp",
     "site_url": "https://www.postman.com/"
   },
   {
@@ -120,6 +134,7 @@ export const toolsList = [
     "category": "Back-end",
     "pricing": "Freemium",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/mailtrap.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/mailtrap.webp",
     "site_url": "https://mailtrap.io/"
   },
   {
@@ -155,6 +170,7 @@ export const toolsList = [
     "category": "Produtividade",
     "pricing": "Freemium",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/notion.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/notion.webp",
     "site_url": "https://www.notion.so/"
   },
   {
@@ -163,6 +179,7 @@ export const toolsList = [
     "category": "Produtividade",
     "pricing": "Freemium",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/trello.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/trello.webp",
     "site_url": "https://trello.com/home"
   },
   {
@@ -171,6 +188,7 @@ export const toolsList = [
     "category": "Produtividade",
     "pricing": "Gratuito",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/dontpad.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/dontpad.webp",
     "site_url": "https://dontpad.com/"
   },
   {
@@ -179,6 +197,7 @@ export const toolsList = [
     "category": "Produtividade",
     "pricing": "Freemium",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/pomodoro.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/pomodoro.webp",
     "site_url": "https://pomofocus.io/"
   },
   {
@@ -187,6 +206,7 @@ export const toolsList = [
     "category": "Comunidade",
     "pricing": "Gratuito",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/stackoverflow.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/stackoverflow.webp",
     "site_url": "https://stackoverflow.com/"
   },
   {
@@ -195,6 +215,7 @@ export const toolsList = [
     "category": "Comunidade",
     "pricing": "Freemium",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/discord.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/discord.webp",
     "site_url": "https://discord.com/"
   },
   {
@@ -203,6 +224,7 @@ export const toolsList = [
     "category": "Comunidade",
     "pricing": "Freemium",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/slack.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/slack.webp",
     "site_url": "https://slack.com/intl/pt-br"
   },
   {
@@ -211,6 +233,7 @@ export const toolsList = [
     "category": "Comunidade",
     "pricing": "Freemium",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/hashnode.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/hashnode.webp",
     "site_url": "https://hashnode.com/"
   },
   {
@@ -219,6 +242,7 @@ export const toolsList = [
     "category": "Comunidade",
     "pricing": "Freemium",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/behance.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/behance.webp",
     "site_url": "https://www.behance.net/"
   },
   {
@@ -227,6 +251,7 @@ export const toolsList = [
     "category": "Comunidade",
     "pricing": "Freemium",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/dribbble.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/dribbble.webp",
     "site_url": "https://dribbble.com/"
   },
   {
@@ -235,6 +260,7 @@ export const toolsList = [
     "category": "Comunidade",
     "pricing": "Gratuito",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/pinterest.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/pinterest.webp",
     "site_url": "https://br.pinterest.com/"
   },
   {
@@ -243,6 +269,7 @@ export const toolsList = [
     "category": "Imagens",
     "pricing": "Gratuito",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/unsplash.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/unsplash.webp",
     "site_url": "https://unsplash.com/"
   },
   {
@@ -251,6 +278,7 @@ export const toolsList = [
     "category": "Imagens",
     "pricing": "Gratuito",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/illlustrations.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/illlustrations.webp",
     "site_url": "https://illlustrations.co/"
   },
   {
@@ -259,6 +287,7 @@ export const toolsList = [
     "category": "Imagens",
     "pricing": "Freemium",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/freepik.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/freepik.webp",
     "site_url": "https://www.magnific.com/"
   },
   {
@@ -267,6 +296,7 @@ export const toolsList = [
     "category": "Imagens",
     "pricing": "Gratuito",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/photopea.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/photopea.webp",
     "site_url": "https://www.photopea.com/"
   },
   {
@@ -275,6 +305,7 @@ export const toolsList = [
     "category": "Imagens",
     "pricing": "Gratuito",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/imgsgratis.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/imgsgratis.webp",
     "site_url": "https://blog.rocketseat.com.br/melhores-sites-para-baixar-imagens-gratuitas-e-outros-recursos/"
   },
   {
@@ -283,6 +314,7 @@ export const toolsList = [
     "category": "Ícones",
     "pricing": "Gratuito",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/phosphoricons.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/phosphoricons.webp",
     "site_url": "https://phosphoricons.com/"
   },
   {
@@ -291,6 +323,7 @@ export const toolsList = [
     "category": "Ícones",
     "pricing": "Freemium",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/flaticon.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/flaticon.webp",
     "site_url": "https://www.flaticon.com/"
   },
   {
@@ -299,6 +332,7 @@ export const toolsList = [
     "category": "Ícones",
     "pricing": "Freemium",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/icons8.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/icons8.webp",
     "site_url": "https://icons8.com/"
   },
   {
@@ -307,6 +341,7 @@ export const toolsList = [
     "category": "Design",
     "pricing": "Gratuito",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/fonts-google.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/fonts-google.webp",
     "site_url": "https://fonts.google.com/"
   },
   {
@@ -315,6 +350,7 @@ export const toolsList = [
     "category": "Cores",
     "pricing": "Gratuito",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/htmlcolorcodes.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/htmlcolorcodes.webp",
     "site_url": "https://htmlcolorcodes.com/"
   },
   {
@@ -323,6 +359,7 @@ export const toolsList = [
     "category": "Cores",
     "pricing": "Gratuito",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/uigradients.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/uigradients.webp",
     "site_url": "https://uigradients.com/"
   },
   {
@@ -331,6 +368,7 @@ export const toolsList = [
     "category": "Cores",
     "pricing": "Gratuito",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/convertingcolors.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/convertingcolors.webp",
     "site_url": "https://convertingcolors.com/"
   },
   {
@@ -339,6 +377,7 @@ export const toolsList = [
     "category": "Marca e Site",
     "pricing": "Freemium",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/canva.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/canva.webp",
     "site_url": "https://www.canva.com/"
   },
   {
@@ -347,6 +386,7 @@ export const toolsList = [
     "category": "Marca e Site",
     "pricing": "Pago",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/tailorbrands.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/tailorbrands.webp",
     "site_url": "https://studio.tailorbrands.com/"
   },
   {
@@ -355,6 +395,7 @@ export const toolsList = [
     "category": "Marca e Site",
     "pricing": "Freemium",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/nicepage.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/nicepage.webp",
     "site_url": "https://nicepage.com/"
   },
   {
@@ -363,6 +404,7 @@ export const toolsList = [
     "category": "Marca e Site",
     "pricing": "Freemium",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/wordpress.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/wordpress.webp",
     "site_url": "https://wordpress.com/"
   },
   {
@@ -470,6 +512,7 @@ export const toolsList = [
     "category": "Dados",
     "pricing": "Freemium",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/microsoft-excel.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/microsoft-excel.webp",
     "site_url": "https://www.microsoft.com/pt-br/microsoft-365/excel"
   },
   {
@@ -478,6 +521,7 @@ export const toolsList = [
     "category": "Dados",
     "pricing": "Gratuito",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/google-planilhas.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/google-planilhas.webp",
     "site_url": "https://workspace.google.com/intl/pt-BR/products/sheets/for-work/"
   },
   {
@@ -486,6 +530,7 @@ export const toolsList = [
     "category": "Produtividade",
     "pricing": "Freemium",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/glpi.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/glpi.webp",
     "site_url": "https://www.glpi-project.org/"
   },
   {
@@ -494,6 +539,7 @@ export const toolsList = [
     "category": "Código",
     "pricing": "Gratuito",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/cryptojs.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/cryptojs.webp",
     "site_url": "https://github.com/brix/crypto-js"
   },
   {

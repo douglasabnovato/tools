@@ -30,7 +30,8 @@ O catálogo de ferramentas e hospedagens do dia a dia de quem desenvolve, com pa
 - Domínio próprio e qualquer serviço pago: o ambiente fica gratuito (decisão do autor, 10/11/2026).
 - Identificação opcional: a identificação obrigatória continua ([learntech-content#5](https://github.com/douglasabnovato/learntech-content/issues/5), não autorizada pelo autor em 10/11/2026).
 - Votação de temas nos cards de programa ([learntech-content#4](https://github.com/douglasabnovato/learntech-content/issues/4), aguardando o autor).
-- Filtro por modelo de cobrança ([#56](https://github.com/douglasabnovato/tools/issues/56)) e medição do catálogo ([#57](https://github.com/douglasabnovato/tools/issues/57)): depois do MVP.
+- Filtro por modelo de cobrança ([#56](https://github.com/douglasabnovato/tools/issues/56)): entregue na `developer` em 12/11/2026 (c976e62). Vale depois do deploy.
+- Medição do catálogo ([#57](https://github.com/douglasabnovato/tools/issues/57)): depois do MVP.
 
 ## Histórico
 - 10/11/2026: primeira tabela, depois do ciclo de acessibilidade e busca nos quatro sites.

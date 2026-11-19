@@ -8,6 +8,7 @@ export const hostsList = [
     "category": "Site Estático",
     "pricing": "Freemium",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/vercel.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/vercel.webp",
     "site_url": "https://vercel.com/"
   },
   {
@@ -16,6 +17,7 @@ export const hostsList = [
     "category": "Site Estático",
     "pricing": "Freemium",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/netlify.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/netlify.webp",
     "site_url": "https://www.netlify.com/"
   },
   {
@@ -33,6 +35,7 @@ export const hostsList = [
     "category": "Site Estático",
     "pricing": "Gratuito",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/github-pages.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/github-pages.webp",
     "site_url": "https://pages.github.com/"
   },
   {
@@ -41,6 +44,7 @@ export const hostsList = [
     "category": "Site Estático",
     "pricing": "Gratuito",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/gitlab-pages.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/gitlab-pages.webp",
     "site_url": "https://docs.gitlab.com/user/project/pages/"
   },
   {
@@ -49,6 +53,7 @@ export const hostsList = [
     "category": "Site Estático",
     "pricing": "Freemium",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/surge.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/surge.webp",
     "site_url": "https://surge.sh/"
   },
   {
@@ -57,6 +62,7 @@ export const hostsList = [
     "category": "Site Estático",
     "pricing": "Freemium",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/firebase.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/firebase.webp",
     "site_url": "https://firebase.google.com/docs/hosting?hl=pt-br"
   },
   {
@@ -65,6 +71,7 @@ export const hostsList = [
     "category": "Aplicação",
     "pricing": "Freemium",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/railway.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/railway.webp",
     "site_url": "https://railway.app/"
   },
   {
@@ -73,6 +80,7 @@ export const hostsList = [
     "category": "Aplicação",
     "pricing": "Pago",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/heroku.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/heroku.webp",
     "site_url": "https://www.heroku.com/"
   },
   {
@@ -81,6 +89,7 @@ export const hostsList = [
     "category": "Tempo Real",
     "pricing": "Freemium",
     "thumb": "https://learntech-content.douglasabnovato.workers.dev/media/tools/pusher.webp",
+    "thumbPequena": "https://learntech-content.douglasabnovato.workers.dev/media/tools/320/pusher.webp",
     "site_url": "https://pusher.com/"
   },
   {
