@@ -1,6 +1,8 @@
-/* detalhe.css — página de detalhe de uma ferramenta: topo, texto, vídeo, galeria e links.
-   Usa só os tokens de layout.css, então segue o tema claro e escuro sem cor própria. */
+/* detalhe.css — página de detalhe de uma ferramenta. Usa só os tokens de layout.css, então segue os dois temas.
+   Seções, na ordem da página:
+   1. Navegação  2. Página e voltar  3. Estados  4. Topo  5. Texto  6. Vídeo  7. Galeria  8. Links e data  9. Celular */
 
+/* 1. Navegação: link para o catálogo no cabeçalho. */
 .detalhe-nav {
   margin-left: auto;
 }
@@ -23,6 +25,12 @@
   border-color: var(--border-strong);
 }
 
+/* 2. Página e voltar: o detalhe ocupa a tela desde o carregamento, para o rodapé não saltar
+   quando a ferramenta chega (CLS 0,19 no celular, #64). */
+.detalhe {
+  min-height: 100vh;
+}
+
 .detalhe-voltar {
   display: inline-flex;
   align-items: center;
@@ -37,7 +45,7 @@
   color: var(--accent);
 }
 
-/* Estados: carregando, não encontrado e API indisponível. */
+/* 3. Estados: carregando, não encontrado e API indisponível. */
 .detalhe-estado {
   display: flex;
   flex-direction: column;
@@ -82,7 +90,7 @@
   }
 }
 
-/* Topo: miniatura ao lado das informações; empilha no celular. */
+/* 4. Topo: miniatura ao lado de título, etiquetas, resumo e botão do site oficial. */
 .detalhe-topo {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
@@ -134,7 +142,7 @@
   font-size: 0.78rem;
 }
 
-/* Etiqueta de categoria um tom mais forte que no card, para passar de 4,5:1 nos dois temas. */
+/* Categoria um tom mais forte que no card: contraste acima de 4,5:1 nos dois temas. */
 .detalhe-tags .tag-cat {
   color: var(--text-muted);
 }
@@ -168,7 +176,7 @@
   translate: 0 -1px;
 }
 
-/* Corpo de leitura. */
+/* 5. Texto: coluna de leitura com os parágrafos. */
 .detalhe-corpo {
   display: flex;
   flex-direction: column;
@@ -188,6 +196,7 @@
   margin-bottom: 0;
 }
 
+/* 6. Vídeo: caixa 16:9. */
 .detalhe-video {
   aspect-ratio: 16 / 9;
   border: 1px solid var(--border);
@@ -203,7 +212,7 @@
   border: 0;
 }
 
-/* Fachada: a capa ocupa a caixa 16:9 e o botão inteiro é clicável. */
+/* Fachada: capa e botão de play; o iframe do YouTube só entra no clique (js/video.js). */
 .detalhe-video-play {
   position: relative;
   display: block;
@@ -255,6 +264,7 @@
   outline-offset: -3px;
 }
 
+/* 7. Galeria: imagens em grade, com legenda. */
 .detalhe-galeria {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -283,7 +293,7 @@
   line-height: 1.45;
 }
 
-/* Links oficiais, fontes e data. */
+/* 8. Links e data: veja também, links oficiais, fontes e data de atualização. */
 .detalhe-rodape {
   display: flex;
   flex-direction: column;
@@ -347,6 +357,7 @@
   font-size: 0.84rem;
 }
 
+/* 9. Celular (até 720 px): o topo empilha e o botão ocupa a largura. */
 @media (max-width: 720px) {
   .detalhe-topo {
     grid-template-columns: 1fr;
@@ -360,12 +371,6 @@
     align-self: stretch;
     justify-content: center;
   }
-}
-
-/* O detalhe ocupa a tela desde o carregamento: antes, o rodapé aparecia no meio da tela e
-   saltava quando a ferramenta chegava (CLS 0,19 no celular com rede lenta, #64). */
-.detalhe {
-  min-height: 100vh;
 }
 
 /* Fim de detalhe.css */
