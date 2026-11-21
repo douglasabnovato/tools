@@ -1,5 +1,7 @@
-/* cards.css — o card do catálogo: miniatura, nome, descrição e etiquetas. */
+/* cards.css — card do catálogo. Seções, de cima para baixo no card:
+   1. Card  2. Miniatura  3. Texto  4. Etiquetas  5. Entrada animada  6. Celular */
 
+/* 1. Card: caixa clicável inteira, com foco visível. */
 .card {
   position: relative;
   display: flex;
@@ -21,6 +23,7 @@
   box-shadow: var(--shadow);
 }
 
+/* 2. Miniatura: aparece com fade ao carregar; logos (data-fit="contain") não são cortados nem ampliados. */
 .card-media {
   position: relative;
   aspect-ratio: 16 / 10;
@@ -52,6 +55,7 @@
   scale: 1.03;
 }
 
+/* 3. Texto: título com seta, que anda no hover, e descrição cortada em linhas. */
 .card-body {
   display: flex;
   flex-direction: column;
@@ -97,6 +101,7 @@
   line-height: 1.5;
 }
 
+/* 4. Etiquetas: categoria e cobrança; Gratuito e Descontinuado têm cor própria. */
 .card-tags {
   display: flex;
   flex-wrap: nowrap;
@@ -140,6 +145,7 @@
   font-style: italic;
 }
 
+/* 5. Entrada animada dos cards novos na grade. */
 .grid-enter {
   animation: rise 0.35s ease-out both;
 }
@@ -155,6 +161,7 @@
   }
 }
 
+/* 6. Celular (até 720 px): miniatura 16:9, texto menor e descrição em 2 linhas. */
 @media (max-width: 720px) {
   .card-media {
     aspect-ratio: 16 / 9;

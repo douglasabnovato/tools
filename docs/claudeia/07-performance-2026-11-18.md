@@ -20,3 +20,25 @@ Páginas tocadas: `index.html`, `detalhe.html` e `404.html` (nesta, só o CSS as
 | Detalhe depois (`?id=github-copilot`) | 92 | 3,3 s | 1,2 s | 0 |
 
 A home bateu a meta de LCP ≤ 2,5 s. No detalhe, o LCP é o resumo da ferramenta, que depende do `fetch` da API; essa melhoria fica para uma próxima rodada.
+
+## Detalhe: fachada do vídeo (19/11/2026)
+
+Branch `feature/tasks-19-11-2026`. Na produção, depois da `main`, o Lighthouse do detalhe (`#id=figma`) deu 73 com LCP de 4,9 s. O LCP é a miniatura da ferramenta, e o relatório mostrava o player do YouTube (cerca de 1 MB de JS) carregando junto com ela.
+
+| Mudança | Por quê |
+|---|---|
+| O vídeo virou uma fachada: capa (`i.ytimg.com`) e botão. O iframe `youtube-nocookie` só entra no clique, com `autoplay`, e recebe o foco | Quem não assiste ao vídeo não baixa o player. O ganho é de banda, de boas práticas (o YouTube deixava cookies de terceiros e erros no console) e de privacidade |
+| A miniatura do topo ganhou `fetchpriority="high"` e perdeu o `decoding="async"` | Ela é o LCP da página |
+| `js/video.js`, com o id, o embed e a capa, e `tests/video.test.js` | A validação do embed saiu do `detalhe.js` e ganhou teste |
+| `https://i.ytimg.com` no `img-src` das 3 páginas | Para a capa |
+
+### Medição (Lighthouse 13, móvel, `#id=figma`)
+
+| | Performance | Boas práticas | LCP |
+|---|---|---|---|
+| Produção, antes (3 rodadas) | 61, 97 e 94 | 96 | 8,6, 2,5 e 3,0 s |
+| Local, antes (3 rodadas) | 93, 98 e 92 | 96 | 3,2, 2,5 e 3,4 s |
+| Local, depois (4 rodadas) | 93, 92, 93 e 95 | **100** | 3,3, 3,4, 3,2 e 2,9 s |
+
+A nota baixa da produção vem da primeira rodada, com o cache frio. Ali o FCP foi de 5,8 s, antes de qualquer JavaScript, por causa dos 5 CSS e do `tema.js` que bloqueiam a renderização e do GitHub Pages ainda sem cache. Com o cache quente, o detalhe fica entre 94 e 97. A fachada não muda o LCP em rede rápida, mas tira cerca de 1 MB da página e leva boas práticas a 100. O próximo ganho real é juntar os 5 CSS num arquivo só.
+

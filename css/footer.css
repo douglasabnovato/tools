@@ -1,5 +1,7 @@
-/* footer.css — rodapé com marca, links sociais e assinatura. */
+/* footer.css — rodapé de todas as páginas. Seções, na ordem do HTML:
+   1. Rodapé  2. Marca  3. Colunas de links  4. Assinatura  5. Celular */
 
+/* 1. Rodapé: faixa e área interna. */
 .site-footer {
   border-top: 1px solid var(--border);
   background: var(--surface);
@@ -17,6 +19,7 @@
   padding: 2.75rem var(--gutter) 1.5rem;
 }
 
+/* 2. Marca: logo e frase. */
 .footer-brand {
   max-width: 34ch;
 }
@@ -31,6 +34,7 @@
   font-size: 0.87rem;
 }
 
+/* 3. Colunas de links. */
 .footer-links {
   display: flex;
   gap: 3rem;
@@ -65,6 +69,7 @@
   color: var(--accent);
 }
 
+/* 4. Assinatura: direitos e stack usada (.stack, em fonte mono). */
 .footer-bottom {
   display: flex;
   flex-wrap: wrap;
@@ -89,6 +94,7 @@
   letter-spacing: 0.02em;
 }
 
+/* 5. Celular (até 720 px): marca e links em coluna. */
 @media (max-width: 720px) {
   .footer-inner {
     flex-direction: column;

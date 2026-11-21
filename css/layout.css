@@ -1,5 +1,8 @@
-/* layout.css — tokens de tema, base tipográfica, grade e controles de filtro. */
+/* layout.css — base de todas as páginas. Seções, na ordem:
+   1. Tema  2. Base  3. Acessibilidade  4. Página  5. Filtros  6. Resultado e grade
+   7. Paginação e estado vazio  8. Celular  9. Movimento reduzido */
 
+/* 1. Tema: cores, raios, largura e fontes. O tema claro troca só as cores. */
 :root {
   --bg: #0c0d10;
   --surface: #141519;
@@ -42,6 +45,7 @@
   color-scheme: light;
 }
 
+/* 2. Base: caixa, corpo, títulos, links e campos que herdam a fonte. */
 *,
 *::before,
 *::after {
@@ -88,6 +92,7 @@ select {
   color: inherit;
 }
 
+/* 3. Acessibilidade: foco visível, link para pular ao conteúdo e texto só para leitor de tela. */
 :where(a, button, input, [tabindex]):focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
@@ -110,7 +115,7 @@ select {
   left: 0;
 }
 
-/* Texto só para leitor de tela (ex.: "abre em nova aba" nos cards). */
+/* Texto só para leitor de tela, como "abre em nova aba" nos cards. */
 .sr-only {
   position: absolute;
   width: 1px;
@@ -120,6 +125,7 @@ select {
   white-space: nowrap;
 }
 
+/* 4. Página: contêiner, espaçamento e introdução (selo, título e texto). */
 .container {
   width: 100%;
   max-width: var(--maxw);
@@ -175,6 +181,7 @@ select {
   background: var(--accent);
 }
 
+/* 5. Filtros: barras de categoria e de cobrança, feitas de chips. */
 .toolbar {
   display: flex;
   flex-wrap: wrap;
@@ -213,17 +220,18 @@ select {
   font-weight: 600;
 }
 
-/* Segunda barra (cobrança, tools#56): a linha de separação fica só embaixo dela. */
-.toolbar:has(+ .toolbar--preco) {
-  padding-bottom: 0.6rem;
-  border-bottom: 0;
-}
-
 .chip .chip-count {
   margin-left: 0.3rem;
   font-variant-numeric: tabular-nums;
 }
 
+/* Com a segunda barra (cobrança, tools#56), a linha de separação fica só embaixo dela. */
+.toolbar:has(+ .toolbar--preco) {
+  padding-bottom: 0.6rem;
+  border-bottom: 0;
+}
+
+/* 6. Resultado e grade: contador de itens e grade de cards. */
 .result-line {
   margin: 0 0 1.25rem;
   color: var(--text-faint);
@@ -242,6 +250,19 @@ select {
   gap: 1.25rem;
 }
 
+/* Enquanto o catálogo carrega (#64): a barra vazia tem a altura de um chip e a grade vazia ocupa a tela,
+   para os cards não empurrarem o layout (CLS 0,13 no celular). */
+.toolbar:empty::before {
+  content: "";
+  display: block;
+  height: 2.31rem;
+}
+
+.grid:empty {
+  min-height: 100vh;
+}
+
+/* 7. Paginação ("carregar mais" e fim da lista) e estado vazio. */
 .pagination {
   display: flex;
   flex-direction: column;
@@ -298,6 +319,7 @@ select {
   font-size: 0.92rem;
 }
 
+/* 8. Celular (até 720 px): os filtros rolam na horizontal e a grade estreita. */
 @media (max-width: 720px) {
   .toolbar {
     flex-wrap: nowrap;
@@ -316,6 +338,7 @@ select {
   }
 }
 
+/* 9. Movimento reduzido: sem rolagem suave nem animação. */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -327,19 +350,6 @@ select {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
-}
-
-/* Espaço reservado enquanto o catálogo carrega (#64). Sem isso, no celular com rede lenta,
-   a linha de filtros surgia e empurrava o contador, e a paginação saía da tela quando os cards
-   chegavam (CLS 0,13). A linha vazia tem a altura de um chip; a grade vazia ocupa a tela. */
-.toolbar:empty::before {
-  content: "";
-  display: block;
-  height: 2.31rem;
-}
-
-.grid:empty {
-  min-height: 100vh;
 }
 
 /* Fim de layout.css */

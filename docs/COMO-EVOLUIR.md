@@ -30,11 +30,13 @@ Guia curto para mudar o site com segurança. Ferramentas e hospedagens **não na
 - **Detalhe:** links novos usam `detalhe.html?id=`, igual ao sitemap e ao canonical.
 - **Formatação:** `npm run format:check` é obrigatório na CI.
 - **Modal de identificação:** obrigatório hoje. Mudar isso é decisão do autor (issue na API).
+- **CSS:** cinco arquivos separados, carregados nesta ordem: `layout.css` (base), `header.css`, `cards.css`, `footer.css` e, só no detalhe, `detalhe.css`. Cada arquivo abre com a lista das suas seções numeradas, na ordem em que aparecem na página, e cada seção tem um comentário `/* N. Nome: o que faz. */`. Uma regra nova entra na seção dela, e as consultas de mídia ficam no fim. Para ver se uma reorganização mudou o visual, compare o estilo calculado de todos os elementos antes e depois: em 20/11/2026, a diferença foi zero.
 - **CSP:** fica num `<meta http-equiv>` igual em `index.html`, `detalhe.html` e `404.html` (`tests/csp.test.js` confere). Nada de `<script>` inline nem `onclick`. Origens liberadas e por quê:
   - API (`learntech-content.douglasabnovato.workers.dev`): dados (`connect-src`), SDK de identificação (`script-src`) e `/media/` (`img-src`).
   - `fonts.googleapis.com` e `fonts.gstatic.com`: Google Fonts. O primeiro também em `connect-src`, para o axe ler o CSS sem erro no console.
   - `www.google.com` e `*.gstatic.com`: favicons das miniaturas (`/s2/favicons` redireciona para `t0..t3.gstatic.com`).
-  - `www.youtube-nocookie.com`: player do detalhe (`frame-src`).
+  - `www.youtube-nocookie.com`: player do detalhe (`frame-src`). Entra só no clique, pela fachada de `js/video.js`.
+  - `i.ytimg.com`: capa do vídeo na fachada do detalhe (`img-src`).
   - `style-src 'unsafe-inline'`: o SDK monta o modal com `<style>` no Shadow DOM.
   - Miniatura de domínio novo, Turnstile (`challenges.cloudflare.com`) ou outro recurso externo: acrescente a origem nas 3 páginas antes de publicar, ou ele é bloqueado.
 

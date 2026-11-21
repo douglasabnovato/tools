@@ -4,10 +4,10 @@
 
 import { apiConfigurada, buscarRecurso, resolverMidia, carregarIdentificacao } from "./api.js";
 import { cortarTexto } from "./utils.js";
+import { idDoVideo, urlDoEmbed, urlDaCapa } from "./video.js";
 
 const CHAVE_TEMA = "tools:theme";
 const FORMATO_SLUG = /^[a-z0-9]+(-[a-z0-9]+)*$/;
-const VIDEO_YOUTUBE = /^https:\/\/www\.youtube(-nocookie)?\.com\/embed\/([\w-]{11})$/;
 /* Endereço público do detalhe: o mesmo formato das URLs do sitemap.xml (gerado pela API). */
 const URL_DETALHE = "https://douglasabnovato.github.io/tools/detalhe.html";
 
@@ -65,10 +65,39 @@ function formatarData(iso) {
   return m ? `${m[3]}/${m[2]}/${m[1]}` : null;
 }
 
-/* Força o host youtube-nocookie; devolve null se não for um embed válido. */
-function videoSemCookie(url) {
-  const m = VIDEO_YOUTUBE.exec(String(url));
-  return m ? `https://www.youtube-nocookie.com/embed/${m[2]}` : null;
+/* Fachada do vídeo: capa e botão no lugar do iframe. O player do YouTube (cerca de 1 MB de JS) só carrega no clique,
+   para não disputar a banda e a thread principal com a miniatura, que é o LCP da página. */
+function fachadaDoVideo(id, titulo) {
+  const caixa = criar("div", "detalhe-video");
+  const botao = criar("button", "detalhe-video-play");
+  botao.type = "button";
+  botao.setAttribute("aria-label", `Reproduzir o vídeo sobre ${titulo}`);
+  const capa = criar("img");
+  capa.src = urlDaCapa(id);
+  capa.alt = "";
+  capa.loading = "lazy";
+  capa.decoding = "async";
+  capa.width = 480;
+  capa.height = 360;
+  const icone = criar("span", "detalhe-video-icone");
+  icone.setAttribute("aria-hidden", "true");
+  botao.append(capa, icone);
+  botao.addEventListener(
+    "click",
+    () => {
+      const iframe = criar("iframe");
+      iframe.src = urlDoEmbed(id);
+      iframe.title = `Vídeo sobre ${titulo}`;
+      iframe.allow = "accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen";
+      iframe.allowFullscreen = true;
+      iframe.referrerPolicy = "strict-origin-when-cross-origin";
+      caixa.replaceChildren(iframe);
+      iframe.focus();
+    },
+    { once: true },
+  );
+  caixa.append(botao);
+  return caixa;
 }
 
 /* Volta para o catálogo mantendo seção, filtro e busca quando o visitante veio dele. */
@@ -162,7 +191,7 @@ function renderizar(item) {
     img.alt = `Miniatura de ${item.title}`;
     img.width = 640;
     img.height = 400;
-    img.decoding = "async";
+    img.fetchPriority = "high"; /* a miniatura é o LCP da página */
     if (item.thumbFit) img.dataset.fit = item.thumbFit;
     midia.append(img);
   }
@@ -192,19 +221,8 @@ function renderizar(item) {
   for (const p of d.paragrafos) texto.append(criar("p", null, String(p)));
   corpo.append(texto);
 
-  const video = d.video && videoSemCookie(d.video);
-  if (video) {
-    const caixa = criar("div", "detalhe-video");
-    const iframe = criar("iframe");
-    iframe.src = video;
-    iframe.title = `Vídeo sobre ${item.title}`;
-    iframe.loading = "lazy";
-    iframe.allow = "accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen";
-    iframe.allowFullscreen = true;
-    iframe.referrerPolicy = "strict-origin-when-cross-origin";
-    caixa.append(iframe);
-    corpo.append(caixa);
-  }
+  const idVideo = idDoVideo(d.video);
+  if (idVideo) corpo.append(fachadaDoVideo(idVideo, String(item.title)));
 
   const imagens = (Array.isArray(d.imagens) ? d.imagens : []).filter((i) => srcImagem(i?.url) && i.alt);
   if (imagens.length) {

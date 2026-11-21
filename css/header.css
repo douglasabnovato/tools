@@ -1,5 +1,7 @@
-/* header.css — cabeçalho fixo, abas de seção, busca e alternância de tema. */
+/* header.css — cabeçalho fixo de todas as páginas. Seções, na ordem da barra:
+   1. Barra  2. Marca  3. Abas  4. Busca  5. Tema  6. Telas menores */
 
+/* 1. Barra: fixa no topo; ganha a borda de baixo quando a página rola (is-stuck). */
 .site-header {
   position: sticky;
   top: 0;
@@ -24,6 +26,7 @@
   padding-inline: var(--gutter);
 }
 
+/* 2. Marca: logo e nome learnTECH. */
 .brand {
   display: inline-flex;
   align-items: center;
@@ -45,6 +48,7 @@
   color: var(--accent);
 }
 
+/* 3. Abas: Ferramentas e Hospedagens. */
 .tabs {
   display: flex;
   gap: 0.25rem;
@@ -78,6 +82,7 @@
   font-weight: 600;
 }
 
+/* 4. Busca: ícone, campo, dica de atalho (campo vazio) e botão de limpar (campo preenchido). */
 .search {
   position: relative;
   flex: 1 1 200px;
@@ -154,6 +159,7 @@
   display: grid;
 }
 
+/* 5. Tema: botão que alterna claro e escuro; mostra o ícone do tema seguinte. */
 .icon-btn {
   display: grid;
   place-items: center;
@@ -189,6 +195,7 @@
   display: block;
 }
 
+/* 6. Telas menores: até 860 px a busca desce para a segunda linha; até 420 px fica só o logo. */
 @media (max-width: 860px) {
   .header-inner {
     flex-wrap: wrap;
