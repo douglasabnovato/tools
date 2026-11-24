@@ -27,9 +27,12 @@
 }
 
 /* 2. Marca: logo e nome learnTECH. */
+/* Alvo de toque de 44 px no celular (regra da casa; E8 das referências do Esp UX/UI). */
 .brand {
   display: inline-flex;
   align-items: center;
+  min-width: 44px;
+  min-height: 44px;
   gap: 0.55rem;
   flex-shrink: 0;
   font-family: var(--font-title);
@@ -59,6 +62,7 @@
 }
 
 .tab {
+  min-height: 44px;
   padding: 0.4rem 0.95rem;
   border: 0;
   border-radius: 999px;
@@ -104,6 +108,7 @@
 
 .search input {
   width: 100%;
+  min-height: 44px;
   padding: 0.55rem 2.4rem 0.55rem 2.35rem;
   border: 1px solid var(--border);
   border-radius: 999px;
@@ -164,8 +169,8 @@
   display: grid;
   place-items: center;
   flex-shrink: 0;
-  width: 36px;
-  height: 36px;
+  width: 44px;
+  height: 44px;
   border: 1px solid var(--border);
   border-radius: 50%;
   background: var(--surface);
@@ -227,6 +232,16 @@
 @media (max-width: 420px) {
   .brand span.brand-text {
     display: none;
+  }
+
+  /* Com os alvos de 44 px (logo e tema), a primeira linha não cabia em 328 px e quebrava depois da carga
+     (CLS 0,41). Abas e espaços um pouco mais justos mantêm marca, abas e tema numa linha só. */
+  .header-inner {
+    gap: 0.5rem;
+  }
+
+  .tab {
+    padding-inline: 0.6rem;
   }
 }
 

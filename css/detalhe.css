@@ -8,6 +8,9 @@
 }
 
 .detalhe-nav-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   padding: 0.4rem 0.95rem;
   border: 1px solid var(--border);
   border-radius: 999px;
@@ -34,6 +37,7 @@
 .detalhe-voltar {
   display: inline-flex;
   align-items: center;
+  min-height: 44px;
   gap: 0.4rem;
   margin-bottom: 1.75rem;
   color: var(--text-muted);
@@ -320,7 +324,9 @@
 }
 
 .detalhe-redes a {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   padding: 0.4rem 0.85rem;
   border: 1px solid var(--border);
   border-radius: 999px;
