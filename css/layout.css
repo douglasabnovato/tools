@@ -9,6 +9,8 @@
   --surface-2: #1a1c21;
   --border: #26282e;
   --border-strong: #363941;
+  /* A borda dos campos (a busca): ≥ 3:1 contra o fundo, WCAG 1.4.11. O --border fica para os cards. */
+  --border-campo: #737882;
   --text: #f2f3f5;
   --text-muted: #9ea3ad;
   --text-faint: #8a8f98;
@@ -34,6 +36,7 @@
   --surface-2: #f4f3f0;
   --border: #e4e2dd;
   --border-strong: #d1cec6;
+  --border-campo: #6f737b;
   --text: #16181d;
   --text-muted: #5b6068;
   --text-faint: #686c74;
