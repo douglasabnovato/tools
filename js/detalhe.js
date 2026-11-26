@@ -48,14 +48,16 @@ function criar(tag, classe, texto) {
   return no;
 }
 
-/* Link externo em nova aba, ou null se a URL não for http(s). */
+/* Link externo em nova aba, ou null se a URL não for http(s) ou o texto vier vazio. O ↗ visível vem do CSS
+   (a[target="_blank"]::after, em layout.css), e o aviso para o leitor de tela vai num .sr-only (learntech-content#70). */
 function linkExterno(url, texto, classe) {
   const href = urlSegura(url);
-  if (!href) return null;
+  if (!href || !texto) return null;
   const a = criar("a", classe, texto);
   a.href = href;
   a.target = "_blank";
   a.rel = "noopener noreferrer";
+  a.append(criar("span", "sr-only", " (abre em nova aba)"));
   return a;
 }
 
@@ -138,9 +140,7 @@ function mostrarMensagem(titulo, texto, item, tentarDeNovo) {
 
 /* Lista de links (redes ou fontes) dentro de uma seção com título. */
 function secaoLinks(titulo, lista, classe) {
-  const itens = (Array.isArray(lista) ? lista : [])
-    .map((l) => linkExterno(l?.url, String(l?.label ?? ""), null))
-    .filter((a) => a && a.textContent);
+  const itens = (Array.isArray(lista) ? lista : []).map((l) => linkExterno(l?.url, String(l?.label ?? ""), null)).filter(Boolean);
   if (!itens.length) return null;
   const secao = criar("section", `detalhe-links ${classe}`);
   secao.append(criar("h2", null, titulo));
@@ -208,8 +208,6 @@ function renderizar(item) {
   const site = linkExterno(item.site_url, "Acessar site oficial", "btn-primary");
   if (site) {
     site.setAttribute("aria-label", `Acessar site oficial de ${item.title} em uma nova aba`);
-    site.append(criar("span", "btn-seta", " ↗"));
-    site.lastChild.setAttribute("aria-hidden", "true");
     info.append(site);
   }
   topo.append(midia, info);
